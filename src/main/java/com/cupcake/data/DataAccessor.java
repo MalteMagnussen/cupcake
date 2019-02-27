@@ -9,11 +9,11 @@ package com.cupcake.data;
  *
  * @author 
  */
-public class User {
+public class DataAccessor {
     /**
-     * Basic User Object Class
+     * Contains classes that handle SQL directly.
+     * Try to keep them as simple as possible.
+     * Remember to refactor into a new method if something becomes too big.
+     *
      */
-    private String name;
-    private int balance;
-    private String password;
 }
