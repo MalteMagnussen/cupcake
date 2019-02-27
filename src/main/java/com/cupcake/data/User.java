@@ -10,6 +10,9 @@ package com.cupcake.data;
  * @author Malte
  */
 public class User {
+    /**
+     * Basic User Object Class
+     */
     private String name;
     private int balance;
     private String password;
