@@ -16,4 +16,24 @@ public class User {
     private String name;
     private int balance;
     private String password;
+
+    public User(String name, String password) {
+        this.name = name;
+        this.balance = 0;
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    
 }
