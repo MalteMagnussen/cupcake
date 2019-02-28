@@ -5,8 +5,13 @@
  */
 package com.cupcake.data;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -47,6 +52,39 @@ public class DataAccessor {
             ps.setString(id, str);
             ps.executeUpdate();
         }
+    }
+    
+    public List<String> getUser(String name) throws DataException{
+        try {
+            DBConnector conn = new DBConnector();
+            
+            String query = "SELECT * FROM `Cupcake`.`Users` "
+                    + "WHERE `Cupcake`.`Users`.`name` = " + userName + ";";
+
+            Connection connection = conn.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            List<String> userData = new ArrayList<>();
+            String userName = "";
+            String password = "";
+            int balance = 0;
+            
+            while (rs.next()){
+                userName = rs.getString("name");
+                userData.add(userName);
+                password = rs.getString("password");
+                password = password.replaceAll(password, "*");
+                userData.add(password);
+                balance = rs.getInt("balance");
+            }
+            
+            return userData;
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return null;
     }
     // EXAMPLE END
 }
