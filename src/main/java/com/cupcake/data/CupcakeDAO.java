@@ -17,9 +17,9 @@ public class CupcakeDAO {
      *   List<Buttom> buttoms getAllButtoms);
      */
     
-    private DataAccessor db;
+    private UserDataMapper db;
 
-    public CupcakeDAO(DataAccessor db) {
+    public CupcakeDAO(UserDataMapper db) {
         this.db = db;
     }
     

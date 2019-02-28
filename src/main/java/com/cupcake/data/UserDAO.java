@@ -22,9 +22,9 @@ public class UserDAO {
      * breaks them down and inputs them into the database using methods from a
      * Database Connector Class.
      */
-    private DataAccessor db;
+    private UserDataMapper db;
 
-    public UserDAO(DataAccessor db) {
+    public UserDAO(UserDataMapper db) {
         this.db = db;
     }
 

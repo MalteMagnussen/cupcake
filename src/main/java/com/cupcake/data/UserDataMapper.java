@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author 
  */
-public class DataAccessor {
+public class UserDataMapper {
     /**
      * Contains classes that handle SQL directly.
      * Try to keep them as simple as possible.
