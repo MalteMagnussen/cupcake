@@ -22,6 +22,26 @@ class LineItem {
     public LineItem(Cupcake cupcake) {
         this.cupcake = cupcake;
     }
+
+    public int getInvoice_id() {
+        return invoice_id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Cupcake getCupcake() {
+        return cupcake;
+    }
+
+    public void setInvoice_id(int invoice_id) {
+        this.invoice_id = invoice_id;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
     
     
     
