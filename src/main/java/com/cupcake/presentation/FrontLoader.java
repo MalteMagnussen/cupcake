@@ -33,8 +33,10 @@ public class FrontLoader extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(final HttpServletRequest request, final HttpServletResponse response)
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        final HttpServletRequest req = request;
+        final HttpServletResponse res = response;
         try {
             // Make workingjack here. So it gets done in requests.
             ExecutorService workingJack = Executors.newCachedThreadPool();
@@ -42,8 +44,8 @@ public class FrontLoader extends HttpServlet {
                 @Override
                 public void run() {
                     try {
-                        Command c = Command.from(request);
-                        c.execute(request, response);
+                        Command c = Command.from(req);
+                        c.execute(req, res);
                     } catch (IOException ex) {
                         System.out.println(ex.getMessage());
                     } catch (ServletException ex) {
