@@ -1,7 +1,10 @@
 CREATE SCHEMA IF NOT EXISTS`Cupcake`;
 USE `Cupcake`;
 
-DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS invoices;
+DROP TABLE IF EXISTS toppings;
+DROP TABLE IF EXISTS bottom;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE `Users`(
 `name` VARCHAR(55),
@@ -10,23 +13,17 @@ CREATE TABLE `Users`(
 PRIMARY KEY (`name`)
 );
 
-DROP TABLE IF EXISTS `bottom`;
-
 CREATE TABLE `bottom`(
 `bname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`bname`)
 );
 
-DROP TABLE IF EXISTS `toppings`;
-
 CREATE TABLE `toppings`(
 `tname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`tname`)
 );
-
-DROP TABLE IF EXISTS `invoices`;
 
 CREATE TABLE `cupcake`.`invoices` (
   `idinvoices` INT NOT NULL,
