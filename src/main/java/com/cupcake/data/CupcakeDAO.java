@@ -6,6 +6,8 @@
 package com.cupcake.data;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,15 +28,25 @@ public class CupcakeDAO {
     }
     
     public Top getTop(String name){
-        int price = db.getTopPrice(name);
-        Top top = new Top(name, price);
-        return top;
+        try {
+            int price = db.getTopPrice(name);
+            Top top = new Top(name, price);
+            return top;
+        } catch (DataException ex) {
+            Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public Bottom getBottom(String name){
-        int price = db.getBottomPrice(name);
-        Bottom bot = new Bottom(name, price);
-        return bot;
+        try {
+            int price = db.getBottomPrice(name);
+            Bottom bot = new Bottom(name, price);
+            return bot;
+        } catch (DataException ex) {
+            Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
     
     public Cupcake makeCupcake(String topName, String bottomName){
