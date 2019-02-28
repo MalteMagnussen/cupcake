@@ -124,28 +124,6 @@ class CupcakeDataMapper {
         return null;
     }
     
-    public int getBotPrice(String name) throws DataException{
-            try {
-            DBConnector conn = new DBConnector();
-            
-            String query = "SELECT price FROM `Cupcake`.`bottom` WHERE `cupcake`.`bottom`.`name` = " + name +";";
-
-            Connection connection = conn.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            
-            int price = 0;
-            
-            while (rs.next()){
-                price = rs.getInt("price");
-            }
-            return price;
-        }catch (SQLException ex) {
-            System.out.println(ex);
-        }
-            return 0;
-    }
-    
     public int getTopPrice(String name) throws DataException{
         try {
             DBConnector conn = new DBConnector();
