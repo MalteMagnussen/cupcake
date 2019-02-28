@@ -69,8 +69,8 @@ public class DataAccessor {
         String insertBalance = "INSERT INTO cupcake.`users` (balance) "
                 + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
         PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-        ps.setString(1, balance);
-        ps.setInt(2, name);
+        ps.setInt(1, balance);
+        ps.setString(2, name);
         ps.executeUpdate();
     }
     
@@ -82,7 +82,7 @@ public class DataAccessor {
                 + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
         PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
         ps.setString(1, email);
-        ps.setInt(2, name);
+        ps.setString(2, name);
         ps.executeUpdate();
     }
     
