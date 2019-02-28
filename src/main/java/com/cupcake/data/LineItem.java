@@ -12,4 +12,5 @@ package com.cupcake.data;
 class LineItem {
     private int invoice_id;
     private int quantity;
+    private Cupcake cupcake;
 }
