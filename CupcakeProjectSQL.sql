@@ -20,7 +20,7 @@ CREATE TABLE `bottom`(
 PRIMARY KEY (`bname`)
 );
 
-CREATE TABLE `toppings`(
+CREATE TABLE `topping`(
 `tname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`tname`)
@@ -42,6 +42,6 @@ CREATE TABLE `cupcake`.`invoices` (
     ON UPDATE NO ACTION,
   CONSTRAINT `tname`
     FOREIGN KEY (`tname`)
-    REFERENCES `cupcake`.`toppings` (`tname`)
+    REFERENCES `cupcake`.`topping` (`tname`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);

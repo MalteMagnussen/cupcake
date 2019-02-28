@@ -132,7 +132,7 @@ class CupcakeDataMapper {
             DBConnector conn = new DBConnector();
 
             String query = "SELECT price FROM `Cupcake`.`topping` "
-                    + "WHERE `cupcake`.`topping`.`name` = " + name + ";";
+                    + "WHERE `cupcake`.`topping`.`tname` = '" + name + "';";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
@@ -155,7 +155,7 @@ class CupcakeDataMapper {
             DBConnector conn = new DBConnector();
 
             String query = "SELECT price FROM `Cupcake`.`bottom` "
-                    + "WHERE `cupcake`.`bottom`.`name` = " + name + ";";
+                    + "WHERE `cupcake`.`bottom`.`bname` = '" + name + "';";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();

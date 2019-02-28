@@ -4,7 +4,7 @@ INSERT INTO `Cupcake`.`bottom`
 VALUES
 ('Chocolate', 5.00), ('Vanilla', 5.00), ('Nutmeg', 5.00), ('Pistacio', 6.00), ('Almond', 7.00);
 
-INSERT INTO `Cupcake`.`toppings`
+INSERT INTO `Cupcake`.`topping`
 (`tname`,
 `Price`)
 VALUES
