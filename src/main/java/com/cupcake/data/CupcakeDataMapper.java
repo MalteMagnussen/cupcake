@@ -15,7 +15,23 @@ class CupcakeDataMapper {
 
     /**
      * Get cupcakes from Database
-     * 
+     * Make a GET TOP
+     * Make a GET BOTTOM
      */
+    
+    /**
+     * SELECT * FROM cupcake.toppings;
+     * tname STRING
+     * Price INT
+     */
+    
+    
+    
+    /**
+     * SELECT * FROM cupcake.bottom;
+     * bname STRING
+     * Price INT
+     */
+    
     
 }
