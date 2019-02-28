@@ -15,34 +15,35 @@ import java.util.List;
 
 /**
  *
- * @author 
+ * @author
  */
 public class UserDataMapper {
+
     /**
-     * Contains classes that handle SQL directly.
-     * Try to keep them as simple as possible.
-     * Remember to refactor into a new method if something becomes too big.
+     * Contains classes that handle SQL directly. Try to keep them as simple as
+     * possible. Remember to refactor into a new method if something becomes too
+     * big.
      *
      */
-        private final DBConnector conn = null;
+    private final DBConnector conn = null;
 
-    public List<String> getUser(String userName) throws DataException{
+    public List<String> getUser(String userName) throws DataException {
         try {
             DBConnector conn = new DBConnector();
-            
+
             String query = "SELECT * FROM `Cupcake`.`Users` "
                     + "WHERE `Cupcake`.`Users`.`name` = " + userName + ";";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
+
             List<String> userData = new ArrayList<>();
             userData.add(userName);
             String password = "";
             String balance = "";
-            
-            while (rs.next()){
+
+            while (rs.next()) {
 //                userName = rs.getString("name");
 //                if(userName.isEmpty() || userName.equals(""))
 //                userName = rs.getString("name");
@@ -52,7 +53,7 @@ public class UserDataMapper {
                 userData.add(password);
                 balance = "" + rs.getInt("balance");
                 userData.add(balance);
-                
+
                 return null;
             }
             return userData;
@@ -61,11 +62,11 @@ public class UserDataMapper {
         }
         return null;
     }
-    
+
     public void addBalance(String name, int balance)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
-        
+
         String insertBalance = "INSERT INTO cupcake.`users` (balance) "
                 + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
         PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
@@ -73,11 +74,11 @@ public class UserDataMapper {
         ps.setString(2, name);
         ps.executeUpdate();
     }
-    
+
     public void addEmail(String name, String email)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
-        
+
         String insertBalance = "INSERT INTO cupcake.`users` (email) "
                 + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
         PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
@@ -85,7 +86,7 @@ public class UserDataMapper {
         ps.setString(2, name);
         ps.executeUpdate();
     }
-    
+
     //    // EXAMPLE START
 //    public void addInstructions(String instructions, String ID)
 //            throws SQLException, DataException {

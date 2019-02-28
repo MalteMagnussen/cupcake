@@ -14,9 +14,9 @@ import com.cupcake.data.UserDAO;
  * @author mikkel
  */
 public class LoginController {
-    
+
     private UserDataMapper db;
-    
+
     public boolean isValid(String username, String password) {
         if (username == null || username.isEmpty()) {
             return false;
@@ -28,9 +28,9 @@ public class LoginController {
         User user = new UserDAO(db).getUser(username);
         return password.equals(user.getPassword());
     }
-    
-    public User getUser(String username){
+
+    public User getUser(String username) {
         return new UserDAO(db).getUser(username);
     }
-    
+
 }
