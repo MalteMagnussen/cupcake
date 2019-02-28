@@ -16,12 +16,12 @@ import java.sql.Statement;
  */
 public class LineItemDataMapper {
     private final DBConnector conn = null;
+        
     /**
-     * Line items Data Mapper.
-     * Contains:
-     * - Get new invoice ID: Should return the highest invoice ID +1.
+     * Get invite ID.
+     * @return ID.
+     * @throws DataException 
      */
-    
     public int getInvID() throws DataException{
         try{
             DBConnector conn = new DBConnector();
