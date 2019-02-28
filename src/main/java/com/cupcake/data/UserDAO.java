@@ -5,7 +5,6 @@
  */
 package com.cupcake.data;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,6 +29,7 @@ public class UserDAO {
 
     /**
      * Returns a user Object when given the username.
+     *
      * @param username
      * @return User.
      */

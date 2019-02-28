@@ -10,6 +10,7 @@ package com.cupcake.data;
  * @author Malte
  */
 public class Bottom {
+
     private String name;
     private int price;
 
@@ -25,6 +26,5 @@ public class Bottom {
     public int getPrice() {
         return price;
     }
-    
-    
+
 }
