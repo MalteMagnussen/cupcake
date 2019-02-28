@@ -27,4 +27,9 @@ public class Bottom {
         return price;
     }
 
+    @Override
+    public String toString() {
+        return "Bottom{" + "name=" + name + ", price=" + price + '}';
+    }
+
 }

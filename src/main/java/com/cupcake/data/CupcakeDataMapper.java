@@ -20,7 +20,7 @@ import java.util.List;
 class CupcakeDataMapper {
 
     /**
-     * Insert a top into the SQL database.
+     * Insert a top into the SQL database. Dont use.
      *
      * @param name
      * @param price
@@ -39,7 +39,7 @@ class CupcakeDataMapper {
     }
 
     /**
-     * Insert a bottom into the SQL database.
+     * Insert a bottom into the SQL database. Dont use.
      *
      * @param name
      * @param price
@@ -79,7 +79,7 @@ class CupcakeDataMapper {
 
             while (rs.next()) {
                 name = rs.getString("tname");
-                price = rs.getInt("price");
+                price = rs.getInt("Price");
                 Top top = new Top(name, price);
                 toppings.add(top);
             }
@@ -111,8 +111,8 @@ class CupcakeDataMapper {
             int price = 0;
 
             while (rs.next()) {
-                name = rs.getString("tname");
-                price = rs.getInt("price");
+                name = rs.getString("bname");
+                price = rs.getInt("Price");
                 Bottom bottom = new Bottom(name, price);
                 bottoms.add(bottom);
             }

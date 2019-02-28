@@ -5,6 +5,7 @@
  */
 package com.cupcake.data;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -18,22 +19,22 @@ import static org.junit.Assert.*;
  * @author Malte
  */
 public class CupcakeDataMapperTest {
-    
+
     public CupcakeDataMapperTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -65,42 +66,33 @@ public class CupcakeDataMapperTest {
     }
 
     /**
-     * Test of addTopping method, of class CupcakeDataMapper.
-     */
-    @Test
-    public void testAddTopping() throws Exception {
-        System.out.println("addTopping");
-        String name = "";
-        int price = 0;
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        instance.addTopping(name, price);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addBottom method, of class CupcakeDataMapper.
-     */
-    @Test
-    public void testAddBottom() throws Exception {
-        System.out.println("addBottom");
-        String name = "";
-        int price = 0;
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        instance.addBottom(name, price);
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getTops method, of class CupcakeDataMapper.
      */
     @Test
     public void testGetTops() throws Exception {
         System.out.println("getTops");
         CupcakeDataMapper instance = new CupcakeDataMapper();
-        List<Top> expResult = null;
+        Top top1 = new Top("Blue cheese", 9);
+        Top top2 = new Top("Blueberry", 5);
+        Top top3 = new Top("Chocolate", 5);
+        Top top4 = new Top("Crispy", 6);
+        Top top5 = new Top("Lemon", 8);
+        Top top6 = new Top("Orange", 8);
+        Top top7 = new Top("Rasberry", 5);
+        Top top8 = new Top("Rum/Raisin", 7);
+        Top top9 = new Top("Strawberry", 6);
+        List<Top> e = new ArrayList<>();
+        e.add(top1);
+        e.add(top2);
+        e.add(top3);
+        e.add(top4);
+        e.add(top5);
+        e.add(top6);
+        e.add(top7);
+        e.add(top8);
+        e.add(top9);
         List<Top> result = instance.getTops();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(e.toString(), result.toString());
     }
 
     /**
@@ -110,10 +102,19 @@ public class CupcakeDataMapperTest {
     public void testGetBottoms() throws Exception {
         System.out.println("getBottoms");
         CupcakeDataMapper instance = new CupcakeDataMapper();
-        List<Bottom> expResult = null;
+        List<Bottom> e = new ArrayList<>();
+        Bottom bot1 = new Bottom("Almond", 7);
+        Bottom bot2 = new Bottom("Chocolate", 5);
+        Bottom bot3 = new Bottom("Nutmeg", 5);
+        Bottom bot4 = new Bottom("Pistacio", 6);
+        Bottom bot5 = new Bottom("Vanilla", 5);
+        e.add(bot1);
+        e.add(bot2);
+        e.add(bot3);
+        e.add(bot4);
+        e.add(bot5);
         List<Bottom> result = instance.getBottoms();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(e, result);
     }
-    
+
 }
