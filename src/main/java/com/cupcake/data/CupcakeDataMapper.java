@@ -23,24 +23,8 @@ import static javax.swing.text.html.HTML.Attribute.ID;
 class CupcakeDataMapper {
 
     private final DBConnector conn = null;
-
-    /**
-     * Get cupcakes from Database
-     * Make a GET TOP
-     * Make a GET BOTTOM
-     */
     
-    /**
-     * SELECT * FROM cupcake.toppings;
-     * tname STRING
-     * Price INT
-     */
-    
-    /**
-     * SELECT * FROM cupcake.bottom;
-     * bname STRING
-     * Price INT
-     */
+    // Insert a top into the SQL database
     public void addTopping(String name, int price)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
@@ -52,6 +36,7 @@ class CupcakeDataMapper {
         ps.executeUpdate();
     }
     
+    // Insert a bottom into the SQL database
     public void addBottom(String name, int price)
             throws SQLException, DataException{
         DBConnector conn = new DBConnector();
@@ -63,6 +48,7 @@ class CupcakeDataMapper {
         ps.executeUpdate();
     }
     
+    // Returns a list of Strings in the order "name" followed by its "price"
     public List<String> getToppings() throws DataException{
         try {
             DBConnector conn = new DBConnector();
@@ -92,6 +78,7 @@ class CupcakeDataMapper {
         return null;
     }
     
+    // Returns a list of Strings in the order "name" followed by its "price"
     public List<String> getBottom() throws DataException{
         try {
             DBConnector conn = new DBConnector();
@@ -120,6 +107,5 @@ class CupcakeDataMapper {
         }
         return null;
     }
-    
     
 }
