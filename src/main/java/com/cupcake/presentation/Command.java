@@ -27,9 +27,6 @@ public abstract class Command {
             case "recipe":
                 c = new RecipeCommand();
                 break;
-            case "recipes":
-                c = new RecipesCommand();
-                break;
             default:
                 c = new UnknownCommand();
         }
