@@ -26,35 +26,6 @@ public class DataAccessor {
      */
         private final DBConnector conn = null;
 
-    // EXAMPLE START
-    public void addInstructions(String instructions, String ID)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-        String insertRecipe = "INSERT INTO `recipes`.`instructions` "
-                + "(idinstructions,instructions) "
-                + "VALUES ( ?, ?);";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertRecipe);
-        ps.setString(1, ID);
-        ps.setString(2, instructions);
-        ps.executeUpdate();
-    }
-    // EXAMPLE
-    public void addIngredients(String ingredients, String ID)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-        int id = Integer.getInteger(ID);
-        String[] split = ingredients.split(", ");
-
-        for (String str : split) {
-            String insertIngredients = "INSERT INTO `recipes`.`ingredients` "
-                    + "(idingredients, ingredient) "
-                    + "VALUES ( ?,?);";
-            PreparedStatement ps = conn.getConnection().prepareStatement(insertIngredients);
-            ps.setString(id, str);
-            ps.executeUpdate();
-        }
-    }
-    // EXAMPLE END
     public List<String> getUser(String name) throws DataException{
         try {
             DBConnector conn = new DBConnector();
@@ -91,4 +62,34 @@ public class DataAccessor {
         return null;
     }
     
+    
+    //    // EXAMPLE START
+//    public void addInstructions(String instructions, String ID)
+//            throws SQLException, DataException {
+//        DBConnector conn = new DBConnector();
+//        String insertRecipe = "INSERT INTO `recipes`.`instructions` "
+//                + "(idinstructions,instructions) "
+//                + "VALUES ( ?, ?);";
+//        PreparedStatement ps = conn.getConnection().prepareStatement(insertRecipe);
+//        ps.setString(1, ID);
+//        ps.setString(2, instructions);
+//        ps.executeUpdate();
+//    }
+//    // EXAMPLE
+//    public void addIngredients(String ingredients, String ID)
+//            throws SQLException, DataException {
+//        DBConnector conn = new DBConnector();
+//        int id = Integer.getInteger(ID);
+//        String[] split = ingredients.split(", ");
+//
+//        for (String str : split) {
+//            String insertIngredients = "INSERT INTO `recipes`.`ingredients` "
+//                    + "(idingredients, ingredient) "
+//                    + "VALUES ( ?,?);";
+//            PreparedStatement ps = conn.getConnection().prepareStatement(insertIngredients);
+//            ps.setString(id, str);
+//            ps.executeUpdate();
+//        }
+//    }
+//    // EXAMPLE END
 }
