@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author 
+ * @author
  */
 public class LoginCommand extends Command {
 
@@ -31,11 +31,11 @@ public class LoginCommand extends Command {
         boolean valid = c.isValid(username, password);
         User user = c.getUser(username);
 
+        HttpSession session = request.getSession();
         if (valid) {
-            HttpSession session = request.getSession();
             session.setAttribute("user", user);
             session.setAttribute("cart", new ShoppingCart());
-            User u = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute("user"); // ?? 
         }
 
         response.setContentType("text/html;charset=UTF-8");
