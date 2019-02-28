@@ -28,14 +28,14 @@ public class UserDataMapper {
     private final DBConnector conn = null;
 
     /**
-     * Returns a List of Strings in the order "name", "password", "balance". TO
-     * DO - Email???
+     * Returns a User
+     * TO DO - Email???
      *
      * @param userName
      * @return
      * @throws DataException
      */
-    public List<String> getUser(String userName) throws DataException {
+    public User getUser(String userName) throws DataException {
         try {
             DBConnector conn = new DBConnector();
 
@@ -45,26 +45,16 @@ public class UserDataMapper {
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-
-            List<String> userData = new ArrayList<>();
-            userData.add(userName);
-            String password = "";
-            String balance = "";
-
+            
             while (rs.next()) {
-//                userName = rs.getString("name");
-//                if(userName.isEmpty() || userName.equals(""))
-//                userName = rs.getString("name");
-//                userData.add(userName);
-                password = rs.getString("password");
-//                password = password.replaceAll(password, "*");
-                userData.add(password);
-                balance = "" + rs.getInt("balance");
-                userData.add(balance);
-
-                return null;
+                String password = rs.getString("password");
+                int balance = rs.getInt("balance");
+                String email = rs.getString("email");
+                User user = new User(userName, password, email);
+                user.addBalance(balance);
+                return user;
             }
-            return userData;
+            return null;
         } catch (SQLException ex) {
             System.out.println(ex);
         }

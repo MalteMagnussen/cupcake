@@ -34,29 +34,10 @@ public class UserDAO {
      * @return User.
      */
     public User getUser(String username) {
-        // Get a list of info about the user.
-        List<String> userinfo = null;
         try {
-            userinfo = db.getUser(username);
+            return db.getUser(username);
         } catch (DataException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        if (userinfo != null) {
-            // Extract the info from the List in the right order.
-            username = userinfo.get(0);
-            String password = userinfo.get(1);
-            int balance = Integer.getInteger(userinfo.get(2));
-            String email = userinfo.get(3);
-
-            // Create an instance of the User object.
-            User user = new User(username, password, email);
-
-            // Add the balance to the Object.
-            user.addBalance(balance);
-
-            // Return the user instance.
-            return user;
         }
         return null;
     }
