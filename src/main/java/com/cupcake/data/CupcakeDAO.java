@@ -24,6 +24,11 @@ public class CupcakeDAO {
         this.db = db;
     }
 
+    /**
+     * Get a top from name.
+     * @param name
+     * @return Top
+     */
     public Top getTop(String name) {
         try {
             int price = db.getTopPrice(name);
@@ -35,6 +40,11 @@ public class CupcakeDAO {
         return null;
     }
 
+    /**
+     * Get a bottom from name.
+     * @param name
+     * @return Bottom
+     */
     public Bottom getBottom(String name) {
         try {
             int price = db.getBottomPrice(name);
@@ -46,6 +56,12 @@ public class CupcakeDAO {
         return null;
     }
 
+    /**
+     * Makes a Cupcake from a top and bottom.
+     * @param topName
+     * @param bottomName
+     * @return Cupcake
+     */
     public Cupcake makeCupcake(String topName, String bottomName) {
         Top top = getTop(topName);
         Bottom bottom = getBottom(bottomName);
