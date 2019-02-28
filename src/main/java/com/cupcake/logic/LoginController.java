@@ -5,7 +5,7 @@
  */
 package com.cupcake.logic;
 
-import com.cupcake.data.DataAccessor;
+import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
 import com.cupcake.data.UserDAO;
 
@@ -15,7 +15,7 @@ import com.cupcake.data.UserDAO;
  */
 public class LoginController {
     
-    private DataAccessor db;
+    private UserDataMapper db;
     
     public boolean isValid(String username, String password) {
         if (username == null || username.isEmpty()) {
