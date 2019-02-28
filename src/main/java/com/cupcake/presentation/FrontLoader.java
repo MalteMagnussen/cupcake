@@ -7,6 +7,10 @@ package com.cupcake.presentation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 
+ * @author
  */
 @WebServlet(name = "FrontLoader", urlPatterns = {"/*"})
 public class FrontLoader extends HttpServlet {
@@ -29,12 +33,25 @@ public class FrontLoader extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processRequest(final HttpServletRequest request, final HttpServletResponse response)
             throws ServletException, IOException {
         try {
             // Make workingjack here. So it gets done in requests.
-            Command c = Command.from(request);
-            c.execute(request, response);
+            ExecutorService workingJack = Executors.newCachedThreadPool();
+            workingJack.submit(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Command c = Command.from(request);
+                        c.execute(request, response);
+                    } catch (IOException ex) {
+                        System.out.println(ex.getMessage());
+                    } catch (ServletException ex) {
+                        Logger.getLogger(FrontLoader.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            });
+
         } catch (Exception e) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
