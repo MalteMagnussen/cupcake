@@ -29,7 +29,7 @@ public class UserDAO {
         this.db = db;
     }
 
-    public User createUser(String username, String password, String email) {
+    public User getUser(String username, String password, String email) {
 
         // Get a list of info about the user.
         List<String> userinfo = null;
