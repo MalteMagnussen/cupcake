@@ -44,7 +44,7 @@ public class DataAccessor {
             
             while (rs.next()){
                 userName = rs.getString("name");
-                if(userName.isEmty() || userName.equals("")){
+                if(userName.isEmpty() || userName.equals("")){
                 userName = rs.getString("name");
                 userData.add(userName);
                 password = rs.getString("password");
