@@ -13,18 +13,18 @@ public class User {
     /**
      * Basic User Object Class
      */
-    private String name;
+    private String username;
     private int balance;
     private String password;
 
-    public User(String name, String password) {
-        this.name = name;
-        this.balance = 0;
+    public User(String username, String password, int balance) {
+        this.username = username;
+        this.balance = balance;
         this.password = password;
     }
 
     public String getName() {
-        return name;
+        return username;
     }
 
     public int getBalance() {
@@ -34,6 +34,11 @@ public class User {
     public String getPassword() {
         return password;
     }
+    
+    public void addBalance(int amount){
+        this.balance = this.balance + amount;
+    }
+    
     
     
 }
