@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 @WebServlet(name = "FrontLoader", urlPatterns = {"/*"})
 public class FrontLoader extends HttpServlet {
