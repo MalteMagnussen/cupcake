@@ -39,8 +39,8 @@ public class UserDataMapper {
         try {
             DBConnector conn = new DBConnector();
 
-            String query = "SELECT * FROM `Cupcake`.`Users` "
-                    + "WHERE `Cupcake`.`Users`.`name` = " + userName + ";";
+            String query = "SELECT * FROM cupcake.users "
+                    + "WHERE `name`='"+userName+"';";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();

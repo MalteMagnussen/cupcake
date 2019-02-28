@@ -43,11 +43,11 @@ public class UserDataMapperTest {
     @Test
     public void testGetUser() throws Exception {
         System.out.println("getUser");
-        String userName = "";
+        String userName = "test";
         UserDataMapper instance = new UserDataMapper();
-        User expResult = null;
+        User expResult = new User("test", "test", "test@gmail.com");
         User result = instance.getUser(userName);
-        assertEquals(expResult, result);
+        assertEquals(expResult.toString(), result.toString());
     }
 
    
