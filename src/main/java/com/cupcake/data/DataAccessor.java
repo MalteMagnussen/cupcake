@@ -68,19 +68,22 @@ public class DataAccessor {
             List<String> userData = new ArrayList<>();
             String userName = "";
             String password = "";
-            int balance = 0;
+            String balance = "";
             
             while (rs.next()){
+                userName = rs.getString("name");
+                if(userName.isEmty() || userName.equals("")){
                 userName = rs.getString("name");
                 userData.add(userName);
                 password = rs.getString("password");
                 password = password.replaceAll(password, "*");
                 userData.add(password);
-                balance = rs.getInt("balance");
+                balance = "" + rs.getInt("balance");
+                userData.add(balance);
+                }
+                return null;
             }
-            
             return userData;
-
         } catch (SQLException ex) {
             System.out.println(ex);
         }
