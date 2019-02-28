@@ -15,35 +15,23 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Malte
  */
-public class RecipeCommand extends Command{
+public class ShopCommand extends Command {
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) 
-    throws ServletException, IOException{
-         
-        String name = (String) request.getParameter("name");
-        
-        DataAccessorDataBase db = new DataAccessorDataBase();
-        RecipeController c = new RecipeController(db);
-        Recipe recipe = c.recipe(name);
-        
-        String print = recipe.toString();
-        
-        response.setContentType("text/html;charset=UTF-8");
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Recipe</title>");            
+            out.println("<title>Servlet ShopServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Recipe: " +print+ "</h1>");
+            out.println("<h1>Servlet ShopServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
-    
     
 }

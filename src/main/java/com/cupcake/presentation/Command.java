@@ -24,8 +24,11 @@ public abstract class Command {
         String path = request.getPathInfo().substring(1);
 
         switch (path) {
-            case "recipe":
-                c = new RecipeCommand();
+            case "Login":
+                c = new LoginCommand();
+                break;
+            case "Shop":
+                c = new ShopCommand();
                 break;
             default:
                 c = new UnknownCommand();
