@@ -5,6 +5,8 @@
  */
 package com.cupcake.data;
 
+import java.util.List;
+
 /**
  *
  * @author Malte
@@ -23,6 +25,21 @@ public class CupcakeDAO {
         this.db = db;
     }
     
+    public Top getTop(String name){
+        int price = db.getTopPrice(name);
+        Top top = new Top(name, price);
+        return top;
+    }
     
+    public Bottom getBottom(String name){
+        int price = db.getBottomPrice(name);
+        Bottom bot = new Bottom(name, price);
+        return bot;
+    }
     
+    public Cupcake makeCupcake(String topName, String bottomName){
+        Top top = getTop(topName);
+        Bottom bottom = getBottom(bottomName);
+        return new Cupcake(top, bottom);
+    }
 }
