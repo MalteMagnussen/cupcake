@@ -10,6 +10,7 @@ package com.cupcake.data;
  * @author Malte
  */
 public class Cupcake {
+
     private Top top;
     private Bottom bottom;
 
