@@ -32,12 +32,12 @@ public class LineItemDataMapper {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             
-            int price = 0;
+            int highestID = 0;
             
             while (rs.next()){
-                price = rs.getInt("price");
+                highestID = rs.getInt("COUNT(ID)") + 1;
             }
-            return price;
+            return highestID;
         }catch(SQLException ex){
             System.out.println(ex);
         }
