@@ -39,7 +39,7 @@ CREATE TABLE `cupcake`.`invoices` (
   INDEX `tname_idx` (`tname` ASC) VISIBLE,
   CONSTRAINT `bname`
     FOREIGN KEY (`bname`)
-    REFERENCES `cupcake`.`buttom` (`bname`)
+    REFERENCES `cupcake`.`bottom` (`bname`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `tname`
