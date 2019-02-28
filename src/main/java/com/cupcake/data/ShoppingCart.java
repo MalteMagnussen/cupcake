@@ -22,4 +22,15 @@ public class ShoppingCart {
      */
     private List<LineItem> lineItems;
 
+    public ShoppingCart() {
+    }
+
+    public void addLineItems(LineItem lineItem) {
+        this.lineItems.add(lineItem);
+    }
+
+    public List<LineItem> getLineItems() {
+        return lineItems;
+    }
+
 }

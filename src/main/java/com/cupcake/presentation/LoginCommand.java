@@ -5,6 +5,7 @@
  */
 package com.cupcake.presentation;
 
+import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
 import com.cupcake.logic.LoginController;
 import java.io.IOException;
@@ -33,6 +34,7 @@ public class LoginCommand extends Command {
         if (valid) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+            session.setAttribute("cart", new ShoppingCart());
             User u = (User) session.getAttribute("user");
         }
 
