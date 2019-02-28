@@ -12,7 +12,7 @@ import java.sql.Statement;
 
 /**
  *
- * @author
+ * @author Nikolaj
  */
 public class LineItemDataMapper {
 

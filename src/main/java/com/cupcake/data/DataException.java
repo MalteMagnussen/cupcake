@@ -1,5 +1,9 @@
 package com.cupcake.data;
 
+/**
+ * 
+ * @author Tobias
+ */
 public class DataException extends Exception {
 
     public DataException() {

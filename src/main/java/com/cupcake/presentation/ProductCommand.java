@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * TO DO
- * @author 
+ *
+ * @author
  */
 public class ProductCommand extends Command {
 

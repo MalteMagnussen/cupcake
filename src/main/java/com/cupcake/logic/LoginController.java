@@ -11,7 +11,7 @@ import com.cupcake.data.UserDAO;
 
 /**
  *
- * @author mikkel
+ * @author Mikkel
  */
 public class LoginController {
 

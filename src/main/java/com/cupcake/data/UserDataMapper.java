@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author
+ * @author Nikolaj
  */
 public class UserDataMapper {
 

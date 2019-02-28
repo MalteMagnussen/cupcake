@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author
+ * @author Mikkel
  */
 public class LoginCommand extends Command {
 

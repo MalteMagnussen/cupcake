@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  *
- * @author Malte
+ * @author Nikolaj
  */
 class CupcakeDataMapper {
 

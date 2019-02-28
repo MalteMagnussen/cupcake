@@ -26,6 +26,7 @@ public class CupcakeDAO {
 
     /**
      * Get a top from name.
+     *
      * @param name
      * @return Top
      */
@@ -42,6 +43,7 @@ public class CupcakeDAO {
 
     /**
      * Get a bottom from name.
+     *
      * @param name
      * @return Bottom
      */
@@ -58,6 +60,7 @@ public class CupcakeDAO {
 
     /**
      * Makes a Cupcake from a top and bottom.
+     *
      * @param topName
      * @param bottomName
      * @return Cupcake

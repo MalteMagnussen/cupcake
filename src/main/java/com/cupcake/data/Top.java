@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author
+ * @author Malte
  */
 public class Top {
 

@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author
+ * @author Malte
  */
 @WebServlet(name = "FrontLoader", urlPatterns = {"/*"})
 public class FrontLoader extends HttpServlet {
