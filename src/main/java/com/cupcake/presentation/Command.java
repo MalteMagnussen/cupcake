@@ -30,6 +30,9 @@ public abstract class Command {
             case "Shop":
                 c = new ShopCommand();
                 break;
+            case "Product":
+                c = new ProductCommand();
+                break;
             default:
                 c = new UnknownCommand();
         }
