@@ -5,6 +5,16 @@
  */
 package com.cupcake.data;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.swing.text.html.HTML.Attribute.ID;
+
 /**
  *
  * @author Malte
@@ -24,8 +34,6 @@ class CupcakeDataMapper {
      * tname STRING
      * Price INT
      */
-    
-    
     
     /**
      * SELECT * FROM cupcake.bottom;
