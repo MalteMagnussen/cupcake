@@ -27,6 +27,13 @@ public class UserDataMapper {
      */
     private final DBConnector conn = null;
 
+    /**
+     * Returns a List of Strings in the order "name", "password", "balance".
+     * TO DO - Email???
+     * @param userName
+     * @return
+     * @throws DataException 
+     */
     public List<String> getUser(String userName) throws DataException {
         try {
             DBConnector conn = new DBConnector();
@@ -63,6 +70,13 @@ public class UserDataMapper {
         return null;
     }
 
+    /**
+     * Add money to the users account.
+     * @param name
+     * @param balance
+     * @throws SQLException
+     * @throws DataException 
+     */
     public void addBalance(String name, int balance)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
@@ -75,6 +89,13 @@ public class UserDataMapper {
         ps.executeUpdate();
     }
 
+    /**
+     * Add e-mail 
+     * @param name
+     * @param email
+     * @throws SQLException
+     * @throws DataException 
+     */
     public void addEmail(String name, String email)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
@@ -87,33 +108,4 @@ public class UserDataMapper {
         ps.executeUpdate();
     }
 
-    //    // EXAMPLE START
-//    public void addInstructions(String instructions, String ID)
-//            throws SQLException, DataException {
-//        DBConnector conn = new DBConnector();
-//        String insertRecipe = "INSERT INTO `recipes`.`instructions` "
-//                + "(idinstructions,instructions) "
-//                + "VALUES ( ?, ?);";
-//        PreparedStatement ps = conn.getConnection().prepareStatement(insertRecipe);
-//        ps.setString(1, ID);
-//        ps.setString(2, instructions);
-//        ps.executeUpdate();
-//    }
-//    // EXAMPLE
-//    public void addIngredients(String ingredients, String ID)
-//            throws SQLException, DataException {
-//        DBConnector conn = new DBConnector();
-//        int id = Integer.getInteger(ID);
-//        String[] split = ingredients.split(", ");
-//
-//        for (String str : split) {
-//            String insertIngredients = "INSERT INTO `recipes`.`ingredients` "
-//                    + "(idingredients, ingredient) "
-//                    + "VALUES ( ?,?);";
-//            PreparedStatement ps = conn.getConnection().prepareStatement(insertIngredients);
-//            ps.setString(id, str);
-//            ps.executeUpdate();
-//        }
-//    }
-//    // EXAMPLE END
 }
