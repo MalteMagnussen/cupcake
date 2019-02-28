@@ -16,10 +16,11 @@ public class User {
     private String username;
     private int balance;
     private String password;
+    private String email;
 
-    public User(String username, String password, int balance) {
+    public User(String username, String password, String email) {
         this.username = username;
-        this.balance = balance;
+        this.email = email;
         this.password = password;
     }
 
@@ -37,6 +38,10 @@ public class User {
     
     public void addBalance(int amount){
         this.balance = this.balance + amount;
+    }
+    
+    public String getEmail(){
+        return email;
     }
     
     

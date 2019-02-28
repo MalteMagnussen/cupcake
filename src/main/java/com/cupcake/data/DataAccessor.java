@@ -24,7 +24,8 @@ public class DataAccessor {
      * Remember to refactor into a new method if something becomes too big.
      *
      */
-    
+        private final DBConnector conn = null;
+
     // EXAMPLE START
     public void addInstructions(String instructions, String ID)
             throws SQLException, DataException {
@@ -53,7 +54,7 @@ public class DataAccessor {
             ps.executeUpdate();
         }
     }
-    
+    // EXAMPLE END
     public List<String> getUser(String name) throws DataException{
         try {
             DBConnector conn = new DBConnector();
@@ -76,7 +77,7 @@ public class DataAccessor {
                 userName = rs.getString("name");
                 userData.add(userName);
                 password = rs.getString("password");
-                password = password.replaceAll(password, "*");
+//                password = password.replaceAll(password, "*");
                 userData.add(password);
                 balance = "" + rs.getInt("balance");
                 userData.add(balance);
@@ -89,5 +90,5 @@ public class DataAccessor {
         }
         return null;
     }
-    // EXAMPLE END
+    
 }
