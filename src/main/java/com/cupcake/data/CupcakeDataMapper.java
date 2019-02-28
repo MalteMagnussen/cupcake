@@ -127,7 +127,7 @@ class CupcakeDataMapper {
         return null;
     }
 
-    public int getTopPrice(String name) throws DataException {
+    public static int getTopPrice(String name) throws DataException {
         try {
             DBConnector conn = new DBConnector();
 
