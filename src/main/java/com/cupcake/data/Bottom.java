@@ -11,8 +11,8 @@ package com.cupcake.data;
  */
 public class Bottom {
 
-    private String name;
-    private int price;
+    private final String name;
+    private final int price;
 
     public Bottom(String name, int price) {
         this.name = name;
