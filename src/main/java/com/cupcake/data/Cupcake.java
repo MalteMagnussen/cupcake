@@ -10,11 +10,10 @@ package com.cupcake.data;
  * @author Malte
  */
 public class Cupcake {
-    
+
     /**
      * Basic object class.
      */
-
     private Top top;
     private Bottom bottom;
 

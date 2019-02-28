@@ -12,33 +12,35 @@ import java.sql.Statement;
 
 /**
  *
- * @author 
+ * @author
  */
 public class LineItemDataMapper {
+
     private final DBConnector conn = null;
-        
+
     /**
      * Get invite ID.
+     *
      * @return ID.
-     * @throws DataException 
+     * @throws DataException
      */
-    public int getInvID() throws DataException{
-        try{
+    public int getInvID() throws DataException {
+        try {
             DBConnector conn = new DBConnector();
-            
+
             String query = "SELECT COUNT(ID) FROM `Cupcake`.`invoices`;";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
+
             int highestID = 0;
-            
-            while (rs.next()){
+
+            while (rs.next()) {
                 highestID = rs.getInt("COUNT(ID)") + 1;
             }
             return highestID;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
         }
         return -1;

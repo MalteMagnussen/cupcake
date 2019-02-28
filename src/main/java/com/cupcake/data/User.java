@@ -7,9 +7,10 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 public class User {
+
     /**
      * Basic User Object Class
      */
@@ -35,15 +36,13 @@ public class User {
     public String getPassword() {
         return password;
     }
-    
-    public void addBalance(int amount){
+
+    public void addBalance(int amount) {
         this.balance = this.balance + amount;
     }
-    
-    public String getEmail(){
+
+    public String getEmail() {
         return email;
     }
-    
-    
-    
+
 }

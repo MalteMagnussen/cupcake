@@ -18,7 +18,6 @@ public class CupcakeDAO {
      * A data mapper class with methods to create top and buttom objects from
      * the database. E.g. List<Buttom> buttoms getAllButtoms);
      */
-
     private CupcakeDataMapper db;
 
     public CupcakeDAO(CupcakeDataMapper db) {

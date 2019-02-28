@@ -7,9 +7,10 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Top {
+
     private String name;
     private int price;
 
@@ -25,5 +26,5 @@ public class Top {
     public int getPrice() {
         return price;
     }
-    
+
 }

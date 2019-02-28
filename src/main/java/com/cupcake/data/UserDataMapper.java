@@ -28,11 +28,12 @@ public class UserDataMapper {
     private final DBConnector conn = null;
 
     /**
-     * Returns a List of Strings in the order "name", "password", "balance".
-     * TO DO - Email???
+     * Returns a List of Strings in the order "name", "password", "balance". TO
+     * DO - Email???
+     *
      * @param userName
      * @return
-     * @throws DataException 
+     * @throws DataException
      */
     public List<String> getUser(String userName) throws DataException {
         try {
@@ -72,10 +73,11 @@ public class UserDataMapper {
 
     /**
      * Add money to the users account.
+     *
      * @param name
      * @param balance
      * @throws SQLException
-     * @throws DataException 
+     * @throws DataException
      */
     public void addBalance(String name, int balance)
             throws SQLException, DataException {
@@ -90,11 +92,12 @@ public class UserDataMapper {
     }
 
     /**
-     * Add e-mail 
+     * Add e-mail
+     *
      * @param name
      * @param email
      * @throws SQLException
-     * @throws DataException 
+     * @throws DataException
      */
     public void addEmail(String name, String email)
             throws SQLException, DataException {
