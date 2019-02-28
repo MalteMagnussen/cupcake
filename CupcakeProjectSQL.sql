@@ -10,6 +10,7 @@ CREATE TABLE `Users`(
 `name` VARCHAR(55),
 `password` VARCHAR(60),
 `balance` BIGINT,
+`email` VARCHAR(200),  
 PRIMARY KEY (`name`)
 );
 
