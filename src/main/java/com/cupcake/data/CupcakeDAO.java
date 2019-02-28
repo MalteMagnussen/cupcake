@@ -17,11 +17,12 @@ public class CupcakeDAO {
      *   List<Buttom> buttoms getAllButtoms);
      */
     
-    private UserDataMapper db;
+    private CupcakeDataMapper db;
 
-    public CupcakeDAO(UserDataMapper db) {
+    public CupcakeDAO(CupcakeDataMapper db) {
         this.db = db;
     }
+    
     
     
 }
