@@ -29,8 +29,8 @@ public class LoginController {
         return password.equals(user.getPassword());
     }
     
-//    public User getUser(String username){
-//        return new UserDAO(db).getUser(username);
-//    }
+    public User getUser(String username){
+        return new UserDAO(db).getUser(username);
+    }
     
 }
