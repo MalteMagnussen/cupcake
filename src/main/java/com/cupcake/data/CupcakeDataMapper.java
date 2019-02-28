@@ -24,7 +24,13 @@ class CupcakeDataMapper {
 
     private final DBConnector conn = null;
     
-    // Insert a top into the SQL database
+    /**
+     * Insert a top into the SQL database.
+     * @param name
+     * @param price
+     * @throws SQLException
+     * @throws DataException 
+     */
     public void addTopping(String name, int price)
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
@@ -36,7 +42,13 @@ class CupcakeDataMapper {
         ps.executeUpdate();
     }
     
-    // Insert a bottom into the SQL database
+    /**
+     * Insert a bottom into the SQL database.
+     * @param name
+     * @param price
+     * @throws SQLException
+     * @throws DataException 
+     */
     public void addBottom(String name, int price)
             throws SQLException, DataException{
         DBConnector conn = new DBConnector();
@@ -48,7 +60,11 @@ class CupcakeDataMapper {
         ps.executeUpdate();
     }
     
-    // Returns a list of Strings in the order "name" followed by its "price"
+    /**
+     * Returns a list of Strings in the order "name" followed by its "price".
+     * @return
+     * @throws DataException 
+     */
     public List<String> getToppings() throws DataException{
         try {
             DBConnector conn = new DBConnector();
@@ -78,7 +94,11 @@ class CupcakeDataMapper {
         return null;
     }
     
-    // Returns a list of Strings in the order "name" followed by its "price"
+    /**
+     * Returns a list of Strings in the order "name" followed by its "price".
+     * @return
+     * @throws DataException 
+     */
     public List<String> getBottom() throws DataException{
         try {
             DBConnector conn = new DBConnector();
