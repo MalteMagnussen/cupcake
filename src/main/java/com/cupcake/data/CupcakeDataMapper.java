@@ -31,7 +31,7 @@ class CupcakeDataMapper {
             throws SQLException, DataException {
         DBConnector conn = new DBConnector();
 
-        String insertTopping = "INSERT INTO `cupcake`.`toppings` (tname, price) "
+        String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
                 + "VALUES (?, " + price + ");";
         PreparedStatement ps = conn.getConnection().prepareStatement(insertTopping);
         ps.setString(1, name);
@@ -67,7 +67,7 @@ class CupcakeDataMapper {
         try {
             DBConnector conn = new DBConnector();
 
-            String query = "SELECT * FROM `Cupcake`.`toppings`;";
+            String query = "SELECT * FROM `Cupcake`.`topping`;";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
