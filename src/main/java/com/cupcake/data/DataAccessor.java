@@ -26,7 +26,7 @@ public class DataAccessor {
      */
         private final DBConnector conn = null;
 
-    public List<String> getUser(String name) throws DataException{
+    public List<String> getUser(String userName) throws DataException{
         try {
             DBConnector conn = new DBConnector();
             
@@ -38,21 +38,21 @@ public class DataAccessor {
             ResultSet rs = stmt.executeQuery(query);
             
             List<String> userData = new ArrayList<>();
-            String userName = "";
+            userData.add(userName);
             String password = "";
             String balance = "";
             
             while (rs.next()){
-                userName = rs.getString("name");
-                if(userName.isEmpty() || userName.equals("")){
-                userName = rs.getString("name");
-                userData.add(userName);
+//                userName = rs.getString("name");
+//                if(userName.isEmpty() || userName.equals(""))
+//                userName = rs.getString("name");
+//                userData.add(userName);
                 password = rs.getString("password");
 //                password = password.replaceAll(password, "*");
                 userData.add(password);
                 balance = "" + rs.getInt("balance");
                 userData.add(balance);
-                }
+                
                 return null;
             }
             return userData;

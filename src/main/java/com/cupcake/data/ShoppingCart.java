@@ -20,4 +20,7 @@ public class ShoppingCart {
      * The shopping cart should be stored in the session (Why do you think?).
      */
     private List<LineItem> lineItems;
+    
+    
+    
 }
