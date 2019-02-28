@@ -45,4 +45,9 @@ public class User {
         return email;
     }
 
+    @Override
+    public String toString() {
+        return "User{" + "username=" + username + ", balance=" + balance + ", password=" + password + ", email=" + email + '}';
+    }
+    
 }
