@@ -22,14 +22,13 @@ public class UserDAO {
      * breaks them down and inputs them into the database using methods from a
      * Database Connector Class.
      */
-
     private DataAccessor db;
 
     public UserDAO(DataAccessor db) {
         this.db = db;
     }
 
-    public User getUser(String username, String password, String email) {
+    public User getUser(String username) {
 
         // Get a list of info about the user.
         List<String> userinfo = null;
@@ -38,12 +37,13 @@ public class UserDAO {
         } catch (DataException ex) {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if (userinfo != null) {
             // Extract the info from the List in the right order.
             username = userinfo.get(0);
-            password = userinfo.get(1);
+            String password = userinfo.get(1);
             int balance = Integer.getInteger(userinfo.get(2));
-            email = userinfo.get(3);
+            String email = userinfo.get(3);
 
             // Create an instance of the User object.
             User user = new User(username, password, email);
