@@ -114,7 +114,7 @@ public class CupcakeDataMapperTest {
         e.add(bot4);
         e.add(bot5);
         List<Bottom> result = instance.getBottoms();
-        assertEquals(e, result);
+        assertEquals(e.toString(), result.toString());
     }
 
 }
