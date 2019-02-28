@@ -127,6 +127,12 @@ class CupcakeDataMapper {
         return null;
     }
 
+    /**
+     * Gets a price for a bottom piece of Cupcake.
+     * @param name name of the bottom piece.
+     * @return int - Price
+     * @throws DataException 
+     */
     public int getTopPrice(String name) throws DataException {
         try {
             DBConnector conn = new DBConnector();
