@@ -10,34 +10,20 @@ package com.cupcake.data;
  * @author Malte
  */
 public class Cupcake {
-    private String top;
-    private String bottom;
-    private int topPrice;
-    private int bottomPrice;
+    private Top top;
+    private Bottom bottom;
 
-    public Cupcake(String top, String bottom, int topPrice, int bottomPrice) {
+    public Cupcake(Top top, Bottom bottom) {
         this.top = top;
         this.bottom = bottom;
-        this.topPrice = topPrice;
-        this.bottomPrice = bottomPrice;
     }
 
-    public String getTop() {
+    public Top getTop() {
         return top;
     }
 
-    public String getBottom() {
+    public Bottom getBottom() {
         return bottom;
     }
 
-    public int getTopPrice() {
-        return topPrice;
-    }
-
-    public int getBottomPrice() {
-        return bottomPrice;
-    }
-    
-    
-    
 }
