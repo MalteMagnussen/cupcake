@@ -39,58 +39,6 @@ public class CupcakeDataMapperTest {
     }
 
     /**
-     * Test of addTopping method, of class CupcakeDataMapper.
-     */
-    @org.junit.Test
-    public void testAddTopping() throws Exception {
-        System.out.println("addTopping");
-        String name = "";
-        int price = 0;
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        instance.addTopping(name, price);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addBottom method, of class CupcakeDataMapper.
-     */
-    @org.junit.Test
-    public void testAddBottom() throws Exception {
-        System.out.println("addBottom");
-        String name = "";
-        int price = 0;
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        instance.addBottom(name, price);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getToppings method, of class CupcakeDataMapper.
-     */
-    @org.junit.Test
-    public void testGetToppings() throws Exception {
-        System.out.println("getToppings");
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        List<String> expResult = null;
-        List<String> result = instance.getToppings();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getBottom method, of class CupcakeDataMapper.
-     */
-    @org.junit.Test
-    public void testGetBottom() throws Exception {
-        System.out.println("getBottom");
-        CupcakeDataMapper instance = new CupcakeDataMapper();
-        List<String> expResult = null;
-        List<String> result = instance.getBottom();
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of getTopPrice method, of class CupcakeDataMapper.
      */
     @org.junit.Test
@@ -114,6 +62,58 @@ public class CupcakeDataMapperTest {
         int expResult = 5;
         int result = instance.getBottomPrice(name);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of addTopping method, of class CupcakeDataMapper.
+     */
+    @Test
+    public void testAddTopping() throws Exception {
+        System.out.println("addTopping");
+        String name = "";
+        int price = 0;
+        CupcakeDataMapper instance = new CupcakeDataMapper();
+        instance.addTopping(name, price);
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of addBottom method, of class CupcakeDataMapper.
+     */
+    @Test
+    public void testAddBottom() throws Exception {
+        System.out.println("addBottom");
+        String name = "";
+        int price = 0;
+        CupcakeDataMapper instance = new CupcakeDataMapper();
+        instance.addBottom(name, price);
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getTops method, of class CupcakeDataMapper.
+     */
+    @Test
+    public void testGetTops() throws Exception {
+        System.out.println("getTops");
+        CupcakeDataMapper instance = new CupcakeDataMapper();
+        List<Top> expResult = null;
+        List<Top> result = instance.getTops();
+        assertEquals(expResult, result);
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getBottoms method, of class CupcakeDataMapper.
+     */
+    @Test
+    public void testGetBottoms() throws Exception {
+        System.out.println("getBottoms");
+        CupcakeDataMapper instance = new CupcakeDataMapper();
+        List<Bottom> expResult = null;
+        List<Bottom> result = instance.getBottoms();
+        assertEquals(expResult, result);
+        fail("The test case is a prototype.");
     }
     
 }

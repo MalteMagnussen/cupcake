@@ -58,12 +58,12 @@ class CupcakeDataMapper {
     }
 
     /**
-     * Returns a list of Strings in the order "name" followed by its "price".
+     * Returns a list of Tops.
      *
      * @return
      * @throws DataException
      */
-    public List<String> getToppings() throws DataException {
+    public List<Top> getTops() throws DataException {
         try {
             DBConnector conn = new DBConnector();
 
@@ -73,17 +73,15 @@ class CupcakeDataMapper {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
-            List<String> toppings = new ArrayList<>();
+            List<Top> toppings = new ArrayList<>();
             String name = "";
-            String price = "";
+            int price = 0;
 
             while (rs.next()) {
                 name = rs.getString("tname");
-                toppings.add(name);
-                price = "" + rs.getInt("price");
-                toppings.add(price);
-
-                return null;
+                price = rs.getInt("price");
+                Top top = new Top(name, price);
+                toppings.add(top);
             }
             return toppings;
         } catch (SQLException ex) {
@@ -93,12 +91,12 @@ class CupcakeDataMapper {
     }
 
     /**
-     * Returns a list of Strings in the order "name" followed by its "price".
+     * Returns a list of Bottoms.
      *
-     * @return
+     * @return List of Bottoms.
      * @throws DataException
      */
-    public List<String> getBottom() throws DataException {
+    public List<Bottom> getBottoms() throws DataException {
         try {
             DBConnector conn = new DBConnector();
 
@@ -108,17 +106,15 @@ class CupcakeDataMapper {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
-            List<String> bottoms = new ArrayList<>();
+            List<Bottom> bottoms = new ArrayList<>();
             String name = "";
-            String price = "";
+            int price = 0;
 
             while (rs.next()) {
                 name = rs.getString("tname");
-                bottoms.add(name);
-                price = "" + rs.getInt("price");
-                bottoms.add(price);
-
-                return null;
+                price = rs.getInt("price");
+                Bottom bottom = new Bottom(name, price);
+                bottoms.add(bottom);
             }
             return bottoms;
         } catch (SQLException ex) {
@@ -129,9 +125,10 @@ class CupcakeDataMapper {
 
     /**
      * Gets a price for a bottom piece of Cupcake.
+     *
      * @param name name of the bottom piece.
      * @return int - Price
-     * @throws DataException 
+     * @throws DataException
      */
     public int getTopPrice(String name) throws DataException {
         try {
@@ -155,12 +152,13 @@ class CupcakeDataMapper {
         }
         return 0;
     }
-    
+
     /**
      * Gets a price for a bottom piece of Cupcake.
+     *
      * @param name name of the bottom piece.
      * @return int - Price
-     * @throws DataException 
+     * @throws DataException
      */
     public int getBottomPrice(String name) throws DataException {
         try {
