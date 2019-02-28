@@ -62,6 +62,29 @@ public class DataAccessor {
         return null;
     }
     
+    public void addBalance(String name, int balance)
+            throws SQLException, DataException {
+        DBConnector conn = new DBConnector();
+        
+        String insertBalance = "INSERT INTO cupcake.`users` (balance) "
+                + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
+        PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+        ps.setString(1, balance);
+        ps.setInt(2, name);
+        ps.executeUpdate();
+    }
+    
+    public void addEmail(String name, String email)
+            throws SQLException, DataException {
+        DBConnector conn = new DBConnector();
+        
+        String insertBalance = "INSERT INTO cupcake.`users` (email) "
+                + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
+        PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+        ps.setString(1, email);
+        ps.setInt(2, name);
+        ps.executeUpdate();
+    }
     
     //    // EXAMPLE START
 //    public void addInstructions(String instructions, String ID)
