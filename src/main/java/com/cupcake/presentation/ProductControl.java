@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 /**
  * Create a servlet: ProductControl.java that can take information from the shop
