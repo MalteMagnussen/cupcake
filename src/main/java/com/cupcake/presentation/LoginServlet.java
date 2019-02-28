@@ -40,9 +40,11 @@ public class LoginServlet extends HttpServlet {
         boolean valid = c.isValid(username, password);
         User user = c.getUser(username);
         
+        if (valid) {
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         User u = (User) session.getAttribute("user");
+        }
         
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
