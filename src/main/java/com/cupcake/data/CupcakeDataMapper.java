@@ -135,8 +135,8 @@ class CupcakeDataMapper {
             ResultSet rs = stmt.executeQuery(query);
 
             List<Top> toppings = new ArrayList<>();
-            String name = "";
-            int price = 0;
+            String name;
+            int price;
 
             while (rs.next()) {
                 name = rs.getString("tname");
@@ -167,8 +167,8 @@ class CupcakeDataMapper {
             ResultSet rs = stmt.executeQuery(query);
 
             List<Bottom> bottoms = new ArrayList<>();
-            String name = "";
-            int price = 0;
+            String name;
+            int price;
 
             while (rs.next()) {
                 name = rs.getString("bname");
