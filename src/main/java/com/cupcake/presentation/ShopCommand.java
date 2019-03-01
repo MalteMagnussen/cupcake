@@ -64,7 +64,7 @@ public class ShopCommand extends Command {
             List<Top> tops = db.getTops();
             List<Bottom> bots = db.getBottoms();
             
-            /* Form for dropdowns */
+            /* Form for dropdowns BEGIN*/
             out.println(
                     "<form id=\"addProduct\" action=\"Control\" method=\"POST\">\n"
                     + "<input type=\"hidden\" name=\"origin\" value=\"addProduct\">\n"
@@ -73,14 +73,20 @@ public class ShopCommand extends Command {
                     + "<tbody>\n"
                     + "<tr>\n"
                     + "<td><select name=\"bottom\" id=\"bottomSelect\">\n");
+            
             for (Bottom bot : bots) {
-                out.print("<option value=\"" + bot.getName() + "\">" + bot.getName() + "</option>\n");
+                out.print("<option value=\"" + bot.getName() 
+                        + "\">" + bot.getName() + "</option>\n");
             }
+            
             out.print("<select>\n");
             out.print("<td><select name=\"top\" id=\"topSelect\">\n");
+            
             for (Top top : tops) {
-                out.print("<option value=\"" + top.getName() + "\">" + top.getName() + "</option>\n");
+                out.print("<option value=\"" + top.getName() 
+                        + "\">" + top.getName() + "</option>\n");
             }
+            
             out.print("</select>\n"
                     + "<td><input type=\"text\" name=\"qty\" placeholder=\"quantity\" id=\"qtyInput\"></td>\n"
                     + "<td><input type=\"submit\" name=\"submit\" value=\"Add to cart\"></td><td><span id=\"errorContainer\"></span></td>\n"
@@ -89,6 +95,7 @@ public class ShopCommand extends Command {
                     + "</table>\n"
                     + "</form>"
             );
+            /* Form for dropdows END*/
 
             out.println("</body>");
 
