@@ -41,6 +41,7 @@ public class CupcakeDataMapperTest {
 
     /**
      * Test of getTopPrice method, of class CupcakeDataMapper.
+     * @throws java.lang.Exception
      */
     @org.junit.Test
     public void testGetTopPrice() throws Exception {
@@ -54,6 +55,7 @@ public class CupcakeDataMapperTest {
 
     /**
      * Test of getBottomPrice method, of class CupcakeDataMapper.
+     * @throws java.lang.Exception
      */
     @org.junit.Test
     public void testGetBottomPrice() throws Exception {
@@ -67,6 +69,7 @@ public class CupcakeDataMapperTest {
 
     /**
      * Test of getTops method, of class CupcakeDataMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetTops() throws Exception {
@@ -97,6 +100,7 @@ public class CupcakeDataMapperTest {
 
     /**
      * Test of getBottoms method, of class CupcakeDataMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetBottoms() throws Exception {

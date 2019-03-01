@@ -39,6 +39,7 @@ public class UserDataMapperTest {
 
     /**
      * Test of getUser method, of class UserDataMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetUser() throws Exception {
