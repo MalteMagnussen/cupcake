@@ -21,6 +21,14 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginCommand extends Command {
 
+    /**
+     * LoginCommand.
+     * Starts the Session.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
