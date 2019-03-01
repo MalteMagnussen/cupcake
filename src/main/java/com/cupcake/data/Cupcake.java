@@ -14,12 +14,14 @@ public class Cupcake {
     /**
      * Basic object class.
      */
-    private Top top;
-    private Bottom bottom;
+    private final Top top;
+    private final Bottom bottom;
+    private final int totalPrice;
 
     public Cupcake(Top top, Bottom bottom) {
         this.top = top;
         this.bottom = bottom;
+        this.totalPrice = top.getPrice() + bottom.getPrice();
     }
 
     public Top getTop() {
@@ -28,6 +30,10 @@ public class Cupcake {
 
     public Bottom getBottom() {
         return bottom;
+    }
+    
+    public int getPrice() {
+        return totalPrice;
     }
 
 }
