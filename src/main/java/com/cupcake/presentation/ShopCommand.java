@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * TO DO
@@ -18,9 +19,19 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ShopCommand extends Command {
 
+    /* 
+    Shows who is logged in. Shows their balance.
+    
+    Also displays a dropdown of Toppings and a dropdown of Bottoms.
+    Also has a field to input Quantity of Cupcakes you want to add to your cart.
+    
+    */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+
+        HttpSession session = request.getSession();
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
