@@ -16,7 +16,7 @@ import java.sql.Statement;
  */
 public class LineItemDataMapper {
 
-    private final DBConnector conn = null;
+    private DBConnector conn;
 
     /**
      * Get invite ID.
@@ -26,7 +26,7 @@ public class LineItemDataMapper {
      */
     public int getInvID() throws DataException {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String query = "SELECT COUNT(ID) FROM `Cupcake`.`invoices`;";
 

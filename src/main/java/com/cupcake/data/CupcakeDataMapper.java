@@ -17,15 +17,18 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author 
+ * @author
  */
 class CupcakeDataMapper {
 
+    private DBConnector conn;
+
     /**
      * Get a cupcake
+     *
      * @param topName
      * @param bottomName
-     * @return 
+     * @return
      */
     public Cupcake makeCupcake(String topName, String bottomName) {
         if (bottomName != null || topName != null) {
@@ -35,21 +38,23 @@ class CupcakeDataMapper {
         }
         return null;
     }
-    
+
     /**
      * Get a cupcake
+     *
      * @param top
      * @param bot
-     * @return 
+     * @return
      */
-    public Cupcake makeCupcake(Top top, Bottom bot){
+    public Cupcake makeCupcake(Top top, Bottom bot) {
         return new Cupcake(top, bot);
     }
 
     /**
      * Get a Top
+     *
      * @param name
-     * @return 
+     * @return
      */
     public Top getTop(String name) {
         if (name != null) {
@@ -70,7 +75,7 @@ class CupcakeDataMapper {
      */
     public void addTopping(String name, int price) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
                     + "VALUES (?, " + price + ");";
@@ -92,7 +97,7 @@ class CupcakeDataMapper {
      */
     public void addBottom(String name, int price) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String insertBottom = "INSERT INTO `cupcake`.`bottom` (bname, price) "
                     + "VALUES (?, " + price + ");";
@@ -106,8 +111,9 @@ class CupcakeDataMapper {
 
     /**
      * Get a Bottom
+     *
      * @param name
-     * @return 
+     * @return
      */
     public Bottom getBottom(String name) {
         if (name != null) {
@@ -126,7 +132,7 @@ class CupcakeDataMapper {
      */
     public List<Top> getTops() {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String query = "SELECT * FROM `Cupcake`.`topping`;";
 
@@ -158,7 +164,7 @@ class CupcakeDataMapper {
      */
     public List<Bottom> getBottoms() {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String query = "SELECT * FROM `Cupcake`.`bottom`;";
 
@@ -191,7 +197,7 @@ class CupcakeDataMapper {
      */
     public int getTopPrice(String name) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String query = "SELECT price FROM `Cupcake`.`topping` "
                     + "WHERE `cupcake`.`topping`.`tname` = '" + name + "';";
@@ -220,7 +226,7 @@ class CupcakeDataMapper {
      */
     public int getBottomPrice(String name) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
 
             String query = "SELECT price FROM `Cupcake`.`bottom` "
                     + "WHERE `cupcake`.`bottom`.`bname` = '" + name + "';";

@@ -25,7 +25,7 @@ public class UserDataMapper {
      * big.
      *
      */
-    private DBConnector conn = null;
+    private DBConnector conn;
 
     /**
      * Returns a User TO DO - Email???
