@@ -64,11 +64,11 @@ public class ShopCommand extends Command {
             out.println("<p style=\"font-size:18px\"> "
                     + "Users Balance: " + user.getBalance() + "</p>");
             
-            /* Pulling the tops and bottoms of the cupcakes out of SQL*/
+            /* Pulling the tops and bottoms of the cupcakes out of SQL */
             List<Top> tops = db.getTops();
             List<Bottom> bots = db.getBottoms();
             
-            /* Form for dropdowns BEGIN*/
+            /* Form for dropdowns BEGIN */
             out.println(
                     "<form id=\"addProduct\" action=\"Control\" method=\"POST\">\n"
                     + "<input type=\"hidden\" name=\"origin\" value=\"addProduct\">\n"
@@ -99,7 +99,7 @@ public class ShopCommand extends Command {
                     + "</table>\n"
                     + "</form>"
             );
-            /* Form for dropdows END*/
+            /* Form for dropdows END */
 
             out.println("</body>");
 

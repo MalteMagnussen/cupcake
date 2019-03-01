@@ -6,33 +6,40 @@
 package com.cupcake.presentation;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 
 /**
  * TO DO
  *
  * @author
  */
-public class ProductCommand extends Command {
+public class ProductCommand implements RequestDispatcher {
+
+    /* 
+        Takes Requests from Shop Command. 
+        
+            - Takes query of a cupcake and adds that shit to cart.
+    
+            - Takes query of add balance and adds that to SQL.
+    
+            - Takes query of invoice and adds that to SQL and clears shoppingcart.
+    
+        Forwards back to Shop Command afterwards with new shit in session.
+        
+    */
+    
+    @Override
+    public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ProductControl</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ProductControl at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+    public void include(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+ 
 
 }

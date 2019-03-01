@@ -34,9 +34,6 @@ public abstract class Command {
             case "Shop":
                 c = new ShopCommand();
                 break;
-            case "Product":
-                c = new ProductCommand();
-                break;
             case "CreateUser":
                 c = new CreateUserCommand();
                 break;
