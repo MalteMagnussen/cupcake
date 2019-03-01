@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,15 +29,18 @@ class CupcakeDataMapper {
      * @throws SQLException
      * @throws DataException
      */
-    public void addTopping(String name, int price)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-
-        String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
-                + "VALUES (?, " + price + ");";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertTopping);
-        ps.setString(1, name);
-        ps.executeUpdate();
+    public void addTopping(String name, int price) {
+        try {
+            DBConnector conn = new DBConnector();
+            
+            String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
+                    + "VALUES (?, " + price + ");";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertTopping);
+            ps.setString(1, name);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CupcakeDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -46,15 +51,18 @@ class CupcakeDataMapper {
      * @throws SQLException
      * @throws DataException
      */
-    public void addBottom(String name, int price)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-
-        String insertBottom = "INSERT INTO `cupcake`.`bottom` (bname, price) "
-                + "VALUES (?, " + price + ");";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertBottom);
-        ps.setString(1, name);
-        ps.executeUpdate();
+    public void addBottom(String name, int price) {
+        try {
+            DBConnector conn = new DBConnector();
+            
+            String insertBottom = "INSERT INTO `cupcake`.`bottom` (bname, price) "
+                    + "VALUES (?, " + price + ");";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertBottom);
+            ps.setString(1, name);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CupcakeDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -63,7 +71,7 @@ class CupcakeDataMapper {
      * @return
      * @throws DataException
      */
-    public List<Top> getTops() throws DataException {
+    public List<Top> getTops() {
         try {
             DBConnector conn = new DBConnector();
 
@@ -94,9 +102,8 @@ class CupcakeDataMapper {
      * Returns a list of Bottoms.
      *
      * @return List of Bottoms.
-     * @throws DataException
      */
-    public List<Bottom> getBottoms() throws DataException {
+    public List<Bottom> getBottoms(){
         try {
             DBConnector conn = new DBConnector();
 
@@ -128,9 +135,8 @@ class CupcakeDataMapper {
      *
      * @param name name of the bottom piece.
      * @return int - Price
-     * @throws DataException
      */
-    public int getTopPrice(String name) throws DataException {
+    public int getTopPrice(String name) {
         try {
             DBConnector conn = new DBConnector();
 
@@ -158,9 +164,8 @@ class CupcakeDataMapper {
      *
      * @param name name of the bottom piece.
      * @return int - Price
-     * @throws DataException
      */
-    public int getBottomPrice(String name) throws DataException {
+    public int getBottomPrice(String name) {
         try {
             DBConnector conn = new DBConnector();
 

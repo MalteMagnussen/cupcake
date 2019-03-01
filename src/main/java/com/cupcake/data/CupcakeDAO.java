@@ -28,13 +28,9 @@ public class CupcakeDAO {
      */
     public Top getTop(String name) {
         if (name != null || !name.isEmpty()) {
-            try {
-                int price = db.getTopPrice(name);
-                Top top = new Top(name, price);
-                return top;
-            } catch (DataException ex) {
-                Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            int price = db.getTopPrice(name);
+            Top top = new Top(name, price);
+            return top;
         }
         return null;
     }
@@ -47,13 +43,9 @@ public class CupcakeDAO {
      */
     public Bottom getBottom(String name) {
         if (name != null || !name.isEmpty()) {
-            try {
-                int price = db.getBottomPrice(name);
-                Bottom bot = new Bottom(name, price);
-                return bot;
-            } catch (DataException ex) {
-                Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            int price = db.getBottomPrice(name);
+            Bottom bot = new Bottom(name, price);
+            return bot;
         }
         return null;
     }

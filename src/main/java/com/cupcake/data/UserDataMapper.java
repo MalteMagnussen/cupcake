@@ -72,16 +72,19 @@ public class UserDataMapper {
      * @throws SQLException
      * @throws DataException
      */
-    public void addBalance(String name, int balance)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-
-        String insertBalance = "INSERT INTO cupcake.`users` (balance) "
-                + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-        ps.setInt(1, balance);
-        ps.setString(2, name);
-        ps.executeUpdate();
+    public void addBalance(String name, int balance) {
+        try {
+            DBConnector conn = new DBConnector();
+            
+            String insertBalance = "INSERT INTO cupcake.`users` (balance) "
+                    + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+            ps.setInt(1, balance);
+            ps.setString(2, name);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -127,16 +130,19 @@ public class UserDataMapper {
      * @throws SQLException
      * @throws DataException
      */
-    public void addEmail(String name, String email)
-            throws SQLException, DataException {
-        DBConnector conn = new DBConnector();
-
-        String insertBalance = "INSERT INTO cupcake.`users` (email) "
-                + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-        ps.setString(1, email);
-        ps.setString(2, name);
-        ps.executeUpdate();
+    public void addEmail(String name, String email) {
+        try {
+            DBConnector conn = new DBConnector();
+            
+            String insertBalance = "INSERT INTO cupcake.`users` (email) "
+                    + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+            ps.setString(1, email);
+            ps.setString(2, name);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
