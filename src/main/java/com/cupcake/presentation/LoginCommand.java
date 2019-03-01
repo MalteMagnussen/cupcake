@@ -36,7 +36,8 @@ public class LoginCommand extends Command {
         HttpSession session = request.getSession();
         if (valid) {
             session.setAttribute("user", user);
-            session.setAttribute("cart", new ShoppingCart());
+//            session.setAttribute("cart", new ShoppingCart());
+            /* Shoppingcart ligger bare på user nu */
             User u = (User) session.getAttribute("user"); // ?? 
         }
 

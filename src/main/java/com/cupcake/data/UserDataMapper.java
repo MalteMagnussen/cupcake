@@ -10,8 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,19 +25,18 @@ public class UserDataMapper {
      * big.
      *
      */
-    private final DBConnector conn = null;
+    private DBConnector conn = null;
 
     /**
      * Returns a User TO DO - Email???
      *
      * @param userName
      * @return
-     * @throws DataException
      */
     public User getUser(String userName) {
-        if (userName != null || !userName.isEmpty()) {
+        if (userName != null) {
             try {
-                DBConnector conn = new DBConnector();
+                 conn = new DBConnector();
 
                 String query = "SELECT * FROM cupcake.users "
                         + "WHERE `name`='" + userName + "';";
@@ -69,12 +66,10 @@ public class UserDataMapper {
      *
      * @param name
      * @param balance
-     * @throws SQLException
-     * @throws DataException
      */
     public void addBalance(String name, int balance) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
             
             String insertBalance = "INSERT INTO cupcake.`users` (balance) "
                     + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
@@ -89,18 +84,14 @@ public class UserDataMapper {
 
     /**
      * Adds User to Database.
-     *
      * @param name - Name of the user
      * @param password - Users password
      * @param email - Users email
-     * @throws SQLException
      */
     public void addUser(String name, String password, String email) {
-        if (name != null || !name.isEmpty()
-                || password != null || !password.isEmpty()
-                || email != null || !email.isEmpty()) {
+        if (name != null || password != null || email != null) {
             try {
-                DBConnector conn = new DBConnector();
+                conn = new DBConnector();
                 String insertUser = "INSERT INTO `cupcake`.`users`\n"
                         + "(`name`,\n"
                         + "`password`,\n"
@@ -127,12 +118,10 @@ public class UserDataMapper {
      *
      * @param name
      * @param email
-     * @throws SQLException
-     * @throws DataException
      */
     public void addEmail(String name, String email) {
         try {
-            DBConnector conn = new DBConnector();
+            conn = new DBConnector();
             
             String insertBalance = "INSERT INTO cupcake.`users` (email) "
                     + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
