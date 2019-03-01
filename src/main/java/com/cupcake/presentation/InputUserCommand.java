@@ -18,7 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class InputUserCommand extends Command {
 
-    /* This Method is called from CreateUserCommand */
+    /**
+     * Adds the User to the SQL database.
+     * This Method is called from CreateUserCommand.
+     * This Method sends the user to LoginPageCommand.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

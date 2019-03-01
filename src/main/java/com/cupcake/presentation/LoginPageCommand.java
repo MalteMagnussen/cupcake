@@ -17,6 +17,16 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginPageCommand extends Command {
 
+    /**
+     *  Static HTML site that allows you to log in to CupCake.
+     *   You input your Username and Password.
+     *   Then it sends that on to LoginCommand class and the "Login" URL along
+     *   with the parameters.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

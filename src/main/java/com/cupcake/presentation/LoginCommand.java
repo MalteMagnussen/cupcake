@@ -24,25 +24,29 @@ public class LoginCommand extends Command {
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /* Get Parameters from the URL. (From the HTTP request) */
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         UserDataMapper db = new UserDataMapper();
         LoginController c = new LoginController(db);
+        
         boolean valid = c.isValid(username, password);
         User user = c.getUser(username);
 
         HttpSession session = request.getSession();
+        
         if (valid) {
             session.setAttribute("user", user);
-//            session.setAttribute("cart", new ShoppingCart());
-            /* Shoppingcart ligger bare på user nu */
-            User u = (User) session.getAttribute("user"); // ?? 
+            
+            /* session.setAttribute("cart", new ShoppingCart()); */
+            /* Shoppingcart is on User now */
+            
+            User u = (User) session.getAttribute("user");
         }
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

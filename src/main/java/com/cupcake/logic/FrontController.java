@@ -40,14 +40,20 @@ public class FrontController extends HttpServlet {
         final HttpServletRequest req = request;
         final HttpServletResponse res = response;
         try {
-
+            /* 
+                Call to Command class. 
+                Command class has a switch containing all the URLs on the site
+            */
             Command c = Command.from(req);
             c.execute(req, res);
 
+            /*
+                If something goes wrong, it catches the error and writes
+                "ERROR" to the user.
+            */ 
         } catch (IOException | ServletException e) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
-                /* TODO output your page here. You may use following sample code. */
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
