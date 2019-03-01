@@ -39,7 +39,7 @@ public class InputUserCommand extends Command {
 
         out.print("Welcome " + username);
 
-        out.print("<a href='Login'>  Buy Cupcakes  </a>");
+        out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
 
         out.close();
 

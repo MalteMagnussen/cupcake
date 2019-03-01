@@ -39,6 +39,9 @@ public abstract class Command {
             case "InputUser":
                 c = new InputUserCommand();
                 break;
+            case "LoginPage":
+                c = new LoginPageCommand();
+                break;
             default:
                 c = new UnknownCommand();
         }

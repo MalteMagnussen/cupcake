@@ -38,7 +38,7 @@ public class CreateUserCommand extends Command {
                 + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
                 + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
                 + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"
-                + "            <input type=\"submit\" value=\"go\"/>\n"
+                + "            <input type=\"submit\" value=\"Create User\"/>\n"
                 + "        </form>\n"
                 + "    </body>\n"
                 + "</html>\n"
