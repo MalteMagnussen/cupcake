@@ -41,7 +41,7 @@ public class FrontLoader extends HttpServlet {
             Command c = Command.from(req);
             c.execute(req, res);
 
-        } catch (Exception e) {
+        } catch (IOException | ServletException e) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 /* TODO output your page here. You may use following sample code. */

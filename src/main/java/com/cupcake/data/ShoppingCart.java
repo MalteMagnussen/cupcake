@@ -39,9 +39,8 @@ public class ShoppingCart {
     }
 
     /**
-     * Get all line items
-     *
-     * @return List of LineItem
+     * 
+     * @return 
      */
     public List<LineItem> getLineItems() {
         return lineItems;

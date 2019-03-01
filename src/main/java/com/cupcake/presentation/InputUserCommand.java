@@ -30,13 +30,11 @@ public class InputUserCommand extends Command {
         db.addUser(username, password, email);
 
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
+        try (PrintWriter out = response.getWriter()) {
+            out.print("Welcome " + username);
 
-        out.print("Welcome " + username);
-
-        out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
-
-        out.close();
+            out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
+        }
 
     }
 

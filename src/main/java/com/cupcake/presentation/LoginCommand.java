@@ -5,7 +5,6 @@
  */
 package com.cupcake.presentation;
 
-import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.logic.LoginController;

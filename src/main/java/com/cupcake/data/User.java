@@ -14,9 +14,9 @@ public class User {
     /**
      * Basic User Object Class
      */
-    private String username;
+    private final String username;
     private int balance;
-    private String password;
+    private final String password;
     private String email;
     private ShoppingCart cart;
 
@@ -52,6 +52,10 @@ public class User {
 
     public String getEmail() {
         return email;
+    }
+
+    public void changeEmail(String email) {
+        this.email = email;
     }
 
     @Override
