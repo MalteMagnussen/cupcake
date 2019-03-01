@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  * @author Mikkel
  */
 public class LoginCommand extends Command {
-    // SHOULD MAYBE BE A DISPATCHER
+    // TO DO - SHOULD MAYBE BE A DISPATCHER
     /**
      * LoginCommand. 
      * Starts the Session.
