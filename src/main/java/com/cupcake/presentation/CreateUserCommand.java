@@ -5,14 +5,8 @@
  */
 package com.cupcake.presentation;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import static java.lang.System.out;
-import java.net.URL;
-import java.nio.file.Files;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +34,7 @@ public class CreateUserCommand extends Command {
                 + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                 + "    </head>\n"
                 + "    <body>\n"
-                + "        <form action=\"CreateUser\">\n"
+                + "        <form action=\"InputUser\">\n"
                 + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
                 + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
                 + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"
