@@ -27,12 +27,14 @@ public class CupcakeDAO {
      * @return Top
      */
     public Top getTop(String name) {
-        try {
-            int price = db.getTopPrice(name);
-            Top top = new Top(name, price);
-            return top;
-        } catch (DataException ex) {
-            Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        if (name != null || !name.isEmpty()) {
+            try {
+                int price = db.getTopPrice(name);
+                Top top = new Top(name, price);
+                return top;
+            } catch (DataException ex) {
+                Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }
@@ -44,12 +46,14 @@ public class CupcakeDAO {
      * @return Bottom
      */
     public Bottom getBottom(String name) {
-        try {
-            int price = db.getBottomPrice(name);
-            Bottom bot = new Bottom(name, price);
-            return bot;
-        } catch (DataException ex) {
-            Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        if (name != null || !name.isEmpty()) {
+            try {
+                int price = db.getBottomPrice(name);
+                Bottom bot = new Bottom(name, price);
+                return bot;
+            } catch (DataException ex) {
+                Logger.getLogger(CupcakeDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
     }
@@ -62,8 +66,12 @@ public class CupcakeDAO {
      * @return Cupcake
      */
     public Cupcake makeCupcake(String topName, String bottomName) {
-        Top top = getTop(topName);
-        Bottom bottom = getBottom(bottomName);
-        return new Cupcake(top, bottom);
+        if (bottomName != null || !topName.isEmpty()
+                || !bottomName.isEmpty() || topName != null) {
+            Top top = getTop(topName);
+            Bottom bottom = getBottom(bottomName);
+            return new Cupcake(top, bottom);
+        }
+        return null;
     }
 }
