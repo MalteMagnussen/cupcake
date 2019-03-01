@@ -67,11 +67,11 @@ public class ShopCommand extends Command {
             /* Form for dropdowns */
             out.println(
                     "<form id=\"addProduct\" action=\"Control\" method=\"POST\">\n"
-                    + "                        <input type=\"hidden\" name=\"origin\" value=\"addProduct\">\n"
-                    + "                        <table class=\"table table-striped\">\n"
-                    + "                            <thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>\n"
-                    + "                            <tbody>\n"
-                    + "                                <tr>\n"
+                    + "<input type=\"hidden\" name=\"origin\" value=\"addProduct\">\n"
+                    + "<table class=\"table table-striped\">\n"
+                    + "<thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>\n"
+                    + "<tbody>\n"
+                    + "<tr>\n"
                     + "<td><select name=\"bottom\" id=\"bottomSelect\">\n");
             for (Bottom bot : bots) {
                 out.print("<option value=\"" + bot.getName() + "\">" + bot.getName() + "</option>\n");
