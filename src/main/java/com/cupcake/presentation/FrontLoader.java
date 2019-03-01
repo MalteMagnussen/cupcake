@@ -7,10 +7,6 @@ package com.cupcake.presentation;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,20 +37,9 @@ public class FrontLoader extends HttpServlet {
         final HttpServletRequest req = request;
         final HttpServletResponse res = response;
         try {
-            ExecutorService workingJack = Executors.newCachedThreadPool();
-            workingJack.submit(new Runnable() {
-                @Override
-                public void run() {
-                    try {
-                        Command c = Command.from(req);
-                        c.execute(req, res);
-                    } catch (IOException ex) {
-                        System.out.println(ex.getMessage());
-                    } catch (ServletException ex) {
-                        Logger.getLogger(FrontLoader.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
+
+            Command c = Command.from(req);
+            c.execute(req, res);
 
         } catch (Exception e) {
             response.setContentType("text/html;charset=UTF-8");
