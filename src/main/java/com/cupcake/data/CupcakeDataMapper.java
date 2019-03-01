@@ -19,10 +19,16 @@ import java.util.logging.Logger;
  *
  * @author
  */
-class CupcakeDataMapper {
+public class CupcakeDataMapper {
 
     private DBConnector conn;
 
+    public CupcakeDataMapper() {
+        
+    }
+
+    
+    
     /**
      * Get a cupcake
      *

@@ -66,6 +66,7 @@ public class LoginCommand extends Command {
             } else {
                 out.println("<h1> INVALID </h1>");
             }
+            out.println("<a href='Shop'>  Buy Cupcakes  </a>");
             out.println("</body>");
             out.println("</html>");
         }
