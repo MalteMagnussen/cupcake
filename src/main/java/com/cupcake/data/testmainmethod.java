@@ -12,6 +12,6 @@ package com.cupcake.data;
 public class testmainmethod {
     public static void main(String[] args) throws DataException {
         CupcakeDataMapper db = new CupcakeDataMapper();
-        System.out.println("Price: "+db.getTopPrice("Blueberry"));
+        System.out.println("Price: "+db.getTopPrice("Blue Cheese"));
     }
 }
