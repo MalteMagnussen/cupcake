@@ -10,13 +10,15 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * TO DO
  *
  * @author
  */
-public class ProductDispatcher implements RequestDispatcher {
+public class ProductDispatcher extends Command implements RequestDispatcher {
 
     /* 
         Takes Requests from Shop Command. 
@@ -38,6 +40,11 @@ public class ProductDispatcher implements RequestDispatcher {
 
     @Override
     public void include(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  
