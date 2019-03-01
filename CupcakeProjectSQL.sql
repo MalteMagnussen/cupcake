@@ -1,12 +1,14 @@
+DROP SCHEMA IF EXISTS `Cupcake`;
+
 CREATE SCHEMA IF NOT EXISTS`Cupcake`;
 USE `Cupcake`;
 
-DROP TABLE IF EXISTS invoices;
-DROP TABLE IF EXISTS topping;
-DROP TABLE IF EXISTS bottom;
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS `Cupcake`.`invoices`;
+DROP TABLE IF EXISTS `Cupcake`.`topping`;
+DROP TABLE IF EXISTS `Cupcake`.`bottom`;
+DROP TABLE IF EXISTS `Cupcake`.`users`;
 
-CREATE TABLE `Users`(
+CREATE TABLE `users`(
 `name` VARCHAR(55),
 `password` VARCHAR(60),
 `balance` BIGINT,
