@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Bottom {
 
@@ -16,8 +16,9 @@ public class Bottom {
 
     /**
      * Constructor.
+     *
      * @param name
-     * @param price 
+     * @param price
      */
     public Bottom(String name, int price) {
         this.name = name;
@@ -26,6 +27,7 @@ public class Bottom {
 
     /**
      * Get Name of the Bottom
+     *
      * @return String
      */
     public String getName() {
@@ -34,6 +36,7 @@ public class Bottom {
 
     /**
      * Get the price
+     *
      * @return int
      */
     public int getPrice() {
@@ -42,6 +45,7 @@ public class Bottom {
 
     /**
      * To String
+     *
      * @return String
      */
     @Override

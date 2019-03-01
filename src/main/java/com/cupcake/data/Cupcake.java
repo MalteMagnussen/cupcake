@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 public class Cupcake {
 
@@ -20,8 +20,9 @@ public class Cupcake {
 
     /**
      * Constructor of Cupcake Object.
+     *
      * @param top
-     * @param bottom 
+     * @param bottom
      */
     public Cupcake(Top top, Bottom bottom) {
         this.top = top;
@@ -31,6 +32,7 @@ public class Cupcake {
 
     /**
      * Get top object
+     *
      * @return Top object
      */
     public Top getTop() {
@@ -39,14 +41,16 @@ public class Cupcake {
 
     /**
      * Get bottom object
+     *
      * @return Bottom object
      */
     public Bottom getBottom() {
         return bottom;
     }
-    
+
     /**
      * Get price of Cupcake
+     *
      * @return int
      */
     public int getPrice() {
@@ -55,12 +59,13 @@ public class Cupcake {
 
     /**
      * To String
+     *
      * @return String
      */
     @Override
     public String toString() {
-        return bottom.getName() + " bottom with " + top.getName() + 
-                " as topping, with totalPrice = " + totalPrice +  " $";
+        return bottom.getName() + " bottom with " + top.getName()
+                + " as topping, with totalPrice = " + totalPrice + " $";
     }
-    
+
 }

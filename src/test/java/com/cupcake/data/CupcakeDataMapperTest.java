@@ -126,5 +126,5 @@ public class CupcakeDataMapperTest {
         int actual = cup.getPrice();
         assertEquals(expected, actual);
     }
-    
+
 }

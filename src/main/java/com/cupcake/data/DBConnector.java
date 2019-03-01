@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * 
+ *
  * @author Tobias
  */
 public class DBConnector {

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author 
+ * @author
  */
 public class CreateUserCommand extends Command {
 
@@ -21,28 +21,29 @@ public class CreateUserCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-        out.print("<!DOCTYPE html>\n"
-                + "<!--\n"
-                + "To change this license header, choose License Headers in Project Properties.\n"
-                + "To change this template file, choose Tools | Templates\n"
-                + "and open the template in the editor.\n"
-                + "-->\n"
-                + "<html>\n"
-                + "    <head>\n"
-                + "        <title>Create User</title>\n"
-                + "        <meta charset=\"UTF-8\">\n"
-                + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "    </head>\n"
-                + "    <body>\n"
-                + "        <form action=\"InputUser\">\n"
-                + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
-                + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
-                + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"
-                + "            <input type=\"submit\" value=\"Create User\"/>\n"
-                + "        </form>\n"
-                + "    </body>\n"
-                + "</html>\n"
-                + "");}
+            out.print("<!DOCTYPE html>\n"
+                    + "<!--\n"
+                    + "To change this license header, choose License Headers in Project Properties.\n"
+                    + "To change this template file, choose Tools | Templates\n"
+                    + "and open the template in the editor.\n"
+                    + "-->\n"
+                    + "<html>\n"
+                    + "    <head>\n"
+                    + "        <title>Create User</title>\n"
+                    + "        <meta charset=\"UTF-8\">\n"
+                    + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "    </head>\n"
+                    + "    <body>\n"
+                    + "        <form action=\"InputUser\">\n"
+                    + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
+                    + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
+                    + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"
+                    + "            <input type=\"submit\" value=\"Create User\"/>\n"
+                    + "        </form>\n"
+                    + "    </body>\n"
+                    + "</html>\n"
+                    + "");
+        }
     }
 
 }

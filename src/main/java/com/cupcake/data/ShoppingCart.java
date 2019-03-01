@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author 
+ * @author
  */
 public class ShoppingCart {
 
@@ -24,14 +24,15 @@ public class ShoppingCart {
     private int invoiceid;
 
     /**
-     * 
+     *
      */
     public ShoppingCart() {
     }
 
     /**
      * Add line item
-     * @param lineItem 
+     *
+     * @param lineItem
      */
     public void addLineItem(LineItem lineItem) {
         this.lineItems.add(lineItem);
@@ -39,6 +40,7 @@ public class ShoppingCart {
 
     /**
      * Get all line items
+     *
      * @return List of LineItem
      */
     public List<LineItem> getLineItems() {
@@ -47,6 +49,7 @@ public class ShoppingCart {
 
     /**
      * Get invoice ID
+     *
      * @return int
      */
     public int getInvoiceid() {
@@ -55,7 +58,8 @@ public class ShoppingCart {
 
     /**
      * Set invoice ID
-     * @param invoiceid 
+     *
+     * @param invoiceid
      */
     public void setInvoiceid(int invoiceid) {
         this.invoiceid = invoiceid;
@@ -63,13 +67,12 @@ public class ShoppingCart {
 
     /**
      * To String
+     *
      * @return String
      */
     @Override
     public String toString() {
         return "ShoppingCart{" + "lineItems=" + lineItems + ", invoiceid=" + invoiceid + '}';
     }
-    
-    
 
 }

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author 
+ * @author
  */
 public class UserDataMapper {
 
@@ -36,7 +36,7 @@ public class UserDataMapper {
     public User getUser(String userName) {
         if (userName != null) {
             try {
-                 conn = new DBConnector();
+                conn = new DBConnector();
 
                 String query = "SELECT * FROM cupcake.users "
                         + "WHERE `name`='" + userName + "';";
@@ -70,7 +70,7 @@ public class UserDataMapper {
     public void addBalance(String name, int balance) {
         try {
             conn = new DBConnector();
-            
+
             String insertBalance = "INSERT INTO cupcake.`users` (balance) "
                     + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
@@ -84,6 +84,7 @@ public class UserDataMapper {
 
     /**
      * Adds User to Database.
+     *
      * @param name - Name of the user
      * @param password - Users password
      * @param email - Users email
@@ -122,7 +123,7 @@ public class UserDataMapper {
     public void addEmail(String name, String email) {
         try {
             conn = new DBConnector();
-            
+
             String insertBalance = "INSERT INTO cupcake.`users` (email) "
                     + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);

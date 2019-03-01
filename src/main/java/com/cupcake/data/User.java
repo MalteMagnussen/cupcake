@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 public class User {
 

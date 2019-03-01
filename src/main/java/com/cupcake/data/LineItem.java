@@ -22,7 +22,8 @@ class LineItem {
 
     /**
      * Constructor Object
-     * @param cupcake 
+     *
+     * @param cupcake
      */
     public LineItem(Cupcake cupcake) {
         this.cupcake = cupcake;
@@ -30,6 +31,7 @@ class LineItem {
 
     /**
      * Get Quantity
+     *
      * @return int
      */
     public int getQuantity() {
@@ -38,6 +40,7 @@ class LineItem {
 
     /**
      * Get Cupcake object
+     *
      * @return Cupcake object
      */
     public Cupcake getCupcake() {
@@ -46,6 +49,7 @@ class LineItem {
 
     /**
      * Add Quantity
+     *
      * @param quantity Quantity you want to add
      */
     public void addQuantity(int quantity) {
@@ -54,6 +58,7 @@ class LineItem {
 
     /**
      * Set Quantity
+     *
      * @param quantity Sets quantity to this amount
      */
     public void setQuantity(int quantity) {
@@ -62,6 +67,7 @@ class LineItem {
 
     /**
      * To String
+     *
      * @return String
      */
     @Override
