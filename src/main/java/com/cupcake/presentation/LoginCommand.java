@@ -7,6 +7,7 @@ package com.cupcake.presentation;
 
 import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
+import com.cupcake.data.UserDataMapper;
 import com.cupcake.logic.LoginController;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +28,8 @@ public class LoginCommand extends Command {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        LoginController c = new LoginController();
+        UserDataMapper db = new UserDataMapper();
+        LoginController c = new LoginController(db);
         boolean valid = c.isValid(username, password);
         User user = c.getUser(username);
 

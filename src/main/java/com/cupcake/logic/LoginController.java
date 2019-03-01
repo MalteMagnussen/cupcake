@@ -17,6 +17,12 @@ public class LoginController {
 
     private UserDataMapper db;
 
+    public LoginController(UserDataMapper db) {
+        this.db = db;
+    }
+    
+    
+
     public boolean isValid(String username, String password) {
         if (username == null || username.isEmpty()) {
             return false;
