@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author 
+ * @author
  */
 class LineItem {
 
@@ -17,38 +17,56 @@ class LineItem {
      * LineItem (or the quantity of an already existing Line Item can be
      * incremented).
      */
-    private int invoice_id;
     private int quantity;
     private final Cupcake cupcake;
 
+    /**
+     * Constructor Object
+     * @param cupcake 
+     */
     public LineItem(Cupcake cupcake) {
         this.cupcake = cupcake;
     }
 
-    public int getInvoice_id() {
-        return invoice_id;
-    }
-
+    /**
+     * Get Quantity
+     * @return int
+     */
     public int getQuantity() {
         return quantity;
     }
 
+    /**
+     * Get Cupcake object
+     * @return Cupcake object
+     */
     public Cupcake getCupcake() {
         return cupcake;
     }
 
-    public void setInvoice_id(int invoice_id) {
-        this.invoice_id = invoice_id;
+    /**
+     * Add Quantity
+     * @param quantity Quantity you want to add
+     */
+    public void addQuantity(int quantity) {
+        this.quantity = this.quantity + quantity;
     }
 
+    /**
+     * Set Quantity
+     * @param quantity Sets quantity to this amount
+     */
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
+    /**
+     * To String
+     * @return String
+     */
     @Override
     public String toString() {
-        return "LineItem{" + "invoice_id=" + invoice_id + ", quantity=" + quantity + ", cupcake=" + cupcake + '}';
+        return "LineItem{" + "quantity=" + quantity + ", cupcake=" + cupcake + '}';
     }
 
-    
 }
