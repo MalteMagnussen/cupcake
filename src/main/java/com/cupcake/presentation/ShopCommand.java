@@ -40,9 +40,11 @@ public class ShopCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        /* Pulling the user out of Session */
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
+        /* Instance of the relevant DataMapper */
         CupcakeDataMapper db = new CupcakeDataMapper();
 
         try (PrintWriter out = response.getWriter()) {
@@ -55,12 +57,14 @@ public class ShopCommand extends Command {
 
             out.println("<body>");
 
-            /* Shows who is logged in */
+            /* Shows which user is logged in */
             out.println("<h1> " + user.getName() + " is logged in.</h1>");
-            /* Shows their balance */
+            
+            /* Shows the users balance */
             out.println("<p style=\"font-size:18px\"> "
                     + "Users Balance: " + user.getBalance() + "</p>");
             
+            /* Pulling the tops and bottoms of the cupcakes out of SQL*/
             List<Top> tops = db.getTops();
             List<Bottom> bots = db.getBottoms();
             
