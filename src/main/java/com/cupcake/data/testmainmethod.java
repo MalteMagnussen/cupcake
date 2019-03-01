@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public class testmainmethod {
     public static void main(String[] args) throws DataException {

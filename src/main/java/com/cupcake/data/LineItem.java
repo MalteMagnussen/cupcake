@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 class LineItem {
 

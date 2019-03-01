@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Nikolaj
+ * @author 
  */
 public class UserDataMapper {
 

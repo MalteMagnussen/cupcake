@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public class ShoppingCart {
 

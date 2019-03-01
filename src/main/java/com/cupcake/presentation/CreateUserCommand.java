@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public class CreateUserCommand extends Command {
 

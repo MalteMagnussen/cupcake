@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public class InputUserCommand extends Command {
 

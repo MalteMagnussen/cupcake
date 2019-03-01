@@ -17,10 +17,16 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Nikolaj
+ * @author 
  */
 class CupcakeDataMapper {
 
+    /**
+     * Get a cupcake
+     * @param topName
+     * @param bottomName
+     * @return 
+     */
     public Cupcake makeCupcake(String topName, String bottomName) {
         if (bottomName != null || topName != null) {
             Top top = getTop(topName);
@@ -29,7 +35,22 @@ class CupcakeDataMapper {
         }
         return null;
     }
+    
+    /**
+     * Get a cupcake
+     * @param top
+     * @param bot
+     * @return 
+     */
+    public Cupcake makeCupcake(Top top, Bottom bot){
+        return new Cupcake(top, bot);
+    }
 
+    /**
+     * Get a Top
+     * @param name
+     * @return 
+     */
     public Top getTop(String name) {
         if (name != null) {
             int price = getTopPrice(name);
@@ -83,6 +104,11 @@ class CupcakeDataMapper {
         }
     }
 
+    /**
+     * Get a Bottom
+     * @param name
+     * @return 
+     */
     public Bottom getBottom(String name) {
         if (name != null) {
             int price = getBottomPrice(name);

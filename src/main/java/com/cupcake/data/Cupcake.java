@@ -7,7 +7,7 @@ package com.cupcake.data;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public class Cupcake {
 
