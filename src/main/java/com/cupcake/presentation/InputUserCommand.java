@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class InputUserCommand extends Command {
-
+    // SHOULD MAYBE BE A DISPATCHER
     /**
      * Adds the User to the SQL database.
      * This Method is called from CreateUserCommand.
