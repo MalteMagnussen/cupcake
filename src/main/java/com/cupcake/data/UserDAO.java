@@ -5,6 +5,7 @@
  */
 package com.cupcake.data;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,18 +29,39 @@ public class UserDAO {
     }
 
     /**
-     * Returns a user Object when given the username.
+     * Returns a User Object when given the username.
      *
      * @param username
      * @return User.
      */
     public User getUser(String username) {
-        try {
-            return db.getUser(username);
-        } catch (DataException ex) {
-            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        if (username != null || !username.isEmpty()) {
+            try {
+                return db.getUser(username);
+            } catch (DataException ex) {
+                Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return null;
+    }
+    
+    /**
+     * Make a User.
+     * @param username
+     * @param password
+     * @param email 
+     */
+    public void makeUser(String username, String password, String email){
+        if (username != null || !username.isEmpty()
+                || password != null || !password.isEmpty() 
+                || email != null || !email.isEmpty()){
+        try {
+            db.addUser(username, password, email);
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }} else {
+            // Something to indicate that it went wrong. TO DO
+        }
     }
 
 }
