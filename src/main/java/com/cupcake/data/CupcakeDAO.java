@@ -20,35 +20,6 @@ public class CupcakeDAO {
         this.db = db;
     }
 
-    /**
-     * Get a top from name.
-     *
-     * @param name
-     * @return Top
-     */
-    public Top getTop(String name) {
-        if (name != null || !name.isEmpty()) {
-            int price = db.getTopPrice(name);
-            Top top = new Top(name, price);
-            return top;
-        }
-        return null;
-    }
-
-    /**
-     * Get a bottom from name.
-     *
-     * @param name
-     * @return Bottom
-     */
-    public Bottom getBottom(String name) {
-        if (name != null || !name.isEmpty()) {
-            int price = db.getBottomPrice(name);
-            Bottom bot = new Bottom(name, price);
-            return bot;
-        }
-        return null;
-    }
 
     /**
      * Makes a Cupcake from a top and bottom.
@@ -57,13 +28,5 @@ public class CupcakeDAO {
      * @param bottomName
      * @return Cupcake
      */
-    public Cupcake makeCupcake(String topName, String bottomName) {
-        if (bottomName != null || !topName.isEmpty()
-                || !bottomName.isEmpty() || topName != null) {
-            Top top = getTop(topName);
-            Bottom bottom = getBottom(bottomName);
-            return new Cupcake(top, bottom);
-        }
-        return null;
-    }
+    
 }

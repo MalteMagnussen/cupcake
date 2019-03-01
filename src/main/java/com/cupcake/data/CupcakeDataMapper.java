@@ -21,6 +21,24 @@ import java.util.logging.Logger;
  */
 class CupcakeDataMapper {
 
+    public Cupcake makeCupcake(String topName, String bottomName) {
+        if (bottomName != null || topName != null) {
+            Top top = getTop(topName);
+            Bottom bottom = getBottom(bottomName);
+            return new Cupcake(top, bottom);
+        }
+        return null;
+    }
+
+    public Top getTop(String name) {
+        if (name != null) {
+            int price = getTopPrice(name);
+            Top top = new Top(name, price);
+            return top;
+        }
+        return null;
+    }
+
     /**
      * Insert a top into the SQL database. Dont use.
      *
@@ -32,7 +50,7 @@ class CupcakeDataMapper {
     public void addTopping(String name, int price) {
         try {
             DBConnector conn = new DBConnector();
-            
+
             String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
                     + "VALUES (?, " + price + ");";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertTopping);
@@ -54,7 +72,7 @@ class CupcakeDataMapper {
     public void addBottom(String name, int price) {
         try {
             DBConnector conn = new DBConnector();
-            
+
             String insertBottom = "INSERT INTO `cupcake`.`bottom` (bname, price) "
                     + "VALUES (?, " + price + ");";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBottom);
@@ -63,6 +81,15 @@ class CupcakeDataMapper {
         } catch (SQLException ex) {
             Logger.getLogger(CupcakeDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Bottom getBottom(String name) {
+        if (name != null) {
+            int price = getBottomPrice(name);
+            Bottom bot = new Bottom(name, price);
+            return bot;
+        }
+        return null;
     }
 
     /**
@@ -103,7 +130,7 @@ class CupcakeDataMapper {
      *
      * @return List of Bottoms.
      */
-    public List<Bottom> getBottoms(){
+    public List<Bottom> getBottoms() {
         try {
             DBConnector conn = new DBConnector();
 
