@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class LoginPageCommand extends Command {
-
+    // TO DO - Should maybe be a JSP file..? Since it's static.
     /**
      *  Static HTML site that allows you to log in to CupCake.
      *   You input your Username and Password.

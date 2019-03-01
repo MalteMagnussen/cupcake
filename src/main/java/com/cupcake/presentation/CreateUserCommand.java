@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CreateUserCommand extends Command {
     /* 
+        TO DO - Should maybe be a JSP file..? Since it's static.
         Static site. Used to Create new Users and add them to the SQL Database
         Makes a call to InputUserCommand Class 
     */
