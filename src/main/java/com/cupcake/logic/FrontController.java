@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cupcake.presentation;
+package com.cupcake.logic;
 
+import com.cupcake.presentation.Command;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 @WebServlet(name = "FrontLoader", urlPatterns = {"/*"})
-public class FrontLoader extends HttpServlet {
+public class FrontController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +33,9 @@ public class FrontLoader extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         /**
-         * Below a workingjack is made. It puts the requests into threads.
+         * Below a workingjack might have to be made. 
+         * It puts the requests into threads.
+         * ExecutorService
          */
         final HttpServletRequest req = request;
         final HttpServletResponse res = response;

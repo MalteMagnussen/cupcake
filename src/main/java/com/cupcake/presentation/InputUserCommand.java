@@ -18,17 +18,22 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class InputUserCommand extends Command {
 
+    /* This Method is called from CreateUserCommand */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        /* Get the username, email and password from the URL Parameters.*/
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        /* Instance of the relevant DataMapper */
         UserDataMapper db = new UserDataMapper();
 
+        /* Insert the User into the SQL Database */
         db.addUser(username, password, email);
 
+        /* Welcome User! */
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             out.print("Welcome " + username);

@@ -16,7 +16,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class CreateUserCommand extends Command {
-
+    /* 
+        Static site. Used to Create new Users and add them to the SQL Database
+        Makes a call to InputUserCommand Class 
+    */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

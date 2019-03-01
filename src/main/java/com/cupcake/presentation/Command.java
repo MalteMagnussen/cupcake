@@ -16,6 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public abstract class Command {
 
+    /*
+        This is called from "FrontController"
+    */
     public abstract void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException;
 
@@ -23,6 +26,7 @@ public abstract class Command {
         Command c;
         String path = request.getPathInfo().substring(1);
 
+        /*  Switches on the paths.  */
         switch (path) {
             case "Login":
                 c = new LoginCommand();
@@ -42,7 +46,8 @@ public abstract class Command {
             case "LoginPage":
                 c = new LoginPageCommand();
                 break;
-            default:
+            /* If none of the above, then go to an error */
+            default: 
                 c = new UnknownCommand();
         }
         return c;
