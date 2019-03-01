@@ -49,7 +49,11 @@ public class LoginCommand extends Command {
             out.println("<title>Servlet UserServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserServlet at " + request.getContextPath() + "</h1>");
+            if (valid) {
+                out.println("<h1>Username=" + username + "</h1>");
+            } else {
+                out.println("<h1> INVALID </h1>");
+            }
             out.println("</body>");
             out.println("</html>");
         }
