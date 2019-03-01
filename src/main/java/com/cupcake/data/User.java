@@ -18,6 +18,15 @@ public class User {
     private int balance;
     private String password;
     private String email;
+    private ShoppingCart cart;
+
+    public void setCart(ShoppingCart cart) {
+        this.cart = cart;
+    }
+
+    public ShoppingCart getCart() {
+        return cart;
+    }
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -49,5 +58,5 @@ public class User {
     public String toString() {
         return "User{" + "username=" + username + ", balance=" + balance + ", password=" + password + ", email=" + email + '}';
     }
-    
+
 }

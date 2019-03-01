@@ -21,6 +21,7 @@ public class ShoppingCart {
      * should be stored in the session (Why do you think?).
      */
     private List<LineItem> lineItems;
+    private int invoiceid;
 
     public ShoppingCart() {
     }
@@ -32,5 +33,20 @@ public class ShoppingCart {
     public List<LineItem> getLineItems() {
         return lineItems;
     }
+
+    public int getInvoiceid() {
+        return invoiceid;
+    }
+
+    public void setInvoiceid(int invoiceid) {
+        this.invoiceid = invoiceid;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" + "lineItems=" + lineItems + ", invoiceid=" + invoiceid + '}';
+    }
+    
+    
 
 }
