@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,28 +36,30 @@ public class UserDataMapper {
      * @return
      * @throws DataException
      */
-    public User getUser(String userName) throws DataException {
-        try {
-            DBConnector conn = new DBConnector();
+    public User getUser(String userName) {
+        if (userName != null || !userName.isEmpty()) {
+            try {
+                DBConnector conn = new DBConnector();
 
-            String query = "SELECT * FROM cupcake.users "
-                    + "WHERE `name`='" + userName + "';";
+                String query = "SELECT * FROM cupcake.users "
+                        + "WHERE `name`='" + userName + "';";
 
-            Connection connection = conn.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+                Connection connection = conn.getConnection();
+                Statement stmt = connection.createStatement();
+                ResultSet rs = stmt.executeQuery(query);
 
-            while (rs.next()) {
-                String password = rs.getString("password");
-                int balance = rs.getInt("balance");
-                String email = rs.getString("email");
-                User user = new User(userName, password, email);
-                user.addBalance(balance);
-                return user;
+                while (rs.next()) {
+                    String password = rs.getString("password");
+                    int balance = rs.getInt("balance");
+                    String email = rs.getString("email");
+                    User user = new User(userName, password, email);
+                    user.addBalance(balance);
+                    return user;
+                }
+                return null;
+            } catch (SQLException ex) {
+                System.out.println(ex);
             }
-            return null;
-        } catch (SQLException ex) {
-            System.out.println(ex);
         }
         return null;
     }
@@ -82,29 +86,37 @@ public class UserDataMapper {
 
     /**
      * Adds User to Database.
+     *
      * @param name - Name of the user
      * @param password - Users password
      * @param email - Users email
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public void addUser(String name, String password, String email) 
-            throws SQLException {
-        DBConnector conn = new DBConnector();
-        String insertUser = "INSERT INTO `cupcake`.`users`\n"
-                + "(`name`,\n"
-                + "`password`,\n"
-                + "`balance`,\n"
-                + "`email`)\n"
-                + "VALUES\n"
-                + "(?,\n"
-                + "?,\n"
-                + "0,\n"
-                + "?);";
-        PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
-        ps.setString(1, name);
-        ps.setString(2, password);
-        ps.setString(3, email);
-        ps.executeUpdate();
+    public void addUser(String name, String password, String email) {
+        if (name != null || !name.isEmpty()
+                || password != null || !password.isEmpty()
+                || email != null || !email.isEmpty()) {
+            try {
+                DBConnector conn = new DBConnector();
+                String insertUser = "INSERT INTO `cupcake`.`users`\n"
+                        + "(`name`,\n"
+                        + "`password`,\n"
+                        + "`balance`,\n"
+                        + "`email`)\n"
+                        + "VALUES\n"
+                        + "(?,\n"
+                        + "?,\n"
+                        + "0,\n"
+                        + "?);";
+                PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
+                ps.setString(1, name);
+                ps.setString(2, password);
+                ps.setString(3, email);
+                ps.executeUpdate();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     /**

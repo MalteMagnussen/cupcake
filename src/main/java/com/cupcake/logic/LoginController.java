@@ -7,7 +7,6 @@ package com.cupcake.logic;
 
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
-import com.cupcake.data.UserDAO;
 
 /**
  *
@@ -29,12 +28,12 @@ public class LoginController {
             return false;
         }
 
-        User user = new UserDAO(db).getUser(username);
+        User user = db.getUser(username);
         return password.equals(user.getPassword());
     }
 
     public User getUser(String username) {
-        return new UserDAO(db).getUser(username);
+        return db.getUser(username);
     }
 
 }

@@ -5,14 +5,12 @@
  */
 package com.cupcake.presentation;
 
-import com.cupcake.data.UserDAO;
 import com.cupcake.data.UserDataMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -30,9 +28,8 @@ public class InputUserCommand extends Command {
         String password = request.getParameter("password");
 
         UserDataMapper db = new UserDataMapper();
-        UserDAO dao = new UserDAO(db);
 
-        dao.makeUser(username, password, email);
+        db.addUser(username, password, email);
 
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
