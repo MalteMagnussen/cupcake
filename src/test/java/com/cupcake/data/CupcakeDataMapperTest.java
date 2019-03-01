@@ -117,4 +117,14 @@ public class CupcakeDataMapperTest {
         assertEquals(e.toString(), result.toString());
     }
 
+    @Test
+    public void testGetTotalPrice() throws Exception {
+        System.out.println("getTotalPrice");
+        CupcakeDataMapper instance = new CupcakeDataMapper();
+        Cupcake cup = new Cupcake(instance.getTops().get(0), instance.getBottoms().get(0));
+        int expected = 16;
+        int actual = cup.getPrice();
+        assertEquals(expected, actual);
+    }
+    
 }
