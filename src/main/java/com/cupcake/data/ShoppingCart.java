@@ -23,25 +23,48 @@ public class ShoppingCart {
     private List<LineItem> lineItems;
     private int invoiceid;
 
+    /**
+     * 
+     */
     public ShoppingCart() {
     }
 
-    public void addLineItems(LineItem lineItem) {
+    /**
+     * Add line item
+     * @param lineItem 
+     */
+    public void addLineItem(LineItem lineItem) {
         this.lineItems.add(lineItem);
     }
 
+    /**
+     * Get all line items
+     * @return List of LineItem
+     */
     public List<LineItem> getLineItems() {
         return lineItems;
     }
 
+    /**
+     * Get invoice ID
+     * @return int
+     */
     public int getInvoiceid() {
         return invoiceid;
     }
 
+    /**
+     * Set invoice ID
+     * @param invoiceid 
+     */
     public void setInvoiceid(int invoiceid) {
         this.invoiceid = invoiceid;
     }
 
+    /**
+     * To String
+     * @return String
+     */
     @Override
     public String toString() {
         return "ShoppingCart{" + "lineItems=" + lineItems + ", invoiceid=" + invoiceid + '}';
