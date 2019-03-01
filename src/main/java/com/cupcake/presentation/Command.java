@@ -33,6 +33,9 @@ public abstract class Command {
             case "Product":
                 c = new ProductCommand();
                 break;
+            case "CreateUser":
+                c = new CreateUserCommand();
+                break;
             default:
                 c = new UnknownCommand();
         }
