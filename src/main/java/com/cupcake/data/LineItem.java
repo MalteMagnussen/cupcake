@@ -19,7 +19,7 @@ class LineItem {
      */
     private int invoice_id;
     private int quantity;
-    private Cupcake cupcake;
+    private final Cupcake cupcake;
 
     public LineItem(Cupcake cupcake) {
         this.cupcake = cupcake;
