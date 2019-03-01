@@ -28,8 +28,7 @@ public class UserDataMapper {
     private final DBConnector conn = null;
 
     /**
-     * Returns a User
-     * TO DO - Email???
+     * Returns a User TO DO - Email???
      *
      * @param userName
      * @return
@@ -40,12 +39,12 @@ public class UserDataMapper {
             DBConnector conn = new DBConnector();
 
             String query = "SELECT * FROM cupcake.users "
-                    + "WHERE `name`='"+userName+"';";
+                    + "WHERE `name`='" + userName + "';";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            
+
             while (rs.next()) {
                 String password = rs.getString("password");
                 int balance = rs.getInt("balance");
@@ -78,6 +77,33 @@ public class UserDataMapper {
         PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
         ps.setInt(1, balance);
         ps.setString(2, name);
+        ps.executeUpdate();
+    }
+
+    /**
+     * Adds User to Database.
+     * @param name - Name of the user
+     * @param password - Users password
+     * @param email - Users email
+     * @throws SQLException 
+     */
+    public void addUser(String name, String password, String email) 
+            throws SQLException {
+        DBConnector conn = new DBConnector();
+        String insertUser = "INSERT INTO `cupcake`.`users`\n"
+                + "(`name`,\n"
+                + "`password`,\n"
+                + "`balance`,\n"
+                + "`email`)\n"
+                + "VALUES\n"
+                + "(?,\n"
+                + "?,\n"
+                + "0,\n"
+                + "?);";
+        PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
+        ps.setString(1, name);
+        ps.setString(2, password);
+        ps.setString(3, email);
         ps.executeUpdate();
     }
 
