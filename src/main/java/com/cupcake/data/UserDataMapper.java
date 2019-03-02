@@ -51,7 +51,7 @@ public class UserDataMapper {
         while (rs.next()) {
             
             String pass = rs.getString("password");
-            if (pass != null){
+            if (pass != null && !pass.isEmpty()){
                 password = pass;
             }
             
