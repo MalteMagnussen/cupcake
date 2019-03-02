@@ -29,7 +29,10 @@ public class LoginController {
         }
 
         User user = db.getUser(username);
+        if (user.getPassword() != null){
         return password.equals(user.getPassword());
+        }
+        return false;
     }
 
     public User getUser(String username) {

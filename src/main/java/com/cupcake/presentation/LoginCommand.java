@@ -22,7 +22,6 @@ import javax.servlet.http.HttpSession;
  */
 public class LoginCommand extends Command {
 
-    // TO DO - SHOULD MAYBE BE A DISPATCHER
     /**
      * LoginCommand. Starts the Session.
      *
@@ -60,10 +59,9 @@ public class LoginCommand extends Command {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
         } else {
-            /* If User is not in Database send him back to this site */
+            // If User is not in Database send him back to this site
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
-                out.print("Sorry username or password error!");
                 RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
                 rd.include(request, response);
             }
@@ -86,6 +84,6 @@ public class LoginCommand extends Command {
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
+    
     }
-
 }

@@ -27,9 +27,14 @@ public class LoginPageCommand extends Command {
      * @throws IOException 
      */
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void execute(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+        
+        
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             out.print("<!DOCTYPE html>\n"
                     + "<!--\n"
                     + "To change this license header, choose License Headers in Project Properties.\n"
