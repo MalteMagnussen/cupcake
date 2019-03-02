@@ -42,9 +42,9 @@ public class LoginCommand extends Command {
         String password = (String) request.getParameter("password");
 
         LoginController c = new LoginController();
-        
+
         boolean valid = false;
-        
+
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
             try {
@@ -53,7 +53,7 @@ public class LoginCommand extends Command {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         HttpSession session = request.getSession();
 
         if (valid) {
@@ -69,14 +69,12 @@ public class LoginCommand extends Command {
         if (valid) {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
-        }
-         else {
+        } else {
             // If User is not in Database send him back to this site
-            
-                RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
-                rd.forward(request, response);
-            
-        } 
+            RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
+            rd.forward(request, response);
+
+        }
 
     }
 }
