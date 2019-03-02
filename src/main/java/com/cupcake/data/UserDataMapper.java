@@ -33,35 +33,34 @@ public class UserDataMapper {
      *
      * @param userName
      * @return
+     * @throws java.sql.SQLException
      */
-    public User getUser(String userName) {
+    public User getUser(String userName) throws SQLException {
+        String password = "";
+        int balance = 0;
+        String email = "";
         if (!StringUtils.isNullOrEmpty(userName)) {
-            try {
-                conn = new DBConnector();
 
-                String query = "SELECT * FROM cupcake.users "
-                        + "WHERE `name`='" + userName + "';";
+            conn = new DBConnector();
 
-                Connection connection = conn.getConnection();
-                Statement stmt = connection.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+            String query = "SELECT * FROM cupcake.users "
+                    + "WHERE `name`='" + userName + "';";
 
-                while (rs.next()) {
-                    String password = rs.getString("password");
-                    int balance = rs.getInt("balance");
-                    String email = rs.getString("email");
-                    if (!StringUtils.isNullOrEmpty(password)
-                            && !StringUtils.isNullOrEmpty(email)) {
-                        User user = new User(userName, password, email);
-                        user.addBalance(balance);
-                        return user;
-                    }
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex);
+            Connection connection = conn.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                password = rs.getString("password");
+                balance = rs.getInt("balance");
+                email = rs.getString("email");
+
             }
+
         }
-        return null;
+        User user = new User(userName, password, email);
+        user.addBalance(balance);
+        return user;
     }
 
     /**

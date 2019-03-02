@@ -10,6 +10,9 @@ import com.cupcake.data.UserDataMapper;
 import com.cupcake.logic.LoginController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -41,24 +44,29 @@ public class LoginCommand extends Command {
         LoginController c = new LoginController(db);
 
         boolean valid = c.isValid(username, password);
-        User user = c.getUser(username);
 
         HttpSession session = request.getSession();
 
         if (valid) {
-            session.setAttribute("user", user);
+            try {
+                User user = c.getUser(username);
+                session.setAttribute("user", user);
 
 //            session.setAttribute("cart", new ShoppingCart());
 
-            /* Shoppingcart is on User now */
+                /* Shoppingcart is on User now */
 //            User u = (User) session.getAttribute("user");
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
-        
+
         /* If User is in Database send him on to the Shop */
         if (valid) {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
-        } /* else {
+        }
+        /* else {
             // If User is not in Database send him back to this site
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
@@ -85,6 +93,6 @@ public class LoginCommand extends Command {
 //            out.println("</body>");
 //            out.println("</html>");
 //        }
-    
+
     }
 }

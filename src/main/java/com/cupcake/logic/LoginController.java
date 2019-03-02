@@ -7,6 +7,9 @@ package com.cupcake.logic;
 
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,21 +24,26 @@ public class LoginController {
     }
 
     public boolean isValid(String username, String password) {
-        if (username == null || username.isEmpty()) {
+        try {
+            if (username == null || username.isEmpty()) {
+                return false;
+            }
+            if (password == null || password.isEmpty()) {
+                return false;
+            }
+            
+            User user = db.getUser(username);
+            if (user != null) {
+                return password.equals(user.getPassword());
+            }
             return false;
-        }
-        if (password == null || password.isEmpty()) {
-            return false;
-        }
-
-        User user = db.getUser(username);
-        if (user != null) {
-            return password.equals(user.getPassword());
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
-    public User getUser(String username) {
+    public User getUser(String username) throws SQLException {
         return db.getUser(username);
     }
 
