@@ -41,7 +41,7 @@ public class UserDataMapper {
      */
     public User getUser(String userName) throws SQLException {
         User user = new User();
-
+        
         conn = new DBConnector();
 
         String query = "SELECT * FROM cupcake.users "
