@@ -6,10 +6,7 @@
 package com.cupcake.presentation;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author
  */
-public class ProductDispatcher extends Command implements RequestDispatcher {
+public class ProductDispatcher extends Command {
 
     /* 
         Takes Requests from Shop Command. 
@@ -33,16 +30,6 @@ public class ProductDispatcher extends Command implements RequestDispatcher {
         
     */
     
-    @Override
-    public void forward(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void include(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
