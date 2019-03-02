@@ -25,11 +25,8 @@ public class LoginController {
     public boolean isValid(String username, String password) throws SQLException {
         UserDataMapper db = new UserDataMapper();
         User user = db.getUser(username);
-        if (!StringUtils.isEmptyOrWhitespaceOnly(password)) {
-            return password.equals(user.getPassword());
-        }
-
-        return false;
+        if(password == null) return false;
+        return password.equals(user.getPassword());
     }
 
     public User getUser(String username) throws SQLException {

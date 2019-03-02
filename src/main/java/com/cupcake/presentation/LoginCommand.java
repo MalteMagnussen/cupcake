@@ -38,8 +38,8 @@ public class LoginCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /* Get Parameters from the URL. (From the HTTP request) */
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String username = (String) request.getParameter("username");
+        String password = (String) request.getParameter("password");
 
         LoginController c = new LoginController();
         
@@ -58,7 +58,7 @@ public class LoginCommand extends Command {
 
         if (valid) {
             try {
-                User user = c.getUser(username);
+                User user = (User) c.getUser(username);
                 session.setAttribute("user", user);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,12 +72,10 @@ public class LoginCommand extends Command {
         }
          else {
             // If User is not in Database send him back to this site
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                out.print("Sorry username or password error!");
+            
                 RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
-                rd.include(request, response);
-            }
+                rd.forward(request, response);
+            
         } 
 
     }

@@ -29,6 +29,9 @@ public class UserDataMapper {
      */
     private DBConnector conn;
 
+    public UserDataMapper() {
+    }
+
     /**
      * Returns a User
      *

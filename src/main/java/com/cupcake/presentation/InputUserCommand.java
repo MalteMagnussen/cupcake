@@ -32,9 +32,9 @@ public class InputUserCommand extends Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         /* Get the username, email and password from the URL Parameters.*/
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        String username = (String) request.getParameter("username");
+        String email = (String) request.getParameter("email");
+        String password = (String) request.getParameter("password");
 
         /* Instance of the relevant DataMapper */
         UserDataMapper db = new UserDataMapper();
