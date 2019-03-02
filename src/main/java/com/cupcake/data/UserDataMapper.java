@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,16 +51,16 @@ public class UserDataMapper {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
-            
+
             String pass = rs.getString("password");
-            if (pass != null && !pass.isEmpty()){
+            if (pass != null && !pass.isEmpty()) {
                 password = pass;
             }
-            
+
             balance = rs.getInt("balance");
-            
+
             String e = rs.getString("email");
-            if (e != null && !e.isEmpty()){
+            if (e != null && !e.isEmpty()) {
                 email = e;
             }
         }
@@ -140,6 +142,41 @@ public class UserDataMapper {
         } catch (SQLException ex) {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public List<User> getUsers() throws SQLException {
+
+        List<User> users = new ArrayList<>();
+
+        conn = new DBConnector();
+
+        String query = "SELECT * FROM cupcake.users";
+
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            String name = rs.getString("name");
+            String password = rs.getString("password");
+            int balance = rs.getInt("balance");
+            String email = rs.getString("email");
+            User user = new User(name, password, email);
+            user.addBalance(balance);
+            users.add(user);
+        }
+        return users;
+    }
+
+    public User getUsertwo(String name) throws SQLException {
+        List<User> users = getUsers();
+        for (User user : users) {
+            if (user.getName().equals(name)) {
+                return user;
+            }
+        }
+        return null; // FIX THIS SHIT - Make User so the constructor 
+                                        // doesn't require any fields.
     }
 
 }

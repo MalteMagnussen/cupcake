@@ -25,7 +25,7 @@ public class LoginController {
 
     public boolean isValid(String username, String password) {
         try {
-            User user = db.getUser(username);
+            User user = db.getUsertwo(username);
             return password.equals(user.getPassword());
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
