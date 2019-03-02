@@ -29,8 +29,8 @@ public class LoginController {
         }
 
         User user = db.getUser(username);
-        if (!user.getPassword().isEmpty()){
-        return password.equals(user.getPassword());
+        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+            return password.equals(user.getPassword());
         }
         return false;
     }

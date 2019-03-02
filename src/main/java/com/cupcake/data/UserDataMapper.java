@@ -49,8 +49,6 @@ public class UserDataMapper {
                     String password = rs.getString("password");
                     int balance = rs.getInt("balance");
                     String email = rs.getString("email");
-                    password = password + "";
-                    email = email + "";
                     User user = new User(userName, password, email);
                     user.addBalance(balance);
                     return user;
