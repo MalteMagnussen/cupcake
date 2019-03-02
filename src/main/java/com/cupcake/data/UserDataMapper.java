@@ -41,7 +41,7 @@ public class UserDataMapper {
      */
     public User getUser(String userName) throws SQLException {
         User user = new User();
-        
+
         conn = new DBConnector();
 
         String query = "SELECT * FROM cupcake.users "
@@ -58,7 +58,7 @@ public class UserDataMapper {
             /* Balance */
             int balance = rs.getInt("balance");
             user.setBalance(balance);
-            /*  E-mail */ 
+            /*  E-mail */
             String e = rs.getString("email");
             user.setEmail(e);
         }
