@@ -51,7 +51,7 @@ public class UserDataMapper {
                     int balance = rs.getInt("balance");
                     String email = rs.getString("email");
                     if (!StringUtils.isNullOrEmpty(password)
-                            || !StringUtils.isNullOrEmpty(email)) {
+                            && !StringUtils.isNullOrEmpty(email)) {
                         User user = new User(userName, password, email);
                         user.addBalance(balance);
                         return user;
@@ -61,9 +61,7 @@ public class UserDataMapper {
                 System.out.println(ex);
             }
         }
-        User user = new User("1231612431265314123",
-                "65112312q31das56d1as6d51qw56e1q5w1eas231qw1x5qw1exq6we", "DUMMY");
-        return user;
+        return null;
     }
 
     /**
