@@ -29,10 +29,10 @@ public class LoginController {
             return false;
         }
 
-        User user;
-
+        String userpass = "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO WORK PLS";
         try {
-            user = db.getUser(username);
+            User user = db.getUser(username);
+            
             if (StringUtils.isNullOrEmpty(user.getPassword())) {
                 return false;
             } else if (user.getPassword().isEmpty()) {
@@ -40,11 +40,13 @@ public class LoginController {
             } else if (StringUtils.isNullOrEmpty(password)) {
                 return false;
             }
+            
+            userpass = user.getPassword();
         } catch (NullPointerException e) {
             return false;
         }
 
-        return password.equals(user.getPassword());
+        return password.equals(userpass);
     }
 
     public User getUser(String username) {
