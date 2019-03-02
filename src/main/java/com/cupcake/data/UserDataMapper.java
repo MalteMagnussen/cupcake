@@ -54,7 +54,7 @@ public class UserDataMapper {
             user.setPassword(pass);
             /* Balance */
             int balance = rs.getInt("balance");
-            user.addBalance(balance);
+            user.setBalance(balance);
             /*  E-mail */ 
             String e = rs.getString("email");
             user.setEmail(e);
