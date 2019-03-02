@@ -8,6 +8,7 @@ package com.cupcake.presentation;
 import com.cupcake.data.UserDataMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class InputUserCommand extends Command {
-    // TO DO - SHOULD MAYBE BE A DISPATCHER
     /**
      * Adds the User to the SQL database.
      * This Method is called from CreateUserCommand.
@@ -41,13 +41,17 @@ public class InputUserCommand extends Command {
         /* Insert the User into the SQL Database */
         db.addUser(username, password, email);
 
-        /* Welcome User! */
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            out.print("Welcome " + username);
+        /* Forward User! */
+        RequestDispatcher rd=request.getRequestDispatcher("LoginPage");
+	rd.forward(request, response);
 
-            out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
-        }
+        
+//        response.setContentType("text/html;charset=UTF-8");
+//        try (PrintWriter out = response.getWriter()) {
+//            out.print("Welcome " + username);
+//
+//            out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
+//        }
 
     }
 
