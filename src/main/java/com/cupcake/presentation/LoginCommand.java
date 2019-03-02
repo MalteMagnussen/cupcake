@@ -58,7 +58,7 @@ public class LoginCommand extends Command {
         if (valid) {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
-        } else {
+        } /* else {
             // If User is not in Database send him back to this site
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
@@ -66,7 +66,7 @@ public class LoginCommand extends Command {
                 RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
                 rd.include(request, response);
             }
-        }
+        } */
 
 //        response.setContentType("text/html;charset=UTF-8");
 //        try (PrintWriter out = response.getWriter()) {
