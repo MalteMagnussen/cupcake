@@ -25,18 +25,8 @@ public class LoginController {
 
     public boolean isValid(String username, String password) {
         try {
-            if (username == null || username.isEmpty()) {
-                return false;
-            }
-            if (password == null || password.isEmpty()) {
-                return false;
-            }
-            
             User user = db.getUser(username);
-            if (user != null) {
-                return password.equals(user.getPassword());
-            }
-            return false;
+            return password.equals(user.getPassword());
         } catch (SQLException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
