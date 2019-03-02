@@ -35,7 +35,7 @@ public class UserDataMapper {
      * @return
      */
     public User getUser(String userName) {
-        if (userName != null) {
+        if (!StringUtils.isNullOrEmpty(userName)) {
             try {
                 conn = new DBConnector();
 
@@ -62,7 +62,7 @@ public class UserDataMapper {
             }
         }
         User user = new User("1231612431265314123",
-                "65112312q31das56d1as6d51qw56e1q5w1eas231qw1x5qw1exq6we","DUMMY");
+                "65112312q31das56d1as6d51qw56e1q5w1eas231qw1x5qw1exq6we", "DUMMY");
         return user;
     }
 
