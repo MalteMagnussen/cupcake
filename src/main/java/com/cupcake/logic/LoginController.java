@@ -7,6 +7,7 @@ package com.cupcake.logic;
 
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
+import com.mysql.cj.util.StringUtils;
 
 /**
  *
@@ -29,10 +30,14 @@ public class LoginController {
         }
 
         User user = db.getUser(username);
-        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-            return password.equals(user.getPassword());
-        }
-        return false;
+        if (StringUtils.isNullOrEmpty(user.getPassword())) {
+            return false;
+        } else if (user.getPassword().isEmpty()) {
+            return false;
+        } else if (StringUtils.isNullOrEmpty(password)){
+            return false;
+        } 
+        return password.equals(user.getPassword());
     }
 
     public User getUser(String username) {
