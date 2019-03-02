@@ -29,15 +29,21 @@ public class LoginController {
             return false;
         }
 
-        User user = db.getUser(username);
-        
-        if (StringUtils.isNullOrEmpty(user.getPassword())) {
+        User user;
+
+        try {
+            user = db.getUser(username);
+            if (StringUtils.isNullOrEmpty(user.getPassword())) {
+                return false;
+            } else if (user.getPassword().isEmpty()) {
+                return false;
+            } else if (StringUtils.isNullOrEmpty(password)) {
+                return false;
+            }
+        } catch (NullPointerException e) {
             return false;
-        } else if (user.getPassword().isEmpty()) {
-            return false;
-        } else if (StringUtils.isNullOrEmpty(password)){
-            return false;
-        } 
+        }
+
         return password.equals(user.getPassword());
     }
 

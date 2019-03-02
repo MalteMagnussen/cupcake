@@ -5,6 +5,7 @@
  */
 package com.cupcake.data;
 
+import com.mysql.cj.util.StringUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +29,7 @@ public class UserDataMapper {
     private DBConnector conn;
 
     /**
-     * Returns a User TO DO - Email???
+     * Returns a User
      *
      * @param userName
      * @return
@@ -49,9 +50,12 @@ public class UserDataMapper {
                     String password = rs.getString("password");
                     int balance = rs.getInt("balance");
                     String email = rs.getString("email");
-                    User user = new User(userName, password, email);
-                    user.addBalance(balance);
-                    return user;
+                    if (!StringUtils.isNullOrEmpty(password)
+                            || !StringUtils.isNullOrEmpty(email)) {
+                        User user = new User(userName, password, email);
+                        user.addBalance(balance);
+                        return user;
+                    }
                 }
                 return null;
             } catch (SQLException ex) {
