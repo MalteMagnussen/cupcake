@@ -71,7 +71,7 @@ public class LoginCommand extends Command {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
         } else {
-            // If User is not in Database send him back to this site
+            // If User is not in Database send him back to LoginPage
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
         }
