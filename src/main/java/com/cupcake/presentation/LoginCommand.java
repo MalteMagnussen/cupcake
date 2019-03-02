@@ -62,6 +62,7 @@ public class LoginCommand extends Command {
             // If User is not in Database send him back to this site
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
+                out.print("Sorry username or password error!");
                 RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
                 rd.include(request, response);
             }
