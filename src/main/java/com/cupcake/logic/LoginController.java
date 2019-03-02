@@ -22,14 +22,15 @@ public class LoginController {
     }
 
     public boolean isValid(String username, String password) {
-        if (username == null || username.isEmpty()) {
+        if (StringUtils.isNullOrEmpty(username)) {
             return false;
         }
-        if (password == null || password.isEmpty()) {
+        if (StringUtils.isNullOrEmpty(password)) {
             return false;
         }
 
         User user = db.getUser(username);
+        
         if (StringUtils.isNullOrEmpty(user.getPassword())) {
             return false;
         } else if (user.getPassword().isEmpty()) {
