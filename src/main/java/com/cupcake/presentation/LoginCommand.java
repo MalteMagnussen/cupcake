@@ -45,6 +45,7 @@ public class LoginCommand extends Command {
 
         boolean valid = false;
 
+        /* Check if User exists in the SQL database */
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
             try {
@@ -73,7 +74,6 @@ public class LoginCommand extends Command {
             // If User is not in Database send him back to this site
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
-
         }
 
     }
