@@ -62,6 +62,7 @@ public class UserDataMapper {
             String e = rs.getString("email");
             user.setEmail(e);
         }
+        /* Username */
         user.setUsername(userName);
         return user;
     }

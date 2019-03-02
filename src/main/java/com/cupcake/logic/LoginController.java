@@ -28,7 +28,7 @@ public class LoginController {
 
     public User getUser(String username) throws SQLException {
         UserDataMapper db = new UserDataMapper();
-        return db.getUsertwo(username);
+        return db.getUser(username);
     }
 
 }
