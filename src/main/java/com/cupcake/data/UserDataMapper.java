@@ -57,12 +57,13 @@ public class UserDataMapper {
                         return user;
                     }
                 }
-                return null;
             } catch (SQLException ex) {
                 System.out.println(ex);
             }
         }
-        return null;
+        User user = new User("1231612431265314123",
+                "65112312q31das56d1as6d51qw56e1q5w1eas231qw1x5qw1exq6we","DUMMY");
+        return user;
     }
 
     /**

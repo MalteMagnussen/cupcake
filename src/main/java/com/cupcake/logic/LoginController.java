@@ -28,12 +28,9 @@ public class LoginController {
             return false;
         }
 
-        try {
-            User user = db.getUser(username);
-            return password.equals(user.getPassword());
-        } catch (NullPointerException ex) {
-            return false;
-        }
+        User user = db.getUser(username);
+        return password.equals(user.getPassword());
+
     }
 
     public User getUser(String username) {
