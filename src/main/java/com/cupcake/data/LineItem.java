@@ -9,7 +9,7 @@ package com.cupcake.data;
  *
  * @author
  */
-class LineItem {
+public class LineItem {
 
     /**
      * When a cupcake is added, a new Line Item is created and added to the
@@ -72,7 +72,7 @@ class LineItem {
      */
     @Override
     public String toString() {
-        return "LineItem{" + "quantity=" + quantity + ", cupcake=" + cupcake + '}';
+        return cupcake.toString() +" Quantity: "+ this.quantity + " Price: " + (cupcake.getPrice()*quantity);
     }
 
 }

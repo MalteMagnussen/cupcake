@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.cupcake.data.CupcakeDataMapper;
+import com.cupcake.data.ShoppingCart;
+import com.cupcake.data.LineItem;
 import com.cupcake.data.Top;
 import java.util.List;
 
@@ -100,6 +102,21 @@ public class ShopCommand extends Command {
                     + "</form>"
             );
             /* Form for dropdows END */
+            
+           /* Form for ShoppingCart START */
+           
+           ShoppingCart cart = user.getCart();
+           
+           out.println("<h1> ShoppingCart: </h1>");
+           
+           List<LineItem> items = cart.getLineItems();
+           
+           for(LineItem item : items){
+               out.println("<p style=\"font-size:18px\"> "
+                       + "Cupcake: " + item.toString() + "</p>");
+           }
+           
+           /* Form for ShoppingCart END */
 
             out.println("</body>");
 
