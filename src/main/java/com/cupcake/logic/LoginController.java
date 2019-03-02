@@ -18,14 +18,12 @@ import java.util.logging.Logger;
  */
 public class LoginController {
 
-    UserDataMapper db;
-
     public LoginController() {
-        db = new UserDataMapper();
+      
     }
 
     public boolean isValid(String username, String password) throws SQLException {
-
+        UserDataMapper db = new UserDataMapper();
         User user = db.getUser(username);
         if (!StringUtils.isEmptyOrWhitespaceOnly(password)) {
             return password.equals(user.getPassword());
@@ -35,6 +33,7 @@ public class LoginController {
     }
 
     public User getUser(String username) throws SQLException {
+        UserDataMapper db = new UserDataMapper();
         return db.getUser(username);
     }
 
