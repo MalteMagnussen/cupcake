@@ -28,6 +28,9 @@ public abstract class Command {
 
         /*  Switches on the paths.  */
         switch (path) {
+            case "LoginPage":
+                c = new LoginPageCommand();
+                break;
             case "Login":
                 c = new LoginCommand();
                 break;
@@ -43,9 +46,7 @@ public abstract class Command {
             case "InputUser":
                 c = new InputUserCommand();
                 break;
-            case "LoginPage":
-                c = new LoginPageCommand();
-                break;
+            
             /* If none of the above, then go to an error */
             default: 
                 c = new UnknownCommand();

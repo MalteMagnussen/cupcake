@@ -16,25 +16,24 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class LoginPageCommand extends Command {
+
     /**
-     *  Static HTML site that allows you to log in to CupCake.
-     *   You input your Username and Password.
-     *   Then it sends that on to LoginCommand class and the "Login" URL along
-     *   with the parameters.
+     * Static HTML site that allows you to log in to CupCake. You input your
+     * Username and Password. Then it sends that on to LoginCommand class and
+     * the "Login" URL along with the parameters.
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @Override
-    public void execute(HttpServletRequest request, HttpServletResponse response) 
+    public void execute(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             out.print("<!DOCTYPE html>\n"
                     + "<!--\n"
                     + "To change this license header, choose License Headers in Project Properties.\n"

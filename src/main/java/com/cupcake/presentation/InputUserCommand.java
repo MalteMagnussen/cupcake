@@ -18,14 +18,15 @@ import javax.servlet.http.HttpServletResponse;
  * @author
  */
 public class InputUserCommand extends Command {
+
     /**
-     * Adds the User to the SQL database.
-     * This Method is called from CreateUserCommand.
-     * This Method sends the user to LoginPageCommand.
+     * Adds the User to the SQL database. This Method is called from
+     * CreateUserCommand. This Method sends the user to LoginPageCommand.
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,16 +43,8 @@ public class InputUserCommand extends Command {
         db.addUser(username, password, email);
 
         /* Forward User! */
-        RequestDispatcher rd=request.getRequestDispatcher("LoginPage");
-	rd.forward(request, response);
-
-        
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            out.print("Welcome " + username);
-//
-//            out.print("<a href='LoginPage'>  Buy Cupcakes  </a>");
-//        }
+        RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
+        rd.forward(request, response);
 
     }
 
