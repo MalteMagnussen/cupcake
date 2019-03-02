@@ -8,6 +8,7 @@ package com.cupcake.presentation;
 import com.cupcake.data.User;
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.logic.LoginController;
+import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -41,9 +42,18 @@ public class LoginCommand extends Command {
         String password = request.getParameter("password");
 
         LoginController c = new LoginController();
-
-        boolean valid = c.isValid(username, password);
-
+        
+        boolean valid = false;
+        
+        if (!StringUtils.isNullOrEmpty(password)
+                && !StringUtils.isNullOrEmpty(username)) {
+            try {
+                valid = c.isValid(username, password);
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         HttpSession session = request.getSession();
 
         if (valid) {
@@ -60,7 +70,7 @@ public class LoginCommand extends Command {
             RequestDispatcher rd = request.getRequestDispatcher("Shop");
             rd.forward(request, response);
         }
-        /* else {
+         else {
             // If User is not in Database send him back to this site
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
@@ -68,8 +78,7 @@ public class LoginCommand extends Command {
                 RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
                 rd.include(request, response);
             }
-        } */
-
+        } 
 
     }
 }

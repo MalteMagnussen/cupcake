@@ -14,11 +14,14 @@ public class User {
     /**
      * Basic User Object Class
      */
-    private final String username;
+    private String username;
     private int balance;
-    private final String password;
+    private String password;
     private String email;
     private ShoppingCart cart;
+
+    public User() {
+    }
 
     public void setCart(ShoppingCart cart) {
         this.cart = cart;
@@ -30,11 +33,11 @@ public class User {
 
     public User(String username, String password, String email) {
         this.username = username;
-        this.email = email;
         this.password = password;
+        this.email = email;
     }
 
-    public String getName() {
+    public String getUsername() {
         return username;
     }
 
@@ -54,13 +57,25 @@ public class User {
         return email;
     }
 
-    public void changeEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "User{" + "username=" + username + ", balance=" + balance + ", password=" + password + ", email=" + email + '}';
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

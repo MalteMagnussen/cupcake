@@ -37,9 +37,7 @@ public class UserDataMapper {
      * @throws java.sql.SQLException
      */
     public User getUser(String userName) throws SQLException {
-        String password = " ";
-        int balance = 0;
-        String email = " ";
+        User user = new User();
 
         conn = new DBConnector();
 
@@ -51,22 +49,17 @@ public class UserDataMapper {
         ResultSet rs = stmt.executeQuery(query);
 
         while (rs.next()) {
-
+            /* Password */
             String pass = rs.getString("password");
-            if (pass != null && !pass.isEmpty()) {
-                password = pass;
-            }
-
-            balance = rs.getInt("balance");
-
+            user.setPassword(pass);
+            /* Balance */
+            int balance = rs.getInt("balance");
+            user.addBalance(balance);
+            /*  E-mail */ 
             String e = rs.getString("email");
-            if (e != null && !e.isEmpty()) {
-                email = e;
-            }
+            user.setEmail(e);
         }
-
-        User user = new User(userName, password, email);
-        user.addBalance(balance);
+        user.setUsername(userName);
         return user;
     }
 
@@ -169,14 +162,14 @@ public class UserDataMapper {
     }
 
     public User getUsertwo(String name) throws SQLException {
+        User user = new User();
         List<User> users = getUsers();
-        for (User user : users) {
-            if (user.getName().equals(name)) {
-                return user;
+        for (User obj : users) {
+            if (obj.getUsername().equals(name)) {
+                return obj;
             }
         }
-        return null; // FIX THIS SHIT - Make User so the constructor 
-                                        // doesn't require any fields.
+        return user;
     }
 
 }

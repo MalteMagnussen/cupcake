@@ -7,6 +7,7 @@ package com.cupcake.logic;
 
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
+import com.mysql.cj.util.StringUtils;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,20 +17,20 @@ import java.util.logging.Logger;
  * @author Mikkel
  */
 public class LoginController {
-    
+
     UserDataMapper db;
 
     public LoginController() {
         db = new UserDataMapper();
     }
 
-    public boolean isValid(String username, String password) {
-        try {
-            User user = db.getUsertwo(username);
+    public boolean isValid(String username, String password) throws SQLException {
+
+        User user = db.getUser(username);
+        if (!StringUtils.isEmptyOrWhitespaceOnly(password)) {
             return password.equals(user.getPassword());
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return false;
     }
 

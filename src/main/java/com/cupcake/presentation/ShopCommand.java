@@ -58,7 +58,7 @@ public class ShopCommand extends Command {
             out.println("<body>");
 
             /* Shows which user is logged in */
-            out.println("<h1> " + user.getName() + " is logged in.</h1>");
+            out.println("<h1> " + user.getUsername() + " is logged in.</h1>");
             
             /* Shows the users balance */
             out.println("<p style=\"font-size:18px\"> "
