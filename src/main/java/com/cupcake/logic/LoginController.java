@@ -7,7 +7,6 @@ package com.cupcake.logic;
 
 import com.cupcake.data.UserDataMapper;
 import com.cupcake.data.User;
-import com.mysql.cj.util.StringUtils;
 
 /**
  *
@@ -22,31 +21,19 @@ public class LoginController {
     }
 
     public boolean isValid(String username, String password) {
-        if (StringUtils.isNullOrEmpty(username)) {
+        if (username == null || username.isEmpty()) {
             return false;
         }
-        if (StringUtils.isNullOrEmpty(password)) {
+        if (password == null || password.isEmpty()) {
             return false;
         }
 
-        String userpass = "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO WORK PLS";
         try {
             User user = db.getUser(username);
-            
-            if (StringUtils.isNullOrEmpty(user.getPassword())) {
-                return false;
-            } else if (user.getPassword().isEmpty()) {
-                return false;
-            } else if (StringUtils.isNullOrEmpty(password)) {
-                return false;
-            }
-            
-            userpass = user.getPassword();
-        } catch (NullPointerException e) {
+            return password.equals(user.getPassword());
+        } catch (NullPointerException ex) {
             return false;
         }
-
-        return password.equals(userpass);
     }
 
     public User getUser(String username) {
