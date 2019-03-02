@@ -51,11 +51,6 @@ public class LoginCommand extends Command {
             try {
                 User user = c.getUser(username);
                 session.setAttribute("user", user);
-
-//            session.setAttribute("cart", new ShoppingCart());
-
-                /* Shoppingcart is on User now */
-//            User u = (User) session.getAttribute("user");
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -76,23 +71,6 @@ public class LoginCommand extends Command {
             }
         } */
 
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet UserServlet</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-//            if (valid) {
-//                out.println("<h1>Username=" + username + "</h1>");
-//            } else {
-//                out.println("<h1> INVALID </h1>");
-//            }
-//            out.println("<a href='Shop'>  Buy Cupcakes  </a>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
 
     }
 }
