@@ -16,11 +16,11 @@ import java.util.logging.Logger;
  * @author Mikkel
  */
 public class LoginController {
+    
+    UserDataMapper db;
 
-    private UserDataMapper db;
-
-    public LoginController(UserDataMapper db) {
-        this.db = db;
+    public LoginController() {
+        db = new UserDataMapper();
     }
 
     public boolean isValid(String username, String password) {

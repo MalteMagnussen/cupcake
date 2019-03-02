@@ -5,7 +5,6 @@
  */
 package com.cupcake.data;
 
-import com.mysql.cj.util.StringUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,28 +35,34 @@ public class UserDataMapper {
      * @throws java.sql.SQLException
      */
     public User getUser(String userName) throws SQLException {
-        String password = "";
+        String password = " ";
         int balance = 0;
-        String email = "";
-        if (!StringUtils.isNullOrEmpty(userName)) {
+        String email = " ";
 
-            conn = new DBConnector();
+        conn = new DBConnector();
 
-            String query = "SELECT * FROM cupcake.users "
-                    + "WHERE `name`='" + userName + "';";
+        String query = "SELECT * FROM cupcake.users "
+                + "WHERE `name`='" + userName + "';";
 
-            Connection connection = conn.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
 
-            while (rs.next()) {
-                password = rs.getString("password");
-                balance = rs.getInt("balance");
-                email = rs.getString("email");
-
+        while (rs.next()) {
+            
+            String pass = rs.getString("password");
+            if (pass != null){
+                password = pass;
             }
-
+            
+            balance = rs.getInt("balance");
+            
+            String e = rs.getString("email");
+            if (e != null && !e.isEmpty()){
+                email = e;
+            }
         }
+
         User user = new User(userName, password, email);
         user.addBalance(balance);
         return user;

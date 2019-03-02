@@ -40,8 +40,7 @@ public class LoginCommand extends Command {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        UserDataMapper db = new UserDataMapper();
-        LoginController c = new LoginController(db);
+        LoginController c = new LoginController();
 
         boolean valid = c.isValid(username, password);
 
