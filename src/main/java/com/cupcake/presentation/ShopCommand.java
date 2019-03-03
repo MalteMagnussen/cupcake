@@ -60,7 +60,7 @@ public class ShopCommand extends Command {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        /* Instance of the relevant DataMapper */
+        /* Instance of relevant DataMapper */
         CupcakeDataMapper db = new CupcakeDataMapper();
 
         try (PrintWriter out = response.getWriter()) {

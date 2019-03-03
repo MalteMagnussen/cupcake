@@ -31,8 +31,10 @@ public class ProductDispatcher extends Command {
 "http://localhost:8084/Cupcake/Product?origin=addProduct&bottom=Almond&top=Blue+cheese&qty=12&submit=Add+to+cart"
     
             - Takes query of add balance and adds that to SQL.
+                Not done in ShopCommand yet.
     
             - Takes query of invoice and adds that to SQL and clears shoppingcart.
+                Not done in ShopCommand yet.
     
         Forwards back to Shop Command afterwards with new shit in session.
         
