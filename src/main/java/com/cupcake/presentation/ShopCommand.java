@@ -61,15 +61,15 @@ public class ShopCommand extends Command {
 
             /* Shows which user is logged in */
             out.println("<h1> " + user.getUsername() + " is logged in.</h1>");
-            
+
             /* Shows the users balance */
             out.println("<p style=\"font-size:18px\"> "
                     + "Users Balance: " + user.getBalance() + "</p>");
-            
+
             /* Pulling the tops and bottoms of the cupcakes out of SQL */
             List<Top> tops = db.getTops();
             List<Bottom> bots = db.getBottoms();
-            
+
             /* Form for dropdowns BEGIN */
             out.println(
                     "<form id=\"addProduct\" action=\"Product\" method=\"get\">\n"
@@ -79,20 +79,20 @@ public class ShopCommand extends Command {
                     + "<tbody>\n"
                     + "<tr>\n"
                     + "<td><select name=\"bottom\" id=\"bottomSelect\">\n");
-            
+
             for (Bottom bot : bots) {
-                out.print("<option value=\"" + bot.getName() 
+                out.print("<option value=\"" + bot.getName()
                         + "\">" + bot.getName() + "</option>\n");
             }
-            
+
             out.print("<select>\n");
             out.print("<td><select name=\"top\" id=\"topSelect\">\n");
-            
+
             for (Top top : tops) {
-                out.print("<option value=\"" + top.getName() 
+                out.print("<option value=\"" + top.getName()
                         + "\">" + top.getName() + "</option>\n");
             }
-            
+
             out.print("</select>\n"
                     + "<td><input type=\"text\" name=\"qty\" placeholder=\"quantity\" id=\"qtyInput\"></td>\n"
                     + "<td><input type=\"submit\" name=\"submit\" value=\"Add to cart\"></td><td><span id=\"errorContainer\"></span></td>\n"
@@ -102,22 +102,20 @@ public class ShopCommand extends Command {
                     + "</form>"
             );
             /* Form for dropdows END */
-            
-           /* Form for ShoppingCart START */
-           
-           ShoppingCart cart = user.getCart();
-           
-           out.println("<h1> ShoppingCart: </h1>");
-           
-           List<LineItem> items = cart.getLineItems();
-           
-           for(LineItem item : items){
-               out.println("<p style=\"font-size:18px\"> "
-                       + "Cupcake: " + item.toString() + "</p>");
-           }
-           
-           /* Form for ShoppingCart END */
 
+            /* Form for ShoppingCart START */
+            ShoppingCart cart = user.getCart();
+
+            out.println("<h1> ShoppingCart: </h1>");
+
+            List<LineItem> items = cart.getLineItems();
+
+            for (LineItem item : items) {
+                out.println("<p style=\"font-size:18px\"> "
+                        + "Cupcake: " + item.toString() + "</p>");
+            }
+
+            /* Form for ShoppingCart END */
             out.println("</body>");
 
             out.println("</html>");
