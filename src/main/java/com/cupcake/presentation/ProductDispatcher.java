@@ -21,6 +21,7 @@ public class ProductDispatcher extends Command {
         Takes Requests from Shop Command. 
         
             - Takes query of a cupcake and adds that shit to cart.
+"http://localhost:8084/Cupcake/Product?origin=addProduct&bottom=Almond&top=Blue+cheese&qty=12&submit=Add+to+cart"
     
             - Takes query of add balance and adds that to SQL.
     
