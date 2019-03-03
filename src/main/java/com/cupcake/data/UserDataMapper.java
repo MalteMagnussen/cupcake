@@ -141,6 +141,11 @@ public class UserDataMapper {
         }
     }
 
+    /**
+     * Get all Users.
+     * @return List of Users.
+     * @throws SQLException 
+     */
     public List<User> getUsers() throws SQLException {
 
         List<User> users = new ArrayList<>();
@@ -165,15 +170,15 @@ public class UserDataMapper {
         return users;
     }
 
-    public User getUsertwo(String name) throws SQLException {
-        User user = new User();
-        List<User> users = getUsers();
-        for (User obj : users) {
-            if (obj.getUsername().equals(name)) {
-                return obj;
-            }
-        }
-        return user;
-    }
+//    public User getUsertwo(String name) throws SQLException {
+//        User user = new User();
+//        List<User> users = getUsers();
+//        for (User obj : users) {
+//            if (obj.getUsername().equals(name)) {
+//                return obj;
+//            }
+//        }
+//        return user;
+//    }
 
 }

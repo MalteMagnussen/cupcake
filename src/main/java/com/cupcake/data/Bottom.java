@@ -11,43 +11,27 @@ package com.cupcake.data;
  */
 public class Bottom {
 
+    /*
+    
+        Basic Bottom Object Class
+    
+    */
     private final String name;
     private final int price;
 
-    /**
-     * Constructor.
-     *
-     * @param name
-     * @param price
-     */
     public Bottom(String name, int price) {
         this.name = name;
         this.price = price;
     }
 
-    /**
-     * Get Name of the Bottom
-     *
-     * @return String
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Get the price
-     *
-     * @return int
-     */
     public int getPrice() {
         return price;
     }
 
-    /**
-     * To String
-     *
-     * @return String
-     */
     @Override
     public String toString() {
         return "Bottom{" + "name=" + name + ", price=" + price + '}';
