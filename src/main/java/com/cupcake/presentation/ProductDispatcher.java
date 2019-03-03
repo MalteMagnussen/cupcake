@@ -71,7 +71,7 @@ public class ProductDispatcher extends Command {
             int qty = (int) Integer.parseInt((String) request.getParameter("qty"));
             lineitem.addQuantity(qty);
 
-            /* Get cart so we can add a cupcake to it */
+            /* Get cart so we can add the cupcake to it */
             ShoppingCart cart = user.getCart();
             cart.addLineItem(lineitem);
 
