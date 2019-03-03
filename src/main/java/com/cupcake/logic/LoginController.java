@@ -33,6 +33,13 @@ public class LoginController {
         return password.equals(user.getPassword());
     }
 
+    /**
+     * Pull User out of Database. Hopefully with right name. 
+     * King of NULLPOINTEREXCEPTIONS
+     * @param username
+     * @return
+     * @throws SQLException 
+     */
     public User getUser(String username) throws SQLException {
         UserDataMapper db = new UserDataMapper();
         return db.getUser(username);
