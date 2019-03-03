@@ -43,7 +43,7 @@ public class ProductDispatcher extends Command {
         /* Pulling the user out of Session */
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        
+
         // If user wants to add a cupcake to cart.
         cupcakeToCart(request, user, session);
 
@@ -68,7 +68,9 @@ public class ProductDispatcher extends Command {
 
             /* Make LineItem */
             LineItem lineitem = new LineItem(cupcake);
-            int qty = (int) Integer.parseInt((String) request.getParameter("qty"));
+            int qty = (int) Integer.parseInt(
+                    (String) request.getParameter("qty")
+            );
             lineitem.addQuantity(qty);
 
             /* Get cart so we can add the cupcake to it */
