@@ -28,6 +28,9 @@ public class LoginCommand extends Command {
 
     /**
      * LoginCommand. Starts the Session.
+     * Forwards to Shop if Login is correct.
+     * Sends you back to LoginPage with an error message (TODO errormessage)
+     * if login is invalid.
      *
      * @param request
      * @param response
