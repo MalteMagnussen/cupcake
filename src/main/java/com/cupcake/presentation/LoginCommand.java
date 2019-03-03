@@ -57,9 +57,12 @@ public class LoginCommand extends Command {
 
         HttpSession session = request.getSession();
 
+        /* Put User on session if he's valid */
         if (valid) {
             try {
+                // Pull him out of SQL
                 User user = (User) c.getUser(username);
+                // Put him on session
                 session.setAttribute("user", user);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
