@@ -72,7 +72,7 @@ public class LoginCommand extends Command {
 
             /* If User is not in Database send him back to LoginPage */
         } else {
-
+            /* Should include an error message that password or username is wrong */
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
         }
