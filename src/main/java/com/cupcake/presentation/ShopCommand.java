@@ -54,10 +54,13 @@ public class ShopCommand extends Command {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
 
+            /* HEAD START */
             out.println("<head>");
             out.println("<title>Servlet ShopServlet</title>");
             out.println("</head>");
+            /* HEAD END */
 
+            /* BODY START */
             out.println("<body>");
 
             /* Shows which user is logged in */
@@ -104,7 +107,7 @@ public class ShopCommand extends Command {
             );
             /* Form for dropdows END */
 
- /* Form for ShoppingCart START */
+            /* Form for ShoppingCart START */
             ShoppingCart cart = user.getCart();
 
             out.println("<h1> ShoppingCart: </h1>");
@@ -118,10 +121,10 @@ public class ShopCommand extends Command {
                             + "Cupcake: " + item.toString() + "</p>");
                 }
             }
-
             /* Form for ShoppingCart END */
             
             out.println("</body>");
+            /* BODY END */
 
             out.println("</html>");
             /* HTML END */
