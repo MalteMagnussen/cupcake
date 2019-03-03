@@ -69,9 +69,8 @@ public class LoginCommand extends Command {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-            /* If User is not in Database send him back to LoginPage */
         } else {
+            /* If User is not in Database send him back to LoginPage */
             /* Should include an error message that password or username is wrong */
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
