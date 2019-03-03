@@ -28,14 +28,28 @@ public class ShopCommand extends Command {
 
     /* 
     
-    User comes here from LoginCommand.
+        User comes here from LoginCommand.
+
+        Shows who is logged in. Shows their balance.
+
+        Displays a dropdown of Toppings and a dropdown of Bottoms.
+        Has a field to input Quantity of Cupcakes you want to add to your cart.
+        Dropdown sends Query like: 
+        - "http://localhost:8084/Cupcake/Product?origin=addProduct&bottom=Almond&top=Blue+cheese&qty=12&submit=Add+to+cart"
+        to ProductCommand.
     
-    Shows who is logged in. Shows their balance.
+        TO DO:
+            - Button to check out.
+                * Should create an invoice from the cart and then reset the cart.
+                * Should put that invoice into SQL.
+                * Should remove the appropriate amount of money from the SQL.
+                * These things should happen in ProductCommand or a similar class.
     
-    Also displays a dropdown of Toppings and a dropdown of Bottoms.
-    Also has a field to input Quantity of Cupcakes you want to add to your cart.
-    
-    Uses ProductCommand.
+            - Button to add Balance.
+                * Should add more money to the User.
+                * Remember to update the SQL aswell. 
+
+        Uses ProductCommand.
     
      */
     @Override
