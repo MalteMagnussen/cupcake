@@ -53,6 +53,12 @@ public class ProductDispatcher extends Command {
     }
 
     private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
+        
+        /*  TO DO
+                Check if Cupcake already is in cart.
+                If it is, just increase its LineItems Quantity with given amount.
+        */ 
+        
         /* If user wants to add a cupcake to cart */
         String origin = (String) request.getParameter("origin");
         if (origin == null) {
