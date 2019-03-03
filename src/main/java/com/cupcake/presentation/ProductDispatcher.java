@@ -5,13 +5,19 @@
  */
 package com.cupcake.presentation;
 
+import com.cupcake.data.Cupcake;
+import com.cupcake.data.CupcakeDataMapper;
+import com.cupcake.data.LineItem;
+import com.cupcake.data.ShoppingCart;
+import com.cupcake.data.User;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * 
+ *
  *
  * @author
  */
@@ -29,12 +35,48 @@ public class ProductDispatcher extends Command {
     
         Forwards back to Shop Command afterwards with new shit in session.
         
-    */
-    
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        /* Pulling the user out of Session */
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        
+        // If user wants to add a cupcake to cart.
+        cupcakeToCart(request, user, session);
+
     }
- 
+
+    private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
+        /* If user wants to add a cupcake to cart */
+        String origin = (String) request.getParameter("origin");
+        if (origin == null) {
+
+        } else {
+            /* Get info about the cupcake */
+            String topName = (String) request.getParameter("top");
+            String botName = (String) request.getParameter("bottom");
+
+            /* Create cupcake */
+            CupcakeDataMapper db = new CupcakeDataMapper();
+            Cupcake cupcake = db.makeCupcake(topName, botName);
+
+            /* Make LineItem */
+            LineItem lineitem = new LineItem(cupcake);
+            int qty = (int) Integer.parseInt((String) request.getParameter("qty"));
+            lineitem.addQuantity(qty);
+
+            /* Get cart so we can add a cupcake to it */
+            ShoppingCart cart = user.getCart();
+            cart.addLineItem(lineitem);
+
+            /* Put cart back on User */
+            user.setCart(cart);
+
+            /* Put finished User back on Session */
+            session.setAttribute("user", user);
+        }
+    }
 
 }

@@ -24,11 +24,9 @@ public class CupcakeDataMapper {
     private DBConnector conn;
 
     public CupcakeDataMapper() {
-        
+
     }
 
-    
-    
     /**
      * Get a cupcake
      *
@@ -37,12 +35,11 @@ public class CupcakeDataMapper {
      * @return
      */
     public Cupcake makeCupcake(String topName, String bottomName) {
-        if (bottomName != null || topName != null) {
-            Top top = getTop(topName);
-            Bottom bottom = getBottom(bottomName);
-            return new Cupcake(top, bottom);
-        }
-        return null;
+
+        Top top = getTop(topName);
+        Bottom bottom = getBottom(bottomName);
+        return new Cupcake(top, bottom);
+
     }
 
     /**
