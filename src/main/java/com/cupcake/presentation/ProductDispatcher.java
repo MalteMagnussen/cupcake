@@ -11,6 +11,7 @@ import com.cupcake.data.LineItem;
 import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +47,9 @@ public class ProductDispatcher extends Command {
         // If user wants to add a cupcake to cart.
         cupcakeToCart(request, user, session);
 
+        // Send user back to shop
+        RequestDispatcher rd = request.getRequestDispatcher("Shop");
+        rd.forward(request, response);
     }
 
     private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
