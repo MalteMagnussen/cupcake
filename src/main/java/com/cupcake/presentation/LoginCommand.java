@@ -57,24 +57,22 @@ public class LoginCommand extends Command {
 
         HttpSession session = request.getSession();
 
-        /* Put User on session if he's valid */
+        /* If User is in Database send him on to the Shop */
         if (valid) {
             try {
-                // Pull him out of SQL
+                /* Pull user out of SQL */
                 User user = (User) c.getUser(username);
-                // Put him on session
+                /* Put user on session */
                 session.setAttribute("user", user);
+                RequestDispatcher rd = request.getRequestDispatcher("Shop");
+                rd.forward(request, response);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
-        /* If User is in Database send him on to the Shop */
-        if (valid) {
-            RequestDispatcher rd = request.getRequestDispatcher("Shop");
-            rd.forward(request, response);
+            /* If User is not in Database send him back to LoginPage */
         } else {
-            // If User is not in Database send him back to LoginPage
+
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
         }
