@@ -50,6 +50,7 @@ public class ShopCommand extends Command {
         CupcakeDataMapper db = new CupcakeDataMapper();
 
         try (PrintWriter out = response.getWriter()) {
+            /* HTML START */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
 
@@ -103,22 +104,27 @@ public class ShopCommand extends Command {
             );
             /* Form for dropdows END */
 
-            /* Form for ShoppingCart START */
+ /* Form for ShoppingCart START */
             ShoppingCart cart = user.getCart();
 
             out.println("<h1> ShoppingCart: </h1>");
 
-            List<LineItem> items = cart.getLineItems();
+            if (cart == null) {
 
-            for (LineItem item : items) {
-                out.println("<p style=\"font-size:18px\"> "
-                        + "Cupcake: " + item.toString() + "</p>");
+            } else {
+                List<LineItem> items = cart.getLineItems();
+                for (LineItem item : items) {
+                    out.println("<p style=\"font-size:18px\"> "
+                            + "Cupcake: " + item.toString() + "</p>");
+                }
             }
 
             /* Form for ShoppingCart END */
+            
             out.println("</body>");
 
             out.println("</html>");
+            /* HTML END */
         }
     }
 
