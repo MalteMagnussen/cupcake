@@ -7,7 +7,7 @@ package com.cupcake.presentation;
 
 import com.cupcake.data.User;
 import com.cupcake.data.UserDataMapper;
-import com.cupcake.logic.LoginController;
+import com.cupcake.logic.UserController;
 import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +44,7 @@ public class LoginCommand extends Command {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
-        LoginController c = new LoginController();
+        UserController c = new UserController();
 
         boolean valid = false;
 

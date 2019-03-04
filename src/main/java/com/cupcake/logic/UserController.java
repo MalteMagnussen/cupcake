@@ -13,9 +13,9 @@ import java.sql.SQLException;
  *
  * @author Mikkel
  */
-public class LoginController {
+public class UserController {
 
-    public LoginController() {
+    public UserController() {
       
     }
 
