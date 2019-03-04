@@ -22,9 +22,8 @@ public class LineItemDataMapper {
      * Get invite ID.
      *
      * @return ID.
-     * @throws DataException
      */
-    public int getInvID() throws DataException {
+    public int getInvID() {
         try {
             conn = new DBConnector();
 
