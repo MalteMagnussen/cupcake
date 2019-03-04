@@ -38,8 +38,6 @@ public abstract class Command {
         commands.put("CreateUser", new CreateUserCommand());
         commands.put("InputUser", new InputUserCommand());
         
-        
-               
         c = commands.getOrDefault(origin, new UnknownCommand());
         
         return c;
