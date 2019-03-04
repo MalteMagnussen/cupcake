@@ -48,7 +48,7 @@ public class LoginPageCommand extends Command {
                     + "    </head>\n"
                     + "    <body>\n"
                     + " <p> Login: \n</p> \n"
-                    + "        <form method=\"post\" action=\"Login\">\n"
+                    + "        <form action=\"Controller?command=Login\" method=\"post\">"
                     + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
                     + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
                     + "            <input type=\"submit\" value=\"Login\"/>\n"

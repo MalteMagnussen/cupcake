@@ -134,7 +134,7 @@ public class ShopCommand extends Command {
         
         /* Form for dropdowns BEGIN */
         out.println(
-                "<form id=\"addProduct\" action=\"Product\" method=\"get\">\n"
+                "<form action=\"Controller?command=Product\" method=\"post\">"
                         + "<input type=\"hidden\" name=\"origin\" value=\"addProduct\">\n"
                         + "<table class=\"table table-striped\">\n"
                         + "<thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>\n"

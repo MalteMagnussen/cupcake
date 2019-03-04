@@ -39,6 +39,7 @@ public class CreateUserCommand extends Command {
                     + "    </head>\n"
                     + "    <body>\n"
                     + "        <form method=\"post\" action=\"InputUser\">\n"
+                    + "        <input type=\"hidden\" name=\"command\" value=\"InputUser\">\n"
                     + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
                     + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
                     + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"

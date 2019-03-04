@@ -42,7 +42,7 @@ public class InputUserCommand extends Command {
         db.addUser(username, password, email);
 
         /* Forward User! */
-        RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
+        RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
         rd.forward(request, response);
 
     }

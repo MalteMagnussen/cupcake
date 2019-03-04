@@ -67,7 +67,7 @@ public class LoginCommand extends Command {
                 /* Put user on session */
                 session.setAttribute("user", user);
                 /* Forward to Shop */
-                response.sendRedirect("Shop");
+                response.sendRedirect("Controller?command=Shop");
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +75,7 @@ public class LoginCommand extends Command {
         } else {
             /* If User is not in Database send him back to LoginPage */
             request.setAttribute("errormessage", "User not registered");
-            RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
+            RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
             rd.forward(request, response);
         }
 
