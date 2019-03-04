@@ -75,7 +75,7 @@ public class LoginCommand extends Command {
             }
         } else {
             /* If User is not in Database send him back to LoginPage */
- /* Should include an error message that password or username is wrong */
+            request.setAttribute("errormessage", "User not registered");
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
         }
