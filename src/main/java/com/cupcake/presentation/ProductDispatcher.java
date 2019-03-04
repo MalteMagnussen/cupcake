@@ -11,6 +11,7 @@ import com.cupcake.data.LineItem;
 import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -75,6 +76,8 @@ public class ProductDispatcher extends Command {
             Cupcake cupcake = db.makeCupcake(topName, botName);
 
             /* Make LineItem */
+            // If quantity field is empty you get a 
+            // java.lang.NumberFormatException: For input string: ""
             LineItem lineitem = new LineItem(cupcake);
             int qty = (int) Integer.parseInt(
                     (String) request.getParameter("qty")
@@ -84,8 +87,15 @@ public class ProductDispatcher extends Command {
             /* Get cart so we can add the cupcake to it */
             // Throws nullpointer if cart is empty / null. Make new cart.
             // Throws nullpointer when you try to add cupcake to cart.
-            ShoppingCart cart = user.getCart();
-            // Nullpointer in line above.
+            ShoppingCart cart = new ShoppingCart();
+            ShoppingCart usercart = user.getCart();
+            if (usercart != null && usercart.getLineItems() != null){
+                List<LineItem> items = usercart.getLineItems();
+                for (LineItem item : items){
+                    cart.addLineItem(item);
+                }
+            }
+            // Nullpointer somewhere here.
             cart.addLineItem(lineitem);
 
             /* Put cart back on User */
