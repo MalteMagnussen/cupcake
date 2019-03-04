@@ -72,7 +72,7 @@ public class LineItem {
      */
     @Override
     public String toString() {
-        return cupcake.toString() +" Quantity: "+ this.quantity + " Price: " + (cupcake.getPrice()*quantity);
+        return cupcake.toString() +" Quantity: "+ this.quantity + " Total Price: " + (cupcake.getPrice()*quantity);
     }
 
 }

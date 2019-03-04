@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <a href="localhost:8084/Cupcake/?command=LoginPage">Login</a>
-        <a href="localhost:8084/Cupcake/jsp/CreateUser.jsp">Create User</a>
+        <a href="Controller?command=LoginPage">Login</a>
+        <a href="jsp/CreateUser.jsp">Create User</a>
     </body>
 </html>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ *  
  * @author
  */
 public class CreateUserCommand extends Command {
@@ -38,8 +38,7 @@ public class CreateUserCommand extends Command {
                     + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
                     + "    </head>\n"
                     + "    <body>\n"
-                    + "        <form method=\"post\" action=\"InputUser\">\n"
-                    + "        <input type=\"hidden\" name=\"command\" value=\"InputUser\">\n"
+                    + "        <form method=\"post\" action=\"Controller?command=InputUser\">\n"
                     + "            Name:        <input type=\"text\" name=\"username\"/><br/>\n"
                     + "            Password:    <input type=\"text\" name=\"password\"/><br/>\n"
                     + "            Email:       <input type=\"text\" name=\"email\"/><br/>\n"
