@@ -72,12 +72,14 @@ public class ProductDispatcher extends Command {
             String botName = (String) request.getParameter("bottom");
 
             /* Create cupcake */
+            // Protect from null
             CupcakeDataMapper db = new CupcakeDataMapper();
             Cupcake cupcake = db.makeCupcake(topName, botName);
 
             /* Make LineItem */
             // If quantity field is empty you get a 
             // java.lang.NumberFormatException: For input string: ""
+            // Protect from null
             LineItem lineitem = new LineItem(cupcake);
             int qty = (int) Integer.parseInt(
                     (String) request.getParameter("qty")
@@ -85,17 +87,20 @@ public class ProductDispatcher extends Command {
             lineitem.addQuantity(qty);
 
             /* Get cart so we can add the cupcake to it */
-            // Throws nullpointer if cart is empty / null. Make new cart.
-            // Throws nullpointer when you try to add cupcake to cart.
             ShoppingCart cart = new ShoppingCart();
-            ShoppingCart usercart = user.getCart();
+            ShoppingCart usercart = null;
+            if (user.getCart() != null){
+                usercart = user.getCart();
+            }
             if (usercart != null && usercart.getLineItems() != null){
                 List<LineItem> items = usercart.getLineItems();
                 for (LineItem item : items){
                     cart.addLineItem(item);
                 }
             }
-            // Nullpointer somewhere here.
+            
+            // Nullpointer somewhere here. On the LineItem.
+            // Protect Lineitem from Nullpointer
             cart.addLineItem(lineitem);
 
             /* Put cart back on User */

@@ -67,8 +67,7 @@ public class LoginCommand extends Command {
                 /* Put user on session */
                 session.setAttribute("user", user);
                 /* Forward to Shop */
-                RequestDispatcher rd = request.getRequestDispatcher("Shop");
-                rd.forward(request, response);
+                response.sendRedirect("Shop");
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
