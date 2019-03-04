@@ -40,66 +40,63 @@ public class LoginCommand extends Command {
 
         String origin = (String) request.getParameter("origin");
 
-        if (origin == null) {
+        if (null == origin) {
 
-        } else if (origin.equals("login")) {
-
-            /* Get Parameters from the URL. (From the HTTP request) */
-            String username = (String) request.getParameter("username");
-            String password = (String) request.getParameter("password");
-
-            UserController c = new UserController();
-
-            boolean valid = false;
-
-            /* Check if User exists in the SQL database */
-            if (!StringUtils.isNullOrEmpty(password)
-                    && !StringUtils.isNullOrEmpty(username)) {
-                try {
-                    valid = c.isValid(username, password);
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        } else switch (origin) {
+            case "login":
+                {
+                    /* Get Parameters from the URL. (From the HTTP request) */
+                    String username = (String) request.getParameter("username");
+                    String password = (String) request.getParameter("password");
+                    UserController c = new UserController();
+                    boolean valid = false;
+                    /* Check if User exists in the SQL database */
+                    if (!StringUtils.isNullOrEmpty(password)
+                            && !StringUtils.isNullOrEmpty(username)) {
+                        try {
+                            valid = c.isValid(username, password);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }       HttpSession session = request.getSession();
+                    /* If User is in Database send him on to the Shop */
+                    if (valid) {
+                        try {
+                            /* Pull user out of SQL */
+                            User user = (User) c.getUser(username);
+                            /* Put user on session */
+                            session.setAttribute("user", user);
+                            /* Forward to Shop */
+                            response.sendRedirect("jsp/Shop.jsp");
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    } else {
+                        /* If User is not in Database send him back to LoginPage */
+                        request.setAttribute("errormessage", "User not registered");
+                        RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
+                        rd.forward(request, response);
+                    }       break;
                 }
-            }
-
-            HttpSession session = request.getSession();
-
-            /* If User is in Database send him on to the Shop */
-            if (valid) {
-                try {
-                    /* Pull user out of SQL */
-                    User user = (User) c.getUser(username);
-                    /* Put user on session */
-                    session.setAttribute("user", user);
-                    /* Forward to Shop */
-                    response.sendRedirect("jsp/Shop.jsp");
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                    Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+            case "registration":
+                {
+                    /* Get the username, email and password from the URL Parameters.*/
+                    String username = (String) request.getParameter("username");
+                    String email = (String) request.getParameter("email");
+                    String password = (String) request.getParameter("password");
+                    /* Instance of the relevant DataMapper */
+                    UserDataMapper db = new UserDataMapper();
+                    /* Insert the User into the SQL Database */
+                    db.addUser(username, password, email);
+                    /* Forward User! */
+                    RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
+                    rd.forward(request, response);
+                    break;
                 }
-            } else {
-                /* If User is not in Database send him back to LoginPage */
-                request.setAttribute("errormessage", "User not registered");
-                RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
-                rd.forward(request, response);
-            }
-
-        } else if (origin.equals("registration")){
-            /* Get the username, email and password from the URL Parameters.*/
-            String username = (String) request.getParameter("username");
-            String email = (String) request.getParameter("email");
-            String password = (String) request.getParameter("password");
-
-            /* Instance of the relevant DataMapper */
-            UserDataMapper db = new UserDataMapper();
-
-            /* Insert the User into the SQL Database */
-            db.addUser(username, password, email);
-
-            /* Forward User! */
-            RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
-            rd.forward(request, response);
+            default:
+                break;
         }
     }
 }
