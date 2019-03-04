@@ -32,6 +32,37 @@ public class UserDataMapper {
     public UserDataMapper() {
     }
 
+    public void removeBalance(String name, int balance) {
+        int end = balance;
+        try {
+        String query = "SELECT balance FROM cupcake.users WHERE username=" + name +";";
+
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            int startBalance = rs.getInt("balance");
+            if(startBalance <= 0){
+                throw new IllegalArgumentException();
+            }
+            
+            end = startBalance -balance;
+        }
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+        try {
+        String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
+                + " VALUES ("+ name+ ", ?);";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
+            ps.setInt(1, end);
+            ps.executeUpdate();
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+    
     /**
      * Returns a User
      *
