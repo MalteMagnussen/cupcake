@@ -69,6 +69,11 @@ public class UserDataMapper {
         }
     }
 
+    /**
+     * 
+     * @param user
+     * @param balance 
+     */
     public void removeBalance(User user, int balance) {
         String name = user.getUsername();
         int end = balance;
