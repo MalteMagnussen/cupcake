@@ -2,8 +2,8 @@
 
 <jsp:include page='/jsp/sitemenus.jsp'></jsp:include>
 
-<h2>Cupcake</h2>
+    <h2>Cupcake - Home</h2>
 
-<p>Benjamin, Malte, Nikolaj, Mikkel</p>
+    <p>Benjamin, Malte, Nikolaj, Mikkel</p>
 
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>

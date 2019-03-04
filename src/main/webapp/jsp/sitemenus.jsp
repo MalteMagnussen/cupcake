@@ -1,18 +1,4 @@
-<%-- 
-    Document   : sitemenus
-    Created on : Mar 4, 2019, 4:29:34 PM
-    Author     : Malte
---%>
+        
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <a href="Controller?command=LoginPage">Login</a>
-        <a href="jsp/CreateUser.jsp">Create User</a>
-    </body>
-</html>
+<a href="Controller?command=LoginPage">Login</a>
+<a href="jsp/CreateUser.jsp">Create User</a>
