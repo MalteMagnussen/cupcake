@@ -32,37 +32,75 @@ public class UserDataMapper {
     public UserDataMapper() {
     }
 
+    /**
+     * remove balance from user
+     *
+     * @param name
+     * @param balance
+     */
     public void removeBalance(String name, int balance) {
         int end = balance;
         try {
-        String query = "SELECT balance FROM cupcake.users WHERE username=" + name +";";
+            String query = "SELECT balance FROM cupcake.users WHERE username=" + name + ";";
 
-        Connection connection = conn.getConnection();
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
+            Connection connection = conn.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
 
-        while (rs.next()) {
-            int startBalance = rs.getInt("balance");
-            if(startBalance <= 0){
-                throw new IllegalArgumentException();
+            while (rs.next()) {
+                int startBalance = rs.getInt("balance");
+                if (startBalance <= 0) {
+                    throw new IllegalArgumentException();
+                }
+
+                end = startBalance - balance;
             }
-            
-            end = startBalance -balance;
-        }
-        } catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         try {
-        String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
-                + " VALUES ("+ name+ ", ?);";
+            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             System.out.println(ex);
         }
     }
-    
+
+    public void removeBalance(User user, int balance) {
+        String name = user.getUsername();
+        int end = balance;
+        try {
+            String query = "SELECT balance FROM cupcake.users WHERE username=" + name + ";";
+
+            Connection connection = conn.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            while (rs.next()) {
+                int startBalance = rs.getInt("balance");
+                if (startBalance <= 0) {
+                    throw new IllegalArgumentException();
+                }
+
+                end = startBalance - balance;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        try {
+            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
+            ps.setInt(1, end);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
     /**
      * Returns a User
      *
@@ -175,8 +213,9 @@ public class UserDataMapper {
 
     /**
      * Get all Users.
+     *
      * @return List of Users.
-     * @throws SQLException 
+     * @throws SQLException
      */
     public List<User> getUsers() throws SQLException {
 
@@ -212,5 +251,4 @@ public class UserDataMapper {
 //        }
 //        return user;
 //    }
-
 }
