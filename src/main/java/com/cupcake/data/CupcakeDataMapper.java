@@ -73,8 +73,6 @@ public class CupcakeDataMapper {
      *
      * @param name
      * @param price
-     * @throws SQLException
-     * @throws DataException
      */
     public void addTopping(String name, int price) {
         try {
@@ -95,8 +93,6 @@ public class CupcakeDataMapper {
      *
      * @param name
      * @param price
-     * @throws SQLException
-     * @throws DataException
      */
     public void addBottom(String name, int price) {
         try {
@@ -131,7 +127,6 @@ public class CupcakeDataMapper {
      * Returns a list of Tops.
      *
      * @return
-     * @throws DataException
      */
     public List<Top> getTops() {
         try {
