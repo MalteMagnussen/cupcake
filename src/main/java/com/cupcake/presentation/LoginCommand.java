@@ -88,7 +88,7 @@ public class LoginCommand extends Command {
                 /* Insert the User into the SQL Database */
                 db.addUser(username, password, email);
                 /* Forward User! */
-                RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
+                RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
                 rd.forward(request, response);
                 break;
             }

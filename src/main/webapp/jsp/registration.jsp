@@ -1,7 +1,7 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
     <p> Create User: </p>
-    <form method="post" action="/Cupcake/Controller?command=InputUser">
+    <form method="post" action="/Cupcake/Controller?command=Login">
         <input type="hidden" name="origin" value="registration">
         Name:        <input type="text" name="username"/><br/>
         Password:    <input type="text" name="password"/><br/>
