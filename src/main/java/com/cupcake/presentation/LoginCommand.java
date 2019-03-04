@@ -67,7 +67,7 @@ public class LoginCommand extends Command {
                 /* Put user on session */
                 session.setAttribute("user", user);
                 /* Forward to Shop */
-                response.sendRedirect("Controller?command=Shop");
+                response.sendRedirect("jsp/Shop.jsp");
             } catch (SQLException ex) {
                 ex.printStackTrace();
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);

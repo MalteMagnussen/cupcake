@@ -48,7 +48,7 @@ public class ProductDispatcher extends Command {
         cupcakeToCart(request, user, session);
 
         // Send user back to shop
-        RequestDispatcher rd = request.getRequestDispatcher("Controller?command=Shop");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
         rd.forward(request, response);
     }
 
