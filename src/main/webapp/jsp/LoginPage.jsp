@@ -1,7 +1,6 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
-
-    <p> Login:</p> 
+    <p> Login: </p> 
     <form action="Controller?command=Login" method="post">
         Name:        <input type="text" name="username"/><br/>
         Password:    <input type="text" name="password"/><br/>
