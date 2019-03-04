@@ -268,14 +268,4 @@ public class UserDataMapper {
         return users;
     }
 
-//    public User getUsertwo(String name) throws SQLException {
-//        User user = new User();
-//        List<User> users = getUsers();
-//        for (User obj : users) {
-//            if (obj.getUsername().equals(name)) {
-//                return obj;
-//            }
-//        }
-//        return user;
-//    }
 }
