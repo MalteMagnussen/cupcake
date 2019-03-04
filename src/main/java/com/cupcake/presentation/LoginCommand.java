@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Mikkel
+ * @author 
  */
 public class LoginCommand extends Command {
 
@@ -42,62 +42,73 @@ public class LoginCommand extends Command {
 
         switch (origin) {
             case "login": {
-                /* Get Parameters from the URL. (From the HTTP request) */
-                String username = (String) request.getParameter("username");
-                String password = (String) request.getParameter("password");
-
-                UserController c = new UserController();
-                boolean valid = false;
-
-                /* Check if User exists in the SQL database */
-                if (!StringUtils.isNullOrEmpty(password)
-                        && !StringUtils.isNullOrEmpty(username)) {
-                    try {
-                        valid = c.isValid(username, password);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-
-                if (valid) {
-
-                    try {
-                        HttpSession session = request.getSession();
-                        /* Pull user out of SQL */
-                        User user = (User) c.getUser(username);
-                        /* Put user on session */
-                        session.setAttribute("user", user);
-                        /* Forward to Shop */
-                        response.sendRedirect("jsp/Shop.jsp");
-                    } catch (SQLException ex) {
-                        Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-                }
-
+                login(request, response);
                 break;
             }
             case "registration": {
-                /* TO DO - Should add a check to see if user already exists. */
-                /* Get the username, email and password from the URL Parameters.*/
-                String username = (String) request.getParameter("username");
-                String email = (String) request.getParameter("email");
-                String password = (String) request.getParameter("password");
-                /* Instance of the relevant DataMapper */
-                UserDataMapper db = new UserDataMapper();
-                /* Insert the User into the SQL Database */
-                db.addUser(username, password, email);
-                /* Forward User! */
-                RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
-                rd.forward(request, response);
+                registration(request, response);
                 break;
             }
             default:
-                /* If User is not in Database send him back to LoginPage */
-                request.setAttribute("errormessage", "User not registered");
-                RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
-                rd.forward(request, response);
+                errorMessage(request, response);
                 break;
         }
+    }
+
+    private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        /* If User is not in Database send him back to LoginPage */
+        request.setAttribute("errormessage", "User not registered");
+        RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
+        rd.forward(request, response);
+    }
+
+    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /* Get Parameters from the URL. (From the HTTP request) */
+        String username = (String) request.getParameter("username");
+        String password = (String) request.getParameter("password");
+
+        UserController c = new UserController();
+        boolean valid = false;
+
+        /* Check if User exists in the SQL database */
+        if (!StringUtils.isNullOrEmpty(password)
+                && !StringUtils.isNullOrEmpty(username)) {
+            try {
+                valid = c.isValid(username, password);
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        if (valid) {
+
+            try {
+                HttpSession session = request.getSession();
+                /* Pull user out of SQL */
+                User user = (User) c.getUser(username);
+                /* Put user on session */
+                session.setAttribute("user", user);
+                /* Forward to Shop */
+                response.sendRedirect("jsp/Shop.jsp");
+            } catch (SQLException ex) {
+                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
+
+    private void registration(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /* TO DO - Should add a check to see if user already exists. 
+        Get the username, email and password from the URL Parameters.*/
+        String username = (String) request.getParameter("username");
+        String email = (String) request.getParameter("email");
+        String password = (String) request.getParameter("password");
+        /* Instance of the relevant DataMapper */
+        UserDataMapper db = new UserDataMapper();
+        /* Insert the User into the SQL Database */
+        db.addUser(username, password, email);
+        /* Forward User! */
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
+        rd.forward(request, response);
     }
 }
