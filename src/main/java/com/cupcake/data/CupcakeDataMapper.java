@@ -22,14 +22,13 @@ import java.util.logging.Logger;
 public class CupcakeDataMapper {
 
     private DBConnector conn;
-    
+
     /*
     
         Cupcake Data Mapper Class. 
             Connects to SQL.
     
-    */
-
+     */
     public CupcakeDataMapper() {
 
     }

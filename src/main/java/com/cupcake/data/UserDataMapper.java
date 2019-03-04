@@ -70,9 +70,9 @@ public class UserDataMapper {
     }
 
     /**
-     * 
+     *
      * @param user
-     * @param balance 
+     * @param balance
      */
     public void removeBalance(User user, int balance) {
         String name = user.getUsername();
@@ -162,7 +162,7 @@ public class UserDataMapper {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     /**
      * Get invite ID.
      *

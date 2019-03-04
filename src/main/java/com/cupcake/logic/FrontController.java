@@ -33,9 +33,8 @@ public class FrontController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         /**
-         * Below a workingjack might have to be made. 
-         * It puts the requests into threads.
-         * ExecutorService
+         * Below a workingjack might have to be made. It puts the requests into
+         * threads. ExecutorService
          */
         final HttpServletRequest req = request;
         final HttpServletResponse res = response;
@@ -43,14 +42,14 @@ public class FrontController extends HttpServlet {
             /* 
                 Call to Command class. 
                 Command class has a switch containing all the URLs on the site
-            */
+             */
             Command c = Command.from(req);
             c.execute(req, res);
 
             /*
                 If something goes wrong, it catches the error and writes
                 "ERROR" to the user.
-            */ 
+             */
         } catch (IOException | ServletException e) {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {

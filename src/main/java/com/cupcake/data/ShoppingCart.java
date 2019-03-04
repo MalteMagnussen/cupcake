@@ -38,8 +38,8 @@ public class ShoppingCart {
     }
 
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     public List<LineItem> getLineItems() {
         return lineItems;

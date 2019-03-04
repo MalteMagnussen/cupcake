@@ -15,7 +15,7 @@ public class Bottom {
     
         Basic Bottom Object Class
     
-    */
+     */
     private final String name;
     private final int price;
 

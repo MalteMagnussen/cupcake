@@ -16,29 +16,35 @@ import java.sql.SQLException;
 public class UserController {
 
     public UserController() {
-      
+
     }
 
     /**
      * Checks whether or not User exists in Database.
+     *
      * @param username
      * @param password
      * @return boolean
-     * @throws SQLException 
+     * @throws SQLException
      */
     public boolean isValid(String username, String password) throws SQLException {
         User user = getUser(username);
-        if(password == null) return false;
-        if(user.getPassword() == null) return false;
+        if (password == null) {
+            return false;
+        }
+        if (user.getPassword() == null) {
+            return false;
+        }
         return password.equals(user.getPassword());
     }
 
     /**
-     * Pull User out of Database. Hopefully with right name. 
-     * King of NULLPOINTEREXCEPTIONS
+     * Pull User out of Database. Hopefully with right name. King of
+     * NULLPOINTEREXCEPTIONS
+     *
      * @param username
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public User getUser(String username) throws SQLException {
         UserDataMapper db = new UserDataMapper();
