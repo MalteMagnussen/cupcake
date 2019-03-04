@@ -29,43 +29,40 @@
 
     /* Form for dropdowns BEGIN */
 %>
-            <form action="Controller?command=Product" method="post">
-            <input type="hidden" name="origin" value="addProduct">
-            <table class="table table-striped">
-            <thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
-            <tbody>
+<form action="Controller?command=Product" method="post">
+    <input type="hidden" name="origin" value="addProduct">
+    <table class="table table-striped">
+        <thead><tr><th>Bottom</th><th>Topping</th><th>Quantity</th><th>Select</th><th></th></tr></thead>
+        <tbody>
             <tr>
-            <td><select name="bottom" id="bottomSelect">
-<%
-    for (Bottom bot : bots) {
-        out.print("<option value=\"" + bot.getName()
-                + "\">" + bot.getName() + "</option>\n");
-    }
+                <td><select name="bottom" id="bottomSelect">
+                        <%    for (Bottom bot : bots) {
+                                out.print("<option value=\"" + bot.getName()
+                                        + "\">" + bot.getName() + "</option>\n");
+                            }
 
-    out.print("<select>\n");
-    out.print("<td><select name=\"top\" id=\"topSelect\">\n");
+                            out.print("<select>\n");
+                            out.print("<td><select name=\"top\" id=\"topSelect\">\n");
 
-    for (Top top : tops) {
-        out.print("<option value=\"" + top.getName()
-                + "\">" + top.getName() + "</option>\n");
-    }
-%>
-    </select>
-            <td><input type="text" name="qty" placeholder="quantity" id="qtyInput"></td>
-            <td><input type="submit" name="submit" value="Add to cart"></td><td><span id="errorContainer"></span></td>
+                            for (Top top : tops) {
+                                out.print("<option value=\"" + top.getName()
+                                        + "\">" + top.getName() + "</option>\n");
+                            }
+                        %>
+                    </select>
+                <td><input type="text" name="qty" placeholder="quantity" id="qtyInput"></td>
+                <td><input type="submit" name="submit" value="Add to cart"></td><td><span id="errorContainer"></span></td>
             </tr>
-            </tbody>
-            </table>
-            </form>
+        </tbody>
+    </table>
+</form>
 <%
     /* Form for dropdows END */
-
     // ShoppingCart:
     /* Form for ShoppingCart START */
     ShoppingCart cart = user.getCart();
 %>
-    <h2> ShoppingCart: </h2>
-    
+<h2> ShoppingCart: </h2>
 <%
     if (cart == null) {
 
