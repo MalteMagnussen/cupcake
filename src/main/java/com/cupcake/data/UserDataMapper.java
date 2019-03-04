@@ -157,6 +157,33 @@ public class UserDataMapper {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /**
+     * Get invite ID.
+     *
+     * @return ID.
+     */
+    public int getInvID() {
+        try {
+            conn = new DBConnector();
+
+            String query = "SELECT COUNT(ID) FROM `Cupcake`.`invoices`;";
+
+            Connection connection = conn.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+
+            int highestID = 0;
+
+            while (rs.next()) {
+                highestID = rs.getInt("COUNT(ID)") + 1;
+            }
+            return highestID;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return -1;
+    }
 
     /**
      * Adds User to Database.
