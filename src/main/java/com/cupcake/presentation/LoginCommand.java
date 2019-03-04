@@ -85,7 +85,7 @@ public class LoginCommand extends Command {
                 rd.forward(request, response);
             }
 
-        } else {
+        } else if (origin.equals("registration")){
             /* Get the username, email and password from the URL Parameters.*/
             String username = (String) request.getParameter("username");
             String email = (String) request.getParameter("email");
