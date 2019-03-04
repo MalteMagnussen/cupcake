@@ -82,7 +82,10 @@ public class ProductDispatcher extends Command {
             lineitem.addQuantity(qty);
 
             /* Get cart so we can add the cupcake to it */
+            // Throws nullpointer if cart is empty / null. Make new cart.
+            // Throws nullpointer when you try to add cupcake to cart.
             ShoppingCart cart = user.getCart();
+            // Nullpointer in line above.
             cart.addLineItem(lineitem);
 
             /* Put cart back on User */
