@@ -5,7 +5,7 @@
 --%>
 
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
-    <p> Create User: \n</p>
+    <p> Create User: </p>
     <form method="post" action="/Cupcake/Controller?command=InputUser">
         Name:        <input type="text" name="username"/><br/>
         Password:    <input type="text" name="password"/><br/>
