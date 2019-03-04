@@ -84,6 +84,7 @@ public class UserDataMapper {
             ps.setString(2, name);
             ps.executeUpdate();
         } catch (SQLException ex) {
+            ex.printStackTrace();
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

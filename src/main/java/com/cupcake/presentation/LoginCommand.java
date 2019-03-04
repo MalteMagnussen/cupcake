@@ -10,7 +10,6 @@ import com.cupcake.data.UserDataMapper;
 import com.cupcake.logic.UserController;
 import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +26,9 @@ import javax.servlet.http.HttpSession;
 public class LoginCommand extends Command {
 
     /**
-     * LoginCommand. Starts the Session.
-     * Forwards to Shop if Login is correct.
-     * Sends you back to LoginPage with an error message (TODO errormessage)
-     * if login is invalid.
+     * LoginCommand. Starts the Session. Forwards to Shop if Login is correct.
+     * Sends you back to LoginPage with an error message (TODO errormessage) if
+     * login is invalid.
      *
      * @param request
      * @param response
@@ -54,7 +52,8 @@ public class LoginCommand extends Command {
             try {
                 valid = c.isValid(username, password);
             } catch (SQLException ex) {
-                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+                Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -70,11 +69,12 @@ public class LoginCommand extends Command {
                 RequestDispatcher rd = request.getRequestDispatcher("Shop");
                 rd.forward(request, response);
             } catch (SQLException ex) {
-                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
+                Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             /* If User is not in Database send him back to LoginPage */
-            /* Should include an error message that password or username is wrong */
+ /* Should include an error message that password or username is wrong */
             RequestDispatcher rd = request.getRequestDispatcher("LoginPage");
             rd.forward(request, response);
         }
