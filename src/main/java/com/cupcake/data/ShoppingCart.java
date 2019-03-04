@@ -5,6 +5,7 @@
  */
 package com.cupcake.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,10 +24,8 @@ public class ShoppingCart {
     private List<LineItem> lineItems;
     private int invoiceid;
 
-    /**
-     *
-     */
     public ShoppingCart() {
+        this.lineItems = new ArrayList<>();
     }
 
     /**
