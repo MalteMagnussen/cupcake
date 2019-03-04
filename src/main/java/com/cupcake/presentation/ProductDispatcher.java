@@ -45,7 +45,10 @@ public class ProductDispatcher extends Command {
         User user = (User) session.getAttribute("user");
 
         // If user wants to add a cupcake to cart.
-        cupcakeToCart(request, user, session);
+        String origin = (String) request.getParameter("origin");
+        if (origin != null && "addProduct".equals(origin)) {
+            cupcakeToCart(request, user, session);
+        }
 
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
@@ -55,55 +58,49 @@ public class ProductDispatcher extends Command {
     private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
 
         /*  TO DO
-                Check if Cupcake already is in cart.
-                If it is, just increase its LineItems Quantity with given amount.
-         
-        If user wants to add a cupcake to cart */
-        String origin = (String) request.getParameter("origin");
-        if (origin == null) {
+               - Check if Cupcake already is in cart.
+               - If it is, just increase its LineItems Quantity with given amount.
+        
+            Get info about the cupcake */
+        String topName = (String) request.getParameter("top");
+        String botName = (String) request.getParameter("bottom");
 
-        } else {
-            /* Get info about the cupcake */
-            String topName = (String) request.getParameter("top");
-            String botName = (String) request.getParameter("bottom");
+        /* Create cupcake */
+        // Protect from null
+        CupcakeDataMapper db = new CupcakeDataMapper();
+        Cupcake cupcake = db.makeCupcake(topName, botName);
 
-            /* Create cupcake */
-            // Protect from null
-            CupcakeDataMapper db = new CupcakeDataMapper();
-            Cupcake cupcake = db.makeCupcake(topName, botName);
+        /* Make LineItem */
+        // If quantity field is empty you get a 
+        // java.lang.NumberFormatException: For input string: ""
+        // Protect from null
+        LineItem lineitem = new LineItem(cupcake);
+        int qty = (int) Integer.parseInt(
+                (String) request.getParameter("qty")
+        );
+        lineitem.addQuantity(qty);
 
-            /* Make LineItem */
-            // If quantity field is empty you get a 
-            // java.lang.NumberFormatException: For input string: ""
-            // Protect from null
-            LineItem lineitem = new LineItem(cupcake);
-            int qty = (int) Integer.parseInt(
-                    (String) request.getParameter("qty")
-            );
-            lineitem.addQuantity(qty);
-
-            /* Get cart so we can add the cupcake to it */
-            ShoppingCart cart = new ShoppingCart();
-            ShoppingCart usercart = null;
-            if (user.getCart() != null) {
-                usercart = user.getCart();
-            }
-            if (usercart != null && usercart.getLineItems() != null) {
-                List<LineItem> items = usercart.getLineItems();
-                for (LineItem item : items) {
-                    cart.addLineItem(item);
-                }
-            }
-
-            // Adds item to the cart.
-            cart.addLineItem(lineitem);
-
-            /* Put cart back on User */
-            user.setCart(cart);
-
-            /* Put finished User back on Session */
-            session.setAttribute("user", user);
+        /* Get cart so we can add the cupcake to it */
+        ShoppingCart cart = new ShoppingCart();
+        ShoppingCart usercart = null;
+        if (user.getCart() != null) {
+            usercart = user.getCart();
         }
+        if (usercart != null && usercart.getLineItems() != null) {
+            List<LineItem> items = usercart.getLineItems();
+            for (LineItem item : items) {
+                cart.addLineItem(item);
+            }
+        }
+
+        // Adds item to the cart.
+        cart.addLineItem(lineitem);
+
+        /* Put cart back on User */
+        user.setCart(cart);
+
+        /* Put finished User back on Session */
+        session.setAttribute("user", user);
     }
 
 }
