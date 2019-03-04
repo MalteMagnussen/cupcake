@@ -34,7 +34,7 @@ public class ProductDispatcher extends Command {
             - Takes query of invoice and adds that to SQL and clears shoppingcart.
                 Not done in ShopCommand yet.
     
-        Forwards back to Shop Command afterwards with new shit in session.
+        Forwards back to Shop afterwards with new shit in session.
         
      */
     @Override
@@ -66,14 +66,13 @@ public class ProductDispatcher extends Command {
         String botName = (String) request.getParameter("bottom");
 
         /* Create cupcake */
-        // Protect from null
+        // TO DO - Protect this from nullpointers
         CupcakeDataMapper db = new CupcakeDataMapper();
         Cupcake cupcake = db.makeCupcake(topName, botName);
 
         /* Make LineItem */
-        // If quantity field is empty you get a 
+        // TO DO - Protect: If quantity field is empty you get a 
         // java.lang.NumberFormatException: For input string: ""
-        // Protect from null
         LineItem lineitem = new LineItem(cupcake);
         int qty = (int) Integer.parseInt(
                 (String) request.getParameter("qty")
