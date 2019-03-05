@@ -10,6 +10,7 @@ import com.cupcake.data.CupcakeDataMapper;
 import com.cupcake.data.LineItem;
 import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
+import com.cupcake.data.UserDataMapper;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -68,6 +69,8 @@ public class ProductDispatcher extends Command {
         String amount = (String) request.getParameter("amount");
         int money = Integer.parseInt(amount);
         user.addBalance(money);
+        UserDataMapper db = new UserDataMapper();
+        db.addBalance(user.getUsername(), money);
     }
 
     private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {

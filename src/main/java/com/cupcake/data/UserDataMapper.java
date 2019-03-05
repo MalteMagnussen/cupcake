@@ -152,7 +152,7 @@ public class UserDataMapper {
             conn = new DBConnector();
 
             String insertBalance = "INSERT INTO cupcake.`users` (balance) "
-                    + "VALUES (?) WHERE cupcake.`users`.`name` = (?);";
+                    + "VALUES ? WHERE cupcake.`users`.`name` = '?';";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
             ps.setInt(1, balance);
             ps.setString(2, name);
