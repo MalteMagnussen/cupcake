@@ -147,14 +147,15 @@ public class UserDataMapper {
      * @param name
      * @param balance
      */
-    public void addBalance(String name, int balance) {
+    public void addBalance(String name, int money) {
         try {
             conn = new DBConnector();
 
-            String insertBalance = "INSERT INTO cupcake.`users` (balance) "
-                    + "VALUES ? WHERE cupcake.`users`.`name` = '?';";
+            String insertBalance = "UPDATE `cupcake`.`users` SET balance = balance "
+                    + "+ ? WHERE name = '?';";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-            ps.setInt(1, balance);
+            String balance = String.valueOf(money);
+            ps.setString(1, balance);
             ps.setString(2, name);
             ps.executeUpdate();
         } catch (SQLException ex) {
