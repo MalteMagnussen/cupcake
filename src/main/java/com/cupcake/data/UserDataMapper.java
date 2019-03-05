@@ -257,7 +257,7 @@ public class UserDataMapper {
     public void addInvoice(User user) {
         try {
             conn = new DBConnector();
-            
+
             int id = getInvID();
             String name = user.getUsername();
             String insertBalance = "INSERT INTO `cupcake`.`invoices` (`name`, id) VALUES (?, ?);";
@@ -265,9 +265,9 @@ public class UserDataMapper {
             ps.setString(1, name);
             ps.setInt(2, id);
             ps.executeUpdate();
-            
+
             ShoppingCart cart = user.getCart();
-            for(LineItem item: cart.getLineItems()){
+            for (LineItem item : cart.getLineItems()) {
                 addOrder(item, id);
             }
         } catch (SQLException ex) {
@@ -304,21 +304,21 @@ public class UserDataMapper {
         }
         return users;
     }
-    
-    public void addOrder(LineItem item, int id) throws SQLException{
+
+    public void addOrder(LineItem item, int id) throws SQLException {
         conn = new DBConnector();
 
         Cupcake cake = item.getCupcake();
         Top top = cake.getTop();
         Bottom bot = cake.getBottom();
-        
+
         String tname = top.getName();
         String bname = bot.getName();
         int qty = item.getQuantity();
-        
+
         String query = "INSERT INTO `cupcake`.`ordertails` (id, tname, bname, qty)"
                 + "VALUES (?, ?, ?, ?)";
-        
+
         PreparedStatement ps = conn.getConnection().prepareStatement(query);
         ps.setInt(1, id);
         ps.setString(2, tname);
