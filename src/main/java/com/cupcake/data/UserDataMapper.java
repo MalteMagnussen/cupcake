@@ -329,14 +329,14 @@ public class UserDataMapper {
 
     public void setBalance(User user, int userbalance) {
         try {
-            
+            String username = user.getUsername();
+            String balance = String.valueOf(userbalance);
             conn = new DBConnector();
 
-            String insertBalance = "UPDATE users SET balance = ? WHERE name = '?';";
-            PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-            String balance = String.valueOf(userbalance);
+            String query = "UPDATE users SET balance = ? WHERE name = ?;";
+            PreparedStatement ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, balance);
-            ps.setString(2, user.getUsername());
+            ps.setString(2, username);
             ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
