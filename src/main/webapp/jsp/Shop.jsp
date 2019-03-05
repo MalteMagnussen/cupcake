@@ -92,10 +92,10 @@
             String bname = item.getCupcake().getBottom().getName();
             out.println("<p style=\"font-size:18px\"> "
                     + "Cupcake: " + item.toString() + "</p>"
-                            /* Button to remove the ListItem */
+                    /* Button to remove the ListItem */
                     + "<form action=\"Controller?command=Product\" method=\"post\">\n"
                     + "    <input type=\"hidden\" name=\"origin\" value=\"removeitem\">\n"
-                    + "    <input type=\"hidden\" name=\"cake\" value=\""+bname+tname+"\">\n"
+                    + "    <input type=\"hidden\" name=\"cake\" value=\"" + bname + tname + "\">\n"
                     + "    <input type=\"submit\" value=\"Remove\"/>\n"
                     + "</form>"
             );

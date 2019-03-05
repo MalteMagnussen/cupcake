@@ -57,6 +57,4 @@ public class Bottom {
         return true;
     }
 
-    
-    
 }

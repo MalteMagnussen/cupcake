@@ -83,8 +83,8 @@ public class ProductControl extends Command {
             String tname = items.get(i).getCupcake().getTop().getName();
             String bname = items.get(i).getCupcake().getBottom().getName();
             /* Remove the one that matches the one from the parameter */
-            String itemname = bname+tname;
-            if (itemname.equals(cakename)){
+            String itemname = bname + tname;
+            if (itemname.equals(cakename)) {
                 items.remove(i);
             }
         }
