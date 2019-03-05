@@ -67,7 +67,7 @@ public class LoginCommand extends Command {
         int userbalance = user.getBalance();
         /* Put it into SQL */
         UserDataMapper db = new UserDataMapper();
-        db.addBalance(user.getUsername(), userbalance);
+        db.setBalance(user, userbalance);
         /* Reset Session */
         session.invalidate();
         /* Send back to main page */

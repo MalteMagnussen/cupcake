@@ -327,4 +327,21 @@ public class UserDataMapper {
         ps.executeUpdate();
     }
 
+    public void setBalance(User user, int userbalance) {
+        try {
+            
+            conn = new DBConnector();
+
+            String insertBalance = "UPDATE users SET balance = ? WHERE name = '?';";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+            String balance = String.valueOf(userbalance);
+            ps.setString(1, balance);
+            ps.setString(2, user.getUsername());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }
