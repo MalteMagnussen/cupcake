@@ -61,12 +61,12 @@
     // ShoppingCart:
     /* Form for ShoppingCart START */
     ShoppingCart cart = user.getCart();
-%>
-<h2> ShoppingCart: </h2>
 
-<%    
+    out.println("<h2> ShoppingCart: </h2>");
+    
+    // prints total price of the cart
     if (cart != null){
-        out.print("<h3> Total Price of Cart: "+ user.getTotalPrice()+"</h3>");
+        out.print("<h3> Total Price of Cart: "+ user.getTotalPrice()+"$</h3>");
     }
     
     if (cart == null) {
