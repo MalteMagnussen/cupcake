@@ -104,17 +104,9 @@ public class LoginCommand extends Command {
         String password = (String) request.getParameter("password");
         /* Instance of the relevant DataMapper */
         UserDataMapper db = new UserDataMapper();
-        String errormessage = "";
-        try {
-            /* Check if user exists */
-            db.getUser(username);
-            errormessage = "User already exists in Database.";
-        } catch (SQLException ex) {
-            /* Insert the User into the SQL Database */
-            db.addUser(username, password, email);
-        }
+        /* Insert the User into the SQL Database */
+        db.addUser(username, password, email);
         /* Forward User! */
-        request.setAttribute("errormessage", errormessage);
         RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
         rd.forward(request, response);
     }
