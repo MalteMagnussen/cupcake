@@ -5,7 +5,6 @@
  */
 package com.cupcake.logic;
 
-import com.cupcake.presentation.Command;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -45,7 +44,6 @@ public class FrontController extends HttpServlet {
              */
             Command c = Command.from(req);
             c.execute(req, res);
-
             /*
                 If something goes wrong, it catches the error and writes
                 "ERROR" to the user.
