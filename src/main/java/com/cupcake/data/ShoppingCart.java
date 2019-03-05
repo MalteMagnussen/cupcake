@@ -27,6 +27,10 @@ public class ShoppingCart {
     public ShoppingCart() {
         this.lineItems = new ArrayList<>();
     }
+    
+    public boolean isEmpty(){
+        return lineItems == null || lineItems.isEmpty();
+    }
 
     /**
      * Add line item
