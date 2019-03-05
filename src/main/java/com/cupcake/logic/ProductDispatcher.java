@@ -45,7 +45,7 @@ public class ProductDispatcher extends Command {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        // If user wants to add a cupcake to cart.
+        /* Switch on Origin. So class knows what method to run. */ 
         String origin = (String) request.getParameter("origin");
         if (origin != null) {
             switch (origin) {
@@ -56,10 +56,9 @@ public class ProductDispatcher extends Command {
                     addBalance(request, user);
                     break;
                 case "checkout":
-                    ShoppingCart cart = user.getCart();
                     UserDataMapper db = new UserDataMapper();
                     /* Adds cart as an invoice in the SQL */
-                    db.addInvoice(cart, user);
+                    db.addInvoice(user);
                     /* Makes a new empty shoppingcart and adds that to user
                        effectively resetting the cart. */
                     ShoppingCart emptyCart = new ShoppingCart();

@@ -92,9 +92,8 @@
         }
     }
     /* Form for ShoppingCart END */
-%>
-
-<%
+   
+    /* Cart Checkout Start */
     if ((cart != null && !cart.isEmpty())) {
 %>
 <p> Checkout Entire Cart and make it an invoice: </p> 
@@ -114,7 +113,7 @@
 
 <%
     }
-
+    /* Cart Checkout End */
 %>
 
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
