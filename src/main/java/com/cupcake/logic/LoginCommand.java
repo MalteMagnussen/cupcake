@@ -50,7 +50,7 @@ public class LoginCommand extends Command {
                 break;
             }
             case "logout": {
-                logout(request);
+                logout(request, response);
                 break;
             }
             default:
@@ -59,9 +59,11 @@ public class LoginCommand extends Command {
         }
     }
 
-    private void logout(HttpServletRequest request) {
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
+        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+        rd.forward(request, response);
     }
 
     private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
