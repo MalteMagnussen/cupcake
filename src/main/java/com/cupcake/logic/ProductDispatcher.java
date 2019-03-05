@@ -46,16 +46,31 @@ public class ProductDispatcher extends Command {
 
         // If user wants to add a cupcake to cart.
         String origin = (String) request.getParameter("origin");
-        if (origin != null && "addProduct".equals(origin)) {
-            cupcakeToCart(request, user, session);
+        if (origin != null) {
+            switch (origin) {
+                case "addProduct":
+                    cupcakeToCart(request, user);
+                    break;
+                case "add balance":
+                    addBalance(request, user);
+                    break;
+            }
         }
 
+        /* Put finished User back on Session */
+        session.setAttribute("user", user);
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
         rd.forward(request, response);
     }
 
-    private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
+    private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
+        String amount = (String) request.getParameter("amount");
+        int money = Integer.parseInt(amount);
+        user.addBalance(money);
+    }
+
+    private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {
 
         /*  TO DO
                - Check if Cupcake already is in cart.
@@ -96,7 +111,7 @@ public class ProductDispatcher extends Command {
             }
             // If cupcake exists in Cart end.
         }
-        
+
         if (usercart != null && usercart.getLineItems() != null) {
             List<LineItem> items = usercart.getLineItems();
             for (LineItem item : items) {
@@ -112,8 +127,6 @@ public class ProductDispatcher extends Command {
         /* Put cart back on User */
         user.setCart(cart);
 
-        /* Put finished User back on Session */
-        session.setAttribute("user", user);
     }
 
 }

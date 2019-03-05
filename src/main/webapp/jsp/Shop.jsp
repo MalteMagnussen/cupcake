@@ -1,3 +1,4 @@
+<%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <%@page import="com.cupcake.data.ShoppingCart"%>
 <%@page import="com.cupcake.data.LineItem"%>
@@ -14,6 +15,7 @@
 
     /* Instance of relevant DataMapper */
     CupcakeDataMapper db = new CupcakeDataMapper();
+    UserDataMapper userdb = new UserDataMapper();
 
     /* Shows which user is logged in */
     out.println("<h1> " + user.getUsername() + " is logged in.</h1>");
@@ -21,7 +23,18 @@
     /* Shows the users balance */
     out.println("<p style=\"font-size:18px\"> "
             + "Users Balance: " + user.getBalance() + "</p>");
+    
+    /* Add button and field to add balance to User */ 
+%>
+    
+    <p> Add Balance: </p> 
+    <form action="Controller?command=Product" method="post">
+        <input type="hidden" name="origin" value="add balance">
+        Amount:        <input type="text" name="amount"/><br/>
+        <input type="submit" value="add"/>
+    </form>
 
+<%
     // Dropdown menu:
     /* Pulling the tops and bottoms of the cupcakes out of SQL */
     List<Top> tops = db.getTops();
@@ -63,12 +76,12 @@
     ShoppingCart cart = user.getCart();
 
     out.println("<h2> ShoppingCart: </h2>");
-    
+
     // prints total price of the cart
-    if (cart != null){
-        out.print("<h3> Total Price of Cart: "+ user.getTotalPrice()+"$</h3>");
+    if (cart != null) {
+        out.print("<h3> Total Price of Cart: " + user.getTotalPrice() + "$</h3>");
     }
-    
+
     if (cart == null) {
 
     } else {
