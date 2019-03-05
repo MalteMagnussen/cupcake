@@ -178,7 +178,7 @@ public class UserDataMapper {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
 
-            int highestID = 0;
+            int highestID = 1;
 
             while (rs.next()) {
                 highestID = rs.getInt("COUNT(ID)") + 1;
@@ -187,7 +187,7 @@ public class UserDataMapper {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        return -1;
+        return 1;
     }
 
     /**
@@ -244,34 +244,31 @@ public class UserDataMapper {
     }
 
     /**
-     * Adds an invoice to the database
-     *  TO DO - Doesn't really work. Look at notes.
+     * Adds an invoice to the database TO DO - Doesn't really work. Look at
+     * notes.
+     *
      * @param name
      * @param id
      * @param quantity
      * @param tname
-     * @param bname 
+     * @param bname
      */
-    public void addInvoice(String name, String id, String quantity, String tname, String bname) {
+    public void addInvoice(User user) {
         try {
             conn = new DBConnector();
-
-            String insertBalance = "INSERT INTO `cupcake`.`invoices`\n"
-                    + "(`idinvoices`,\n"
-                    + "`quantity`,\n"
-                    + "`bname`,\n"
-                    + "`tname`)\n"
-                    + "VALUES\n"
-                    + "(?,\n"
-                    + "?,\n"
-                    + "'?',\n"
-                    + "'?');";
+            
+            int id = getInvID();
+            String name = user.getUsername();
+            String insertBalance = "INSERT INTO `cupcake`.`invoices` (`name`, id) VALUES (?, ?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
-            ps.setString(1, id);
-            ps.setString(2, quantity);
-            ps.setString(3, tname);
-            ps.setString(4, bname);
+            ps.setString(1, name);
+            ps.setInt(2, id);
             ps.executeUpdate();
+            
+            ShoppingCart cart = user.getCart();
+            for(LineItem item: cart.getLineItems()){
+                addOrder(item, id);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -305,6 +302,28 @@ public class UserDataMapper {
             users.add(user);
         }
         return users;
+    }
+    
+    public void addOrder(LineItem item, int id) throws SQLException{
+        conn = new DBConnector();
+
+        Cupcake cake = item.getCupcake();
+        Top top = cake.getTop();
+        Bottom bot = cake.getBottom();
+        
+        String tname = top.getName();
+        String bname = bot.getName();
+        int qty = item.getQuantity();
+        
+        String query = "INSERT INTO `cupcake`.`ordertails` (id, tname, bname, qty)"
+                + "VALUES (?, ?, ?, ?)";
+        
+        PreparedStatement ps = conn.getConnection().prepareStatement(query);
+        ps.setInt(1, id);
+        ps.setString(2, tname);
+        ps.setString(3, bname);
+        ps.setInt(4, qty);
+        ps.executeUpdate();
     }
 
 }

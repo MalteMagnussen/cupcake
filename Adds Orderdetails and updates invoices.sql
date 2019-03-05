@@ -21,6 +21,7 @@ CREATE TABLE `ordertails`(
 	`id` int,
     `bname` VARCHAR(45),
     `tname` VARCHAR(45),
+    `qty` int,
      INDEX `invid_idx` (`invid` ASC) VISIBLE,
 		CONSTRAINT `invid`
 			FOREIGN KEY (`id`)
