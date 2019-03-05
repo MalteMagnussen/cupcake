@@ -45,7 +45,7 @@ public class ProductControl extends Command {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        /* Switch on Origin. So class knows what method to run. */ 
+        /* Switch on Origin. So class knows what method to run. */
         String origin = (String) request.getParameter("origin");
         if (origin != null) {
             switch (origin) {
@@ -56,13 +56,27 @@ public class ProductControl extends Command {
                     addBalance(request, user);
                     break;
                 case "checkout":
-                    UserDataMapper db = new UserDataMapper();
-                    /* Adds cart as an invoice in the SQL */
-                    db.addInvoice(user);
-                    /* Makes a new empty shoppingcart and adds that to user
+                    int userbalance = user.getBalance();
+                    int cartPrice = user.getTotalPrice();
+                    /* If user does NOT have enough money for the purchase */
+                    if (userbalance < cartPrice) {
+                        // Send errormessage to User
+                        String errormessage = "Not enough money on your balance "
+                                + "for this purchase";
+                        request.setAttribute("errormessage", errormessage);
+                    } else {
+                        /* If user DOES have enough money. */
+                        UserDataMapper db = new UserDataMapper();
+                        /* Removes the money from the Balance of the User */
+                        db.removeBalance(user, cartPrice);
+                        user.addBalance(-cartPrice);
+                        /* Adds cart as an invoice in the SQL */
+                        db.addInvoice(user);
+                        /* Makes a new empty shoppingcart and adds that to user
                        effectively resetting the cart. */
-                    ShoppingCart emptyCart = new ShoppingCart();
-                    user.setCart(emptyCart);
+                        ShoppingCart emptyCart = new ShoppingCart();
+                        user.setCart(emptyCart);
+                    }
                     break;
             }
         }
