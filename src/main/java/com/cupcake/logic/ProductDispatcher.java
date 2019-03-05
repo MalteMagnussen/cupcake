@@ -10,6 +10,7 @@ import com.cupcake.data.CupcakeDataMapper;
 import com.cupcake.data.LineItem;
 import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
+import com.cupcake.data.UserDataMapper;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -44,18 +45,42 @@ public class ProductDispatcher extends Command {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        // If user wants to add a cupcake to cart.
+        /* Switch on Origin. So class knows what method to run. */ 
         String origin = (String) request.getParameter("origin");
-        if (origin != null && "addProduct".equals(origin)) {
-            cupcakeToCart(request, user, session);
+        if (origin != null) {
+            switch (origin) {
+                case "addProduct":
+                    cupcakeToCart(request, user);
+                    break;
+                case "add balance":
+                    addBalance(request, user);
+                    break;
+                case "checkout":
+                    UserDataMapper db = new UserDataMapper();
+                    /* Adds cart as an invoice in the SQL */
+                    db.addInvoice(user);
+                    /* Makes a new empty shoppingcart and adds that to user
+                       effectively resetting the cart. */
+                    ShoppingCart emptyCart = new ShoppingCart();
+                    user.setCart(emptyCart);
+                    break;
+            }
         }
 
+        /* Put finished User back on Session */
+        session.setAttribute("user", user);
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
         rd.forward(request, response);
     }
 
-    private void cupcakeToCart(HttpServletRequest request, User user, HttpSession session) throws NumberFormatException {
+    private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
+        String amount = (String) request.getParameter("amount");
+        int money = Integer.parseInt(amount);
+        user.addBalance(money);
+    }
+
+    private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {
 
         /*  TO DO
                - Check if Cupcake already is in cart.
@@ -96,7 +121,7 @@ public class ProductDispatcher extends Command {
             }
             // If cupcake exists in Cart end.
         }
-        
+
         if (usercart != null && usercart.getLineItems() != null) {
             List<LineItem> items = usercart.getLineItems();
             for (LineItem item : items) {
@@ -112,8 +137,6 @@ public class ProductDispatcher extends Command {
         /* Put cart back on User */
         user.setCart(cart);
 
-        /* Put finished User back on Session */
-        session.setAttribute("user", user);
     }
 
 }

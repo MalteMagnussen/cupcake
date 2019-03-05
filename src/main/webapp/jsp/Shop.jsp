@@ -1,3 +1,4 @@
+<%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <%@page import="com.cupcake.data.ShoppingCart"%>
 <%@page import="com.cupcake.data.LineItem"%>
@@ -14,6 +15,7 @@
 
     /* Instance of relevant DataMapper */
     CupcakeDataMapper db = new CupcakeDataMapper();
+    UserDataMapper userdb = new UserDataMapper();
 
     /* Shows which user is logged in */
     out.println("<h1> " + user.getUsername() + " is logged in.</h1>");
@@ -22,7 +24,17 @@
     out.println("<p style=\"font-size:18px\"> "
             + "Users Balance: " + user.getBalance() + "</p>");
 
-    // Dropdown menu:
+    /* Add button and field to add balance to User */
+%>
+
+<p> Add Balance: </p> 
+<form action="Controller?command=Product" method="post">
+    <input type="hidden" name="origin" value="add balance">
+    Amount:        <input type="text" name="amount"/><br/>
+    <input type="submit" value="add"/>
+</form>
+
+<%    // Dropdown menu:
     /* Pulling the tops and bottoms of the cupcakes out of SQL */
     List<Top> tops = db.getTops();
     List<Bottom> bots = db.getBottoms();
@@ -62,13 +74,13 @@
     /* Form for ShoppingCart START */
     ShoppingCart cart = user.getCart();
 
-    out.println("<h2> ShoppingCart: </h2>");
-    
+    out.println("<h2> Shopping Cart: </h2>");
+
     // prints total price of the cart
-    if (cart != null){
-        out.print("<h3> Total Price of Cart: "+ user.getTotalPrice()+"$</h3>");
+    if (cart != null) {
+        out.print("<h3> Total Price of Cart: " + user.getTotalPrice() + "$</h3>");
     }
-    
+
     if (cart == null) {
 
     } else {
@@ -80,7 +92,28 @@
         }
     }
     /* Form for ShoppingCart END */
-
-
+   
+    /* Cart Checkout Start */
+    if ((cart != null && !cart.isEmpty())) {
 %>
+<p> Checkout Entire Cart and make it an invoice: </p> 
+<form action="Controller?command=Product" method="post">
+    <input type="hidden" name="origin" value="checkout">
+    <input type="submit" value="Checkout"/>
+</form>
+
+<%
+} else {
+%>
+
+<p>
+    Either cart is empty or you do not have enough money for items in Cart.
+    Add more money, or remove items in Cart to be able to checkout.
+</p>
+
+<%
+    }
+    /* Cart Checkout End */
+%>
+
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>

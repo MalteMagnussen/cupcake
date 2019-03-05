@@ -86,6 +86,7 @@ public class LoginCommand extends Command {
                 HttpSession session = request.getSession();
                 /* Pull user out of SQL */
                 User user = (User) c.getUser(username);
+                
                 /* Put user on session */
                 session.setAttribute("user", user);
                 /* Forward to Shop */

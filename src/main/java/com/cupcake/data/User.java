@@ -29,13 +29,14 @@ public class User {
         int totalprice = 0;
         cart = getCart();
 
-        List<LineItem> items = cart.getLineItems();
+        if (cart != null && !cart.isEmpty()) {
+            List<LineItem> items = cart.getLineItems();
 
-        for (LineItem item : items) {
-            totalprice = totalprice
-                    + item.getQuantity() * item.getCupcake().getPrice();
+            for (LineItem item : items) {
+                totalprice = totalprice
+                        + item.getQuantity() * item.getCupcake().getPrice();
+            }
         }
-
         return totalprice;
     }
 
