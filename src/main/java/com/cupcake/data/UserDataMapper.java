@@ -244,6 +244,40 @@ public class UserDataMapper {
     }
 
     /**
+     * Adds an invoice to the database
+     *  TO DO - Doesn't really work. Look at notes.
+     * @param name
+     * @param id
+     * @param quantity
+     * @param tname
+     * @param bname 
+     */
+    public void addInvoice(String name, String id, String quantity, String tname, String bname) {
+        try {
+            conn = new DBConnector();
+
+            String insertBalance = "INSERT INTO `cupcake`.`invoices`\n"
+                    + "(`idinvoices`,\n"
+                    + "`quantity`,\n"
+                    + "`bname`,\n"
+                    + "`tname`)\n"
+                    + "VALUES\n"
+                    + "(?,\n"
+                    + "?,\n"
+                    + "'?',\n"
+                    + "'?');";
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
+            ps.setString(1, id);
+            ps.setString(2, quantity);
+            ps.setString(3, tname);
+            ps.setString(4, bname);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
      * Get all Users.
      *
      * @return List of Users.

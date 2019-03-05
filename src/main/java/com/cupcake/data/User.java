@@ -5,6 +5,8 @@
  */
 package com.cupcake.data;
 
+import java.util.List;
+
 /**
  *
  * @author
@@ -21,6 +23,20 @@ public class User {
     private ShoppingCart cart;
 
     public User() {
+    }
+
+    public int getTotalPrice() {
+        int totalprice = 0;
+        cart = getCart();
+
+        List<LineItem> items = cart.getLineItems();
+
+        for (LineItem item : items) {
+            totalprice = totalprice
+                    + item.getQuantity() * item.getCupcake().getPrice();
+        }
+
+        return totalprice;
     }
 
     public void setCart(ShoppingCart cart) {
