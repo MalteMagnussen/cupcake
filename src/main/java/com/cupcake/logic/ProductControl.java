@@ -56,27 +56,7 @@ public class ProductControl extends Command {
                     addBalance(request, user);
                     break;
                 case "checkout":
-                    int userbalance = user.getBalance();
-                    int cartPrice = user.getTotalPrice();
-                    /* If user does NOT have enough money for the purchase */
-                    if (userbalance < cartPrice) {
-                        // Send errormessage to User
-                        String errormessage = "Not enough money on your balance "
-                                + "for this purchase";
-                        request.setAttribute("errormessage", errormessage);
-                    } else {
-                        /* If user DOES have enough money. */
-                        UserDataMapper db = new UserDataMapper();
-                        /* Removes the money from the Balance of the User */
-                        db.removeBalance(user, cartPrice);
-                        user.addBalance(-cartPrice);
-                        /* Adds cart as an invoice in the SQL */
-                        db.addInvoice(user);
-                        /* Makes a new empty shoppingcart and adds that to user
-                       effectively resetting the cart. */
-                        ShoppingCart emptyCart = new ShoppingCart();
-                        user.setCart(emptyCart);
-                    }
+                    checkout(user, request);
                     break;
             }
         }
@@ -86,6 +66,29 @@ public class ProductControl extends Command {
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
         rd.forward(request, response);
+    }
+
+    private void checkout(User user, HttpServletRequest request) {
+        int userbalance = user.getBalance();
+        int cartPrice = user.getTotalPrice();
+        /* If user does NOT have enough money for the purchase */
+        if (userbalance < cartPrice) {
+            // Send errormessage to User
+            String errormessage = "Not enough money on your balance "
+                    + "for this purchase";
+            request.setAttribute("errormessage", errormessage);
+        } else {
+            /* If user DOES have enough money. */
+            UserDataMapper db = new UserDataMapper();
+            /* Removes the money from the Balance of the User */
+            user.addBalance(-cartPrice);
+            /* Adds cart as an invoice in the SQL */
+            db.addInvoice(user);
+            /* Makes a new empty shoppingcart and adds that to user
+            effectively resetting the cart. */
+            ShoppingCart emptyCart = new ShoppingCart();
+            user.setCart(emptyCart);
+        }
     }
 
     private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {

@@ -49,10 +49,19 @@ public class LoginCommand extends Command {
                 registration(request, response);
                 break;
             }
+            case "logout": {
+                logout(request);
+                break;
+            }
             default:
                 errorMessage(request, response);
                 break;
         }
+    }
+
+    private void logout(HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.invalidate();
     }
 
     private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -86,7 +95,7 @@ public class LoginCommand extends Command {
                 HttpSession session = request.getSession();
                 /* Pull user out of SQL */
                 User user = (User) c.getUser(username);
-                
+
                 /* Put user on session */
                 session.setAttribute("user", user);
                 /* Forward to Shop */
