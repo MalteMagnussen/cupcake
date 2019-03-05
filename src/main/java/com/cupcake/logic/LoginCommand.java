@@ -60,8 +60,17 @@ public class LoginCommand extends Command {
     }
 
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        /* Pull user out of session */
         HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        /* Pull his balance out of session */
+        int userbalance = user.getBalance();
+        /* Put it into SQL */
+        UserDataMapper db = new UserDataMapper();
+        db.addBalance(user.getUsername(), userbalance);
+        /* Reset Session */
         session.invalidate();
+        /* Send back to main page */
         RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }
