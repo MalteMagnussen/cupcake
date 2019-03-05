@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author
  */
-public class ProductDispatcher extends Command {
+public class ProductControl extends Command {
 
     /* 
         Takes Requests from Shop Command. 

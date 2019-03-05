@@ -33,7 +33,7 @@ public abstract class Command {
         Map<String, Command> commands = new HashMap<>();
 
         commands.put("Login", new LoginCommand());
-        commands.put("Product", new ProductDispatcher());
+        commands.put("Product", new ProductControl());
 
         c = commands.getOrDefault(origin, new UnknownCommand());
 
