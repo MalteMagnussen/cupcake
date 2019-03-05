@@ -34,7 +34,8 @@
     <input type="submit" value="add"/>
 </form>
 
-<%    // Dropdown menu:
+<%  /* Add balance END */
+// Dropdown menu:
     /* Pulling the tops and bottoms of the cupcakes out of SQL */
     List<Top> tops = db.getTops();
     List<Bottom> bots = db.getBottoms();
@@ -87,13 +88,22 @@
         /* Prints every LineItem in the cart in a list. */
         List<LineItem> items = cart.getLineItems();
         for (LineItem item : items) {
+            String tname = item.getCupcake().getTop().getName();
+            String bname = item.getCupcake().getBottom().getName();
             out.println("<p style=\"font-size:18px\"> "
-                    + "Cupcake: " + item.toString() + "</p>");
+                    + "Cupcake: " + item.toString() + "</p>"
+                            /* Button to remove the ListItem */
+                    + "<form action=\"Controller?command=Product\" method=\"post\">\n"
+                    + "    <input type=\"hidden\" name=\"origin\" value=\"removeitem\">\n"
+                    + "    <input type=\"hidden\" name=\"cake\" value=\""+bname+tname+"\">\n"
+                    + "    <input type=\"submit\" value=\"Remove\"/>\n"
+                    + "</form>"
+            );
         }
     }
     /* Form for ShoppingCart END */
-   
-    /* Cart Checkout Start */
+
+ /* Cart Checkout Start */
     if ((cart != null && !cart.isEmpty())) {
 %>
 <p> Checkout Entire Cart and make it an invoice: </p> 

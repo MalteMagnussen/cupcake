@@ -77,4 +77,8 @@ public class ShoppingCart {
         return "ShoppingCart{" + "lineItems=" + lineItems + ", invoiceid=" + invoiceid + '}';
     }
 
+    public void setLineItems(List<LineItem> items) {
+        this.lineItems = items;
+    }
+
 }

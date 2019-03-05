@@ -58,6 +58,9 @@ public class ProductControl extends Command {
                 case "checkout":
                     checkout(user, request);
                     break;
+                case "removeitem":
+                    removeitem(user, request);
+                    break;
             }
         }
 
@@ -66,6 +69,27 @@ public class ProductControl extends Command {
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
         rd.forward(request, response);
+    }
+
+    private void removeitem(User user, HttpServletRequest request) {
+        /* Get the cart */
+        ShoppingCart cart = user.getCart();
+        /* Get the parameter from the request */
+        String cakename = (String) request.getParameter("cake");
+        /* put cart into a List */
+        List<LineItem> items = cart.getLineItems();
+        /* For each item in the list */
+        for (int i = 0; i < items.size(); i++) {
+            String tname = items.get(i).getCupcake().getTop().getName();
+            String bname = items.get(i).getCupcake().getBottom().getName();
+            /* Remove the one that matches the one from the parameter */
+            String itemname = bname+tname;
+            if (itemname.equals(cakename)){
+                items.remove(i);
+            }
+        }
+        cart.setLineItems(items);
+        user.setCart(cart);
     }
 
     private void checkout(User user, HttpServletRequest request) {
