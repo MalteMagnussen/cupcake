@@ -5,6 +5,8 @@
  */
 package com.cupcake.data;
 
+import java.util.Objects;
+
 /**
  *
  * @author
@@ -37,4 +39,24 @@ public class Top {
         return "Top{" + "name=" + name + ", price=" + price + '}';
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Top other = (Top) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+
+    
+    
 }

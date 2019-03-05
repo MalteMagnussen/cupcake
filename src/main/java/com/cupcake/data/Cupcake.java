@@ -5,6 +5,8 @@
  */
 package com.cupcake.data;
 
+import java.util.Objects;
+
 /**
  *
  * @author
@@ -43,5 +45,28 @@ public class Cupcake {
         return bottom.getName() + " bottom with " + top.getName()
                 + " as topping. Price for one = " + totalPrice + " $";
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cupcake other = (Cupcake) obj;
+        if (!Objects.equals(this.top, other.top)) {
+            return false;
+        }
+        if (!Objects.equals(this.bottom, other.bottom)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
 }

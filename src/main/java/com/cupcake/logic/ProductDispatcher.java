@@ -82,9 +82,21 @@ public class ProductDispatcher extends Command {
         /* Get cart so we can add the cupcake to it */
         ShoppingCart cart = new ShoppingCart();
         ShoppingCart usercart = null;
+
+        boolean cupcakeincart = false;
+
         if (user.getCart() != null) {
             usercart = user.getCart();
+            // If cupcake exists in Cart.
+            for (LineItem item : usercart.getLineItems()) {
+                if (item.equals(lineitem)) {
+                    item.addQuantity(lineitem.getQuantity());
+                    cupcakeincart = true;
+                }
+            }
+            // If cupcake exists in Cart end.
         }
+        
         if (usercart != null && usercart.getLineItems() != null) {
             List<LineItem> items = usercart.getLineItems();
             for (LineItem item : items) {
@@ -93,7 +105,9 @@ public class ProductDispatcher extends Command {
         }
 
         // Adds item to the cart.
-        cart.addLineItem(lineitem);
+        if (cupcakeincart == false) {
+            cart.addLineItem(lineitem);
+        }
 
         /* Put cart back on User */
         user.setCart(cart);
