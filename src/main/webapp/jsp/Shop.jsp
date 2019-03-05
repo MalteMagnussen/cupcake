@@ -93,7 +93,17 @@
         }
     }
     /* Form for ShoppingCart END */
+    %>
+    
+    
+    <p> Checkout Entire Cart and make it an invoice: </p> 
+    <form action="Controller?command=Product" method="post">
+        <input type="hidden" name="origin" value="checkout">
+        <input type="submit" value="Checkout"/>
+    </form>
+    
+    
 
 
-%>
+
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>

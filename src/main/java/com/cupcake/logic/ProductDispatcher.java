@@ -55,6 +55,16 @@ public class ProductDispatcher extends Command {
                 case "add balance":
                     addBalance(request, user);
                     break;
+                case "checkout":
+                    ShoppingCart cart = user.getCart();
+                    UserDataMapper db = new UserDataMapper();
+                    /* Adds cart as an invoice in the SQL */
+                    db.addInvoice(cart, user);
+                    /* Makes a new empty shoppingcart and adds that to user
+                       effectively resetting the cart. */
+                    ShoppingCart emptyCart = new ShoppingCart();
+                    user.setCart(emptyCart);
+                    break;
             }
         }
 
