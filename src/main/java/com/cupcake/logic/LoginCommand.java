@@ -98,16 +98,23 @@ public class LoginCommand extends Command {
     }
 
     private void registration(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /* TO DO - Should add a check to see if user already exists. 
-        Get the username, email and password from the URL Parameters.*/
+        /* Get the username, email and password from the URL Parameters.*/
         String username = (String) request.getParameter("username");
         String email = (String) request.getParameter("email");
         String password = (String) request.getParameter("password");
         /* Instance of the relevant DataMapper */
         UserDataMapper db = new UserDataMapper();
-        /* Insert the User into the SQL Database */
-        db.addUser(username, password, email);
+        String errormessage = "";
+        try {
+            /* Check if user exists */
+            db.getUser(username);
+            errormessage = "User already exists in Database.";
+        } catch (SQLException ex) {
+            /* Insert the User into the SQL Database */
+            db.addUser(username, password, email);
+        }
         /* Forward User! */
+        request.setAttribute("errormessage", errormessage);
         RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
         rd.forward(request, response);
     }
