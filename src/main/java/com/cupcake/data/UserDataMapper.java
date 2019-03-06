@@ -59,13 +59,22 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
-                    + " VALUES (" + name + ", ?);";
+            String insertNewBalance = "START TRANSACTION;"
+                    + "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);"
+                    + "COMMIT;";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
+            try{
+            String rollBack = "ROLLBACK;";
+            PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
+            ps.executeUpdate();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
         }
     }
 
@@ -96,13 +105,22 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
-                    + " VALUES (" + name + ", ?);";
+            String insertNewBalance = "START TRANSACTION;"
+                    + "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);"
+                    + "COMMIT;";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
+            try{
+                String rollBack = "ROLLBACK;";
+                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
+                ps.executeUpdate();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
         }
     }
 
@@ -202,7 +220,8 @@ public class UserDataMapper {
         if (name != null || password != null || email != null) {
             try {
                 conn = new DBConnector();
-                String insertUser = "INSERT INTO `cupcake`.`users`\n"
+                String insertUser = "START TRANSACTION;"
+                        + "INSERT INTO `cupcake`.`users`\n"
                         + "(`name`,\n"
                         + "`password`,\n"
                         + "`balance`,\n"
@@ -211,7 +230,8 @@ public class UserDataMapper {
                         + "(?,\n"
                         + "?,\n"
                         + "0,\n"
-                        + "?);";
+                        + "?);"
+                        + "COMMIT;";
                 PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
                 ps.setString(1, name);
                 ps.setString(2, password);
@@ -219,6 +239,13 @@ public class UserDataMapper {
                 ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+                try{
+                    String rollBack = "ROLLBACK;";
+                    PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
+                    ps.executeUpdate();
+                }catch(SQLException e){
+                    System.out.println(e);
+                }
             }
         }
     }
@@ -333,7 +360,9 @@ public class UserDataMapper {
             String balance = String.valueOf(userbalance);
             conn = new DBConnector();
 
-            String query = "UPDATE users SET balance = ? WHERE name = ?;";
+            String query = "START TRANSACTION;"
+                    + "UPDATE users SET balance = ? WHERE name = ?;"
+                    + "COMMIT;";
             PreparedStatement ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, balance);
             ps.setString(2, username);
@@ -341,6 +370,13 @@ public class UserDataMapper {
         } catch (SQLException ex) {
             ex.printStackTrace();
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
+            try{
+                String rollBack = "ROLLBACK;";
+                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
+                ps.executeUpdate();
+            }catch(SQLException e){
+                e.printStackTrace();
+            }
         }
     }
 

@@ -84,8 +84,11 @@ public class CupcakeDataMapper {
         try {
             conn = new DBConnector();
 
-            String insertTopping = "INSERT INTO `cupcake`.`topping` (tname, price) "
-                    + "VALUES (?, " + price + ");";
+            String insertTopping = "START TRANSACTION;"
+                    + "SET AUTOCOMMIT = OFF;"
+                    + "INSERT INTO `cupcake`.`topping` (tname, price) "
+                    + "VALUES (?, " + price + ");"
+                    + "COMMIT;";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertTopping);
             ps.setString(1, name);
             ps.executeUpdate();
