@@ -13,9 +13,11 @@
     carts = (List<ShoppingCart>) session.getAttribute("carts");
     if (carts != null) {
         for (ShoppingCart cart : carts) {
+            String date = cart.getDate();
             out.println("<form method=\"post\" action=\"/Cupcake/Controller?command=Product\">\n"
                     + "            <input type=\"hidden\" name=\"origin\" value=\"cart\">\n"
-                    + "            <input type=\"submit\" value=\"Invoice of: " + cart.getDate() + "\"/>\n"
+                    + "            <input type=\"hidden\" name=\"date\" value=\"" + date + "\">\n"
+                    + "            <input type=\"submit\" value=\"Invoice of: " + date + "\"/>\n"
                     + "        </form>");
 
         }
@@ -30,7 +32,7 @@
             String date = cart.getDate();
             out.println("<form method=\"post\" action=\"/Cupcake/Controller?command=Product\">\n"
                     + "            <input type=\"hidden\" name=\"origin\" value=\"cart\">\n"
-                    + "            <input type=\"hidden\" name=\"date\" value=\""+date+"\">\n"
+                    + "            <input type=\"hidden\" name=\"date\" value=\"" + date + "\">\n"
                     + "            <input type=\"submit\" value=\"Invoice of: " + date + "\"/>\n"
                     + "        </form>");
 
