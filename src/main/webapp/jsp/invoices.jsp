@@ -13,6 +13,10 @@
     UserDataMapper db = new UserDataMapper();
     
     List<ShoppingCart> carts = db.getInvoices(user);
+    
+    for (ShoppingCart cart: carts){
+        out.println(cart.toString());
+    }
 %>
 
 
