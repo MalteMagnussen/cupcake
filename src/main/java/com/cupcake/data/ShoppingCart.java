@@ -74,7 +74,11 @@ public class ShoppingCart {
      */
     @Override
     public String toString() {
-        return "ShoppingCart{" + "lineItems=" + lineItems + ", invoiceid=" + invoiceid + '}';
+        String print = "";
+        for (LineItem item: this.lineItems){
+            print += item.toString();
+        }
+        return "Shopping Cart: " + print;
     }
 
     public void setLineItems(List<LineItem> items) {

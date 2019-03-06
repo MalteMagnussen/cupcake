@@ -28,6 +28,10 @@
             <input type="submit" value="Log Out"/>
         </form>
 
+        <a href="jsp/invoice.jsp">Invoices</a>
+        
+        <a href="jsp/Shop.jsp">Shop</a>
+        
         <%
         } else {
         %>
