@@ -23,6 +23,15 @@ public class ShoppingCart {
      */
     private List<LineItem> lineItems;
     private int invoiceid;
+    private String date;
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
 
     public ShoppingCart() {
         this.lineItems = new ArrayList<>();

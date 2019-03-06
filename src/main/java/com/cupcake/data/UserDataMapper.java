@@ -68,11 +68,11 @@ public class UserDataMapper {
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
-            try{
-            String rollBack = "ROLLBACK;";
-            PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
-            ps.executeUpdate();
-            }catch(SQLException e){
+            try {
+                String rollBack = "ROLLBACK;";
+                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
+                ps.executeUpdate();
+            } catch (SQLException e) {
                 System.out.println(e);
             }
         }
@@ -114,11 +114,11 @@ public class UserDataMapper {
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
-            try{
+            try {
                 String rollBack = "ROLLBACK;";
                 PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
                 ps.executeUpdate();
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 System.out.println(e);
             }
         }
@@ -239,11 +239,11 @@ public class UserDataMapper {
                 ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
-                try{
+                try {
                     String rollBack = "ROLLBACK;";
                     PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
                     ps.executeUpdate();
-                }catch(SQLException e){
+                } catch (SQLException e) {
                     System.out.println(e);
                 }
             }
@@ -269,6 +269,89 @@ public class UserDataMapper {
         } catch (SQLException ex) {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * Used by getInvoices.
+     *
+     * @param user
+     * @return
+     * @throws SQLException
+     */
+    public List<Integer> getInvoiceIDs(User user) throws SQLException {
+        List<Integer> ints = new ArrayList<>();
+        String username = user.getUsername();
+        conn = new DBConnector();
+
+        String query = "SELECT id FROM invoices WHERE `name`='" + username + "';";
+
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            ints.add(rs.getInt("id"));
+        }
+        return ints;
+    }
+
+    /**
+     * Used by getInvoices.
+     *
+     * @param number
+     * @return
+     * @throws SQLException
+     */
+    public ShoppingCart getOrders(int number) throws SQLException {
+        List<LineItem> items = new ArrayList<>();
+        conn = new DBConnector();
+        CupcakeDataMapper db = new CupcakeDataMapper();
+
+        String query = "SELECT * FROM cupcake.ordertails "
+                + "WHERE id = " + number + ";";
+
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            String tname = rs.getString("tname");
+            Top top = new Top(tname, db.getTopPrice(tname));
+            String bname = rs.getString("bname");
+            Bottom bot = new Bottom(bname, db.getBottomPrice(bname));
+            int qty = rs.getInt("qty");
+            Cupcake cake = new Cupcake(top, bot);
+            LineItem item = new LineItem(cake);
+            items.add(item);
+        }
+        
+        ShoppingCart cart = new ShoppingCart();
+        cart.setLineItems(items);
+        cart.setDate(getInvoiceDate(number));
+        return cart;
+        
+    }
+    
+    public String getInvoiceDate (int id) throws SQLException {
+        conn = new DBConnector();
+        String query = "SELECT `date` FROM invoices WHERE id = "+id+";";
+        
+        Connection connection = conn.getConnection();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        String date = "";
+        while(rs.next()){
+            date = rs.getString("date");
+        }
+        return date;
+    }
+    
+    public List<ShoppingCart> getInvoices(User user) throws SQLException{
+        List<ShoppingCart> invoices = new ArrayList<>();
+        for(Integer id: getInvoiceIDs(user)){
+            invoices.add(getOrders(id));
+        }
+        return invoices;
     }
 
     /**
@@ -370,11 +453,11 @@ public class UserDataMapper {
         } catch (SQLException ex) {
             ex.printStackTrace();
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
-            try{
+            try {
                 String rollBack = "ROLLBACK;";
                 PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
                 ps.executeUpdate();
-            }catch(SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
