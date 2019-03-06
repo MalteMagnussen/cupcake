@@ -12,7 +12,7 @@
 
     UserDataMapper db = new UserDataMapper();
     
-    List<ShoppingCart> carts = db.getInvoices();
+    List<ShoppingCart> carts = db.getInvoices(user);
 %>
 
 

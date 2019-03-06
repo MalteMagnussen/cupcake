@@ -332,6 +332,12 @@ public class UserDataMapper {
         
     }
     
+    /**
+     * Used by getInvoices
+     * @param id
+     * @return
+     * @throws SQLException 
+     */
     public String getInvoiceDate (int id) throws SQLException {
         conn = new DBConnector();
         String query = "SELECT `date` FROM invoices WHERE id = "+id+";";
@@ -346,6 +352,12 @@ public class UserDataMapper {
         return date;
     }
     
+    /**
+     * Used to show all Invoices of a User.
+     * @param user
+     * @return
+     * @throws SQLException 
+     */
     public List<ShoppingCart> getInvoices(User user) throws SQLException{
         List<ShoppingCart> invoices = new ArrayList<>();
         for(Integer id: getInvoiceIDs(user)){
