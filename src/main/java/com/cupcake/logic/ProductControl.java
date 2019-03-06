@@ -61,6 +61,22 @@ public class ProductControl extends Command {
                 case "removeitem":
                     removeitem(user, request);
                     break;
+                case "cart":
+
+                    String date = (String) request.getParameter("date");
+                    List<ShoppingCart> carts = (List<ShoppingCart>) session.getAttribute("carts");
+
+                    for (ShoppingCart cart : carts) {
+                        if (date.equals(cart.getDate())) {
+                            session.setAttribute("cart", cart);
+                        }
+                    }
+
+                    // Send user on to the invoice
+                    RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
+                    rd.forward(request, response);
+
+                    break;
             }
         }
 
