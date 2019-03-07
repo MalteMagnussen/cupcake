@@ -21,8 +21,8 @@
             User user = (User) session.getAttribute("user");
             UserController uc = new UserController();
             if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
-                switch (user.getRole()) {
-                    case USER:
+                if ("user".equals(user.getRole())) {
+
         %>
         <form method="post" action="/Cupcake/Controller?command=Login">
             <input type="hidden" name="origin" value="logout">
@@ -33,9 +33,7 @@
 
         <a href="jsp/Shop.jsp">Shop</a>
 
-        <%
-                break;
-            case ADMIN:
+        <%        } else if ("admin".equals(user.getRole())) {
         %>
         <form method="post" action="/Cupcake/Controller?command=Login">
             <input type="hidden" name="origin" value="logout">
@@ -47,7 +45,6 @@
         <a href="jsp/Shop.jsp">Shop</a>
 
         <%
-                    break;
             }
         } else {
         %>
