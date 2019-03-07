@@ -48,7 +48,7 @@
         <div id ="everything">
 
             <img src="https://i.imgur.com/ZMGDK82.png" 
-                 alt="Cupcake Banner" style="float: top; align-items: center;" >
+                 alt="Cupcake Banner" style="float: top; margin: auto; display: table;" >
 
             <div id="sitemenus" >
                 <%
