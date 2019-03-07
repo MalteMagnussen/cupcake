@@ -1,6 +1,6 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
-<img src="https://i.imgur.com/p7ER9J4.jpg" alt="Hello Kitty" style="    width: 639px;
+<img src="https://i.imgur.com/p7ER9J4.jpg" alt="Hello Kitty" style="float: right;    width: 639px;
     height: 426px;  ">
 
 
