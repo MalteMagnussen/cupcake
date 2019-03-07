@@ -1,4 +1,9 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+
+<img src="https://i.imgur.com/p7ER9J4.jpg" alt="Hello Kitty" style="    width: 639px;
+    height: 426px;  ">
+
+
 <div id="CreateUser">
     <p> Create User: </p>
     <form method="post" action="/Cupcake/Controller?command=Login">
