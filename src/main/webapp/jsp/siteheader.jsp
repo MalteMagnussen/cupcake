@@ -17,7 +17,7 @@
     </head>
     <body>
         <img src="https://i.imgur.com/ZMGDK82.png" 
-             alt="Cupcake Banner" style="">
+             alt="Cupcake Banner" style="float: top" >
 
 
         <%
@@ -56,8 +56,10 @@
             }
         } else {
         %>
+        <div style="">
         <a href="jsp/LoginPage.jsp">Login</a>
         <a href="jsp/registration.jsp">Create User</a>
+        </div>
         <%
             }
 

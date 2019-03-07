@@ -5,7 +5,7 @@
          style="
          float: right;
          width: 639px;
-         height: 426px;  ">
+         height: 426px; float: right; ">
 
 
     <div id="CreateUser">
