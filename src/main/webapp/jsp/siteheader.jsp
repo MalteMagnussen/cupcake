@@ -66,10 +66,17 @@
                     }
                 } else {
                 %>
-
-                <a href="jsp/LoginPage.jsp"><span class="glyphicon glyphicon-log-in"></span>Login</a>
-                <a href="jsp/registration.jsp"><span class="glyphicon glyphicon-user"></span>Create User</a>
-
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">Cupcake</a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="jsp/LoginPage.jsp"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+                            <li><a href="jsp/registration.jsp"><span class="glyphicon glyphicon-user"></span>Create User</a></li>
+                        </ul>
+                    </div>
+                </nav>
                 <%
                     }
 
