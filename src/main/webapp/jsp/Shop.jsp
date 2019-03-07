@@ -18,7 +18,7 @@
     UserDataMapper userdb = new UserDataMapper();
 
     /* Shows which user is logged in */
-    out.println("<h1> " + user.getUsername() + " is logged in.</h1>");
+    out.println("<h2> " + user.getUsername() + " is logged in.</h2>");
 
     /* Shows the users balance */
     out.println("<p style=\"font-size:18px\"> "
