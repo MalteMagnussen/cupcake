@@ -16,7 +16,10 @@
 
     </head>
     <body>
-
+ <img src="https://i.imgur.com/ZMGDK82.png" 
+      alt="Cupcake Banner" style="align-content: space-around">
+    
+        
         <%
             String errormessage = (String) session.getAttribute("errormessage");
             if (errormessage != null && !errormessage.isEmpty()){
