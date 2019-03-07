@@ -1,6 +1,6 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
-    <form class="form-signin" action="Controller?command=Login" method="post" id="sitemenus" >
+<form class="form-signin" action="Controller?command=Login" method="post" id="sitemenus" style="margin: auto; display: table; width: 20%" >
         <input type="hidden" name="origin" value="login">
         <div class="text-center mb-4">
             <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
