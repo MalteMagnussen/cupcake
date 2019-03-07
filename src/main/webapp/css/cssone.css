@@ -1,9 +1,9 @@
-#sitemenus
+/*#sitemenus
 {
-    background: lightgrey;
+    background: white;
     width: 100%;
     display: inline-block;
-}
+}*/
 
 #sitemenus a
 {
@@ -19,6 +19,7 @@
     width: 50%;
     float: left;
     text-align: left;
+    
 }
 
 #sitemenus #user
@@ -26,6 +27,7 @@
     width: 50%;
     float: right;
     text-align: right;
+    
 }
 
 #sitemenus #user form
@@ -44,6 +46,7 @@
 {
     padding: 10px;
     margin: 10px;
+    background: #fff2ff;
 }
 
 h1
