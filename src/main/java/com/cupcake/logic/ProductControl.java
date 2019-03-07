@@ -61,6 +61,9 @@ public class ProductControl extends Command {
                 case "removeitem":
                     removeitem(user, request);
                     break;
+                case "admininvoice":
+                    
+                    break;
                 case "cart":
 
                     String date = (String) request.getParameter("date");

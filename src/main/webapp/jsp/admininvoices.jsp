@@ -10,12 +10,15 @@
     UserDataMapper db = new UserDataMapper();
     List<User> users = db.getUsers();
     for (User user : users) {
+        String username = user.getUsername();
+        out.println("<h5> Invoices for: " + username + "</h5>");
         List<ShoppingCart> carts = db.getInvoices(user);
-        for (ShoppingCart cart : carts) {
-            String date = cart.getDate();
+        for (int i = 0; i < carts.size(); i++) {
+            String date = carts.get(i).getDate();
             out.println("<form method=\"post\" action=\"/Cupcake/Controller?command=Product\">\n"
-                    + "            <input type=\"hidden\" name=\"origin\" value=\"cart\">\n"
+                    + "            <input type=\"hidden\" name=\"origin\" value=\"admininvoice\">\n"
                     + "            <input type=\"hidden\" name=\"date\" value=\"" + date + "\">\n"
+                    + "            <input type=\"hidden\" name=\"number\" value=\"" + i+1 + "\">\n"
                     + "            <input type=\"submit\" value=\"Invoice of: " + date + "\"/>\n"
                     + "        </form>");
         }
