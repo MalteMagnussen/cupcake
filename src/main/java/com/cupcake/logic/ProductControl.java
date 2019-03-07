@@ -165,6 +165,8 @@ public class ProductControl extends Command {
         String amount = (String) request.getParameter("amount");
         int money = Integer.parseInt(amount);
         user.addBalance(money);
+        UserDataMapper DB = new UserDataMapper();
+        DB.setBalance(user, user.getBalance());
     }
 
     private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {
