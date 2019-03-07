@@ -53,6 +53,10 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        setRole();
+    }
+    
+    public void setRole(){
         if ("admin".equals(username)) {
             this.role = "admin";
         } else {

@@ -153,9 +153,11 @@ public class UserDataMapper {
             /*  E-mail */
             String e = rs.getString("email");
             user.setEmail(e);
+            
         }
         /* Username */
         user.setUsername(userName);
+        user.setRole();
         return user;
     }
 
