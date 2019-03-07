@@ -87,6 +87,7 @@ public class LoginCommand extends Command {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
+        /* new instance of usercontroller */ 
         UserController c = new UserController();
         boolean valid = false;
 
@@ -94,6 +95,7 @@ public class LoginCommand extends Command {
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
             try {
+                /* check if user is valid */
                 valid = c.isValid(username, password);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
