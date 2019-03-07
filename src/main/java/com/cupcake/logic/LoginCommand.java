@@ -77,7 +77,8 @@ public class LoginCommand extends Command {
 
     private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* If User is not in Database send him back to LoginPage */
-        request.setAttribute("errormessage", "User not registered");
+        HttpSession session = request.getSession();
+        session.setAttribute("errormessage", "User not registered");
         RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
         rd.forward(request, response);
     }

@@ -146,7 +146,8 @@ public class ProductControl extends Command {
             // Send errormessage to User
             String errormessage = "Not enough money on your balance "
                     + "for this purchase";
-            request.setAttribute("errormessage", errormessage);
+            HttpSession session = request.getSession();
+            session.setAttribute("errormessage", errormessage);
         } else {
             /* If user DOES have enough money. */
             UserDataMapper db = new UserDataMapper();

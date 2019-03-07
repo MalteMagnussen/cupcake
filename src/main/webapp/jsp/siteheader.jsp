@@ -18,6 +18,11 @@
     <body>
 
         <%
+            String errormessage = (String) session.getAttribute("errormessage");
+            if (errormessage != null && !errormessage.isEmpty()){
+                out.println("");
+            }
+            
             User user = (User) session.getAttribute("user");
             UserController uc = new UserController();
             if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
