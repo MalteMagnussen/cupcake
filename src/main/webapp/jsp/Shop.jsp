@@ -64,11 +64,12 @@
                         %>
                     </select>
                 <td><input type="text" name="qty" placeholder="quantity" id="qtyInput"></td>
-                <td><input type="submit" name="submit" value="Add to cart"></td><td><span id="errorContainer"></span></td>
+                <td><input type="submit" name="submit" value="Add to cart"></td>
             </tr>
         </tbody>
     </table>
 </form>
+                        
 <%
     /* Form for dropdows END */
     // ShoppingCart:
