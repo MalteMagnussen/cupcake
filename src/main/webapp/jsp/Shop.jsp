@@ -30,7 +30,7 @@
 <p> Add Balance: </p> 
 <form action="Controller?command=Product" method="post">
     <input type="hidden" name="origin" value="add balance">
-    Amount:        <input type="text" name="amount"/><br/>
+    Amount:        <input type="text" name="amount"/>
     <input type="submit" value="add"/>
 </form>
 
