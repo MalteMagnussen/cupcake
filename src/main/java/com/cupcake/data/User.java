@@ -21,6 +21,7 @@ public class User {
     private String password;
     private String email;
     private ShoppingCart cart;
+    private Role role;
 
     public User() {
     }
@@ -52,6 +53,11 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        if ("admin".equals(username)) {
+            this.role = Role.ADMIN;
+        } else {
+            this.role = Role.USER;
+        }
     }
 
     public String getUsername() {
@@ -95,4 +101,8 @@ public class User {
         this.email = email;
     }
 
+}
+
+ enum Role {
+    USER, ADMIN;
 }
