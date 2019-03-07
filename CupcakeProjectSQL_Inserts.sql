@@ -31,3 +31,5 @@ VALUES
 '1234',
 0,
 'cupcake@gmail.com');
+
+COMMIT;
