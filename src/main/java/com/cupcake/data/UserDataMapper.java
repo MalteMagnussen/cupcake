@@ -59,10 +59,12 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String insertNewBalance = "START TRANSACTION;"
+            String insertNewBalance = "SET autocommit = 0;"
+                    + "START TRANSACTION;"
                     + "INSERT INTO cupcake.`users` (name, balance)"
                     + " VALUES (" + name + ", ?);"
-                    + "COMMIT;";
+                    + "COMMIT;"
+                    + "SET autocommit = 1;";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
@@ -105,12 +107,22 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String insertNewBalance = "START TRANSACTION;"
-                    + "INSERT INTO cupcake.`users` (name, balance)"
-                    + " VALUES (" + name + ", ?);"
-                    + "COMMIT;";
-            PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
+            String auto = "SET autocommit = 0;";
+            String trans = "START TRANSACTION;";
+            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);";
+            String commit = "COMMIT;";
+            String reAuto = "SET autocommit = 1;";
+            PreparedStatement ps = conn.getConnection().prepareStatement(auto);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(trans);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(commit);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(reAuto);
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -220,8 +232,9 @@ public class UserDataMapper {
         if (name != null || password != null || email != null) {
             try {
                 conn = new DBConnector();
-                String insertUser = "START TRANSACTION;"
-                        + "INSERT INTO `cupcake`.`users`\n"
+                String auto = "SET autocommit = 0;";
+                String trans = "START TRANSACTION;";
+                String insertUser = "INSERT INTO `cupcake`.`users`\n"
                         + "(`name`,\n"
                         + "`password`,\n"
                         + "`balance`,\n"
@@ -230,12 +243,21 @@ public class UserDataMapper {
                         + "(?,\n"
                         + "?,\n"
                         + "0,\n"
-                        + "?);"
-                        + "COMMIT;";
-                PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
+                        + "?);";
+                String commit = "COMMIT;";
+                String reAuto = "SET autocommit = 1;";
+                PreparedStatement ps = conn.getConnection().prepareStatement(auto);
+                ps.executeUpdate();
+                ps = conn.getConnection().prepareStatement(trans);
+                ps.executeUpdate();
+                ps = conn.getConnection().prepareStatement(insertUser);
                 ps.setString(1, name);
                 ps.setString(2, password);
                 ps.setString(3, email);
+                ps.executeUpdate();
+                ps = conn.getConnection().prepareStatement(commit);
+                ps.executeUpdate();
+                ps = conn.getConnection().prepareStatement(reAuto);
                 ps.executeUpdate();
             } catch (SQLException ex) {
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -454,13 +476,22 @@ public class UserDataMapper {
             String username = user.getUsername();
             String balance = String.valueOf(userbalance);
             conn = new DBConnector();
-
-            String query = "START TRANSACTION;"
-                    + "UPDATE users SET balance = ? WHERE name = ?;"
-                    + "COMMIT;";
-            PreparedStatement ps = conn.getConnection().prepareStatement(query);
+            String auto = "SET autocommit = 0;";
+            String trans = "START TRANSACTION;";
+            String query = "UPDATE users SET balance = ? WHERE name = ?;";
+            String commit = "COMMIT;";
+            String reAuto = "SET autocommit = 1;";
+            PreparedStatement ps = conn.getConnection().prepareStatement(auto);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(trans);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, balance);
             ps.setString(2, username);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(commit);
+            ps.executeUpdate();
+            ps = conn.getConnection().prepareStatement(reAuto);
             ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
