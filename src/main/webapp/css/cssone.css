@@ -40,6 +40,12 @@
     padding: 10px;
 }
 
+#everything
+{
+    padding: 10px;
+    margin: 10px;
+}
+
 h1
 {
     text-align: center;
@@ -50,4 +56,9 @@ h1
     text-align: center;
     background-color: #ff57f7;
     
+}
+
+h2
+{
+    text-align: center;
 }
