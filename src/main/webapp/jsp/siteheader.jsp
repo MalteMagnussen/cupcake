@@ -2,7 +2,7 @@
 <%@page import="com.cupcake.logic.UserController"%>
 <%@page import="com.cupcake.data.User"%>
 <!DOCTYPE html>
-<html>
+<html lang = "en">
     <head>
 
         <title>Cupcake</title>
@@ -17,7 +17,7 @@
     </head>
     <body>
         <img src="https://i.imgur.com/ZMGDK82.png" 
-             alt="Cupcake Banner" style="float: top" >
+             alt="Cupcake Banner" style="float: top; align-items: center;" >
 
 
         <%
