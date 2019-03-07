@@ -21,6 +21,7 @@ public class User {
     private String password;
     private String email;
     private ShoppingCart cart;
+    private String role;
 
     public User() {
     }
@@ -52,6 +53,19 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
+        setRole();
+    }
+    
+    public void setRole(){
+        if ("admin".equals(username)) {
+            this.role = "admin";
+        } else {
+            this.role = "user";
+        }
+    }
+
+    public String getRole() {
+        return role;
     }
 
     public String getUsername() {
@@ -94,5 +108,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+    
 
 }
+

@@ -21,18 +21,31 @@
             User user = (User) session.getAttribute("user");
             UserController uc = new UserController();
             if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
-        %>
+                if ("user".equals(user.getRole())) {
 
+        %>
         <form method="post" action="/Cupcake/Controller?command=Login">
             <input type="hidden" name="origin" value="logout">
             <input type="submit" value="Log Out"/>
         </form>
 
         <a href="jsp/invoices.jsp">Invoices</a>
-        
+
         <a href="jsp/Shop.jsp">Shop</a>
-        
+
+        <%        } else if ("admin".equals(user.getRole())) {
+        %>
+        <form method="post" action="/Cupcake/Controller?command=Login">
+            <input type="hidden" name="origin" value="logout">
+            <input type="submit" value="Log Out"/>
+        </form>
+
+        <a href="jsp/admininvoices.jsp">Invoices</a>
+
+        <a href="jsp/Shop.jsp">Shop</a>
+
         <%
+            }
         } else {
         %>
         <a href="jsp/LoginPage.jsp">Login</a>

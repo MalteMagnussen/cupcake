@@ -12,7 +12,10 @@ import com.cupcake.data.ShoppingCart;
 import com.cupcake.data.User;
 import com.cupcake.data.UserDataMapper;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -61,21 +64,11 @@ public class ProductControl extends Command {
                 case "removeitem":
                     removeitem(user, request);
                     break;
+                case "admininvoice":
+                    admininvoice(request, session, response);
+                    break;
                 case "cart":
-
-                    String date = (String) request.getParameter("date");
-                    List<ShoppingCart> carts = (List<ShoppingCart>) session.getAttribute("carts");
-
-                    for (ShoppingCart cart : carts) {
-                        if (date.equals(cart.getDate())) {
-                            session.setAttribute("cart", cart);
-                        }
-                    }
-
-                    // Send user on to the invoice
-                    RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
-                    rd.forward(request, response);
-
+                    cart(request, session, response);
                     break;
             }
         }
@@ -84,6 +77,43 @@ public class ProductControl extends Command {
         session.setAttribute("user", user);
         // Send user back to shop
         RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
+        rd.forward(request, response);
+    }
+
+    private void admininvoice(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
+        UserDataMapper db = new UserDataMapper();
+        String date = (String) request.getParameter("date");
+        String username = (String) request.getParameter("user");
+        List<ShoppingCart> carts = null;
+        try {
+            carts = db.getInvoices(db.getUser(username));
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductControl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        for (ShoppingCart cart : carts) {
+            if (date.equals(cart.getDate())) {
+                session.setAttribute("cart", cart);
+            }
+        }
+
+        // Send admin on to the invoice
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
+        rd.forward(request, response);
+    }
+
+    private void cart(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
+        String date = (String) request.getParameter("date");
+        List<ShoppingCart> carts = (List<ShoppingCart>) session.getAttribute("carts");
+
+        for (ShoppingCart cart : carts) {
+            if (date.equals(cart.getDate())) {
+                session.setAttribute("cart", cart);
+            }
+        }
+
+        // Send user on to the invoice
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
         rd.forward(request, response);
     }
 

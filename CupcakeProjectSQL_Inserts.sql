@@ -20,3 +20,14 @@ VALUES
 'test',
 0,
 'test@gmail.com');
+
+INSERT INTO `cupcake`.`users`
+(`name`,
+`password`,
+`balance`,
+`email`)
+VALUES
+('admin',
+'1234',
+0,
+'cupcake@gmail.com');
