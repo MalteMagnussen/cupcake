@@ -16,16 +16,16 @@
 
     </head>
     <body>
- <img src="https://i.imgur.com/ZMGDK82.png" 
-      alt="Cupcake Banner" style="align-content: space-around">
-    
-        
+        <img src="https://i.imgur.com/ZMGDK82.png" 
+             alt="Cupcake Banner" style="">
+
+
         <%
             String errormessage = (String) session.getAttribute("errormessage");
-            if (errormessage != null && !errormessage.isEmpty()){
+            if (errormessage != null && !errormessage.isEmpty()) {
                 out.println("");
             }
-            
+
             User user = (User) session.getAttribute("user");
             UserController uc = new UserController();
             if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
