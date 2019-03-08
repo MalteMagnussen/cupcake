@@ -6,7 +6,6 @@
 
 
 <%
-    User user = (User) session.getAttribute("user");
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
     
     for (LineItem item: cart.getLineItems()){
