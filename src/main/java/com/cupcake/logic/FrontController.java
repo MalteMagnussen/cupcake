@@ -32,8 +32,8 @@ public class FrontController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         /**
-         * Below a workingjack might have to be made. It puts the requests into
-         * threads. ExecutorService
+         * Below a workingjack might have to be made. It would put the requests 
+         * into threads. ExecutorService
          */
         final HttpServletRequest req = request;
         final HttpServletResponse res = response;
