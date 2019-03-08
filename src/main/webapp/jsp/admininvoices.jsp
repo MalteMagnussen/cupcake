@@ -11,6 +11,7 @@
     List<User> users = db.getUsers();
     for (User user : users) {
         String username = user.getUsername();
+        out.println("<br>");
         out.println("<h5> Invoices for: " + username + "</h5>");
         List<ShoppingCart> carts = db.getInvoices(user);
         for (ShoppingCart cart : carts) {

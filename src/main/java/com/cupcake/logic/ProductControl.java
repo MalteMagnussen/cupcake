@@ -156,7 +156,7 @@ public class ProductControl extends Command {
             /* Adds cart as an invoice in the SQL */
             db.addInvoice(user);
             // Set message to send to the user
-            String errormessage = "We have received your order."
+            String errormessage = "We have received your order. "
                     + "Here is the total: " + user.getTotalPrice();
             /* Makes a new empty shoppingcart and adds that to user
             effectively resetting the cart. */

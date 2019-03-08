@@ -54,8 +54,10 @@
                 <%
                     String errormessage = (String) session.getAttribute("errormessage");
                     if (errormessage != null && !errormessage.isEmpty()) {
-                        out.println("ERRORMESSAGE: " + errormessage);
-                    }
+                        out.println("MESSAGE: " + errormessage);
+                    } 
+                    
+                    session.removeAttribute("errormessage");
 
                     User user = (User) session.getAttribute("user");
                     UserController uc = new UserController();
@@ -74,7 +76,7 @@
                             <a class="navbar-brand" href="#">Cupcake</a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="jsp/admininvoices.jsp"></span>Invoices</a></li>
+                            <li><a href="jsp/invoices.jsp"></span>Invoices</a></li><br>
                             <li><a href="jsp/Shop.jsp"></span>Shop</a></li>
                         </ul>
                     </div>
@@ -94,7 +96,7 @@
                             <a class="navbar-brand" href="#">Cupcake</a>
                         </div>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="jsp/admininvoices.jsp"></span>Invoices</a></li>
+                            <li><a href="jsp/admininvoices.jsp"></span>Invoices</a></li><br>
                             <li><a href="jsp/Shop.jsp"></span>Shop</a></li>
                         </ul>
                     </div>
