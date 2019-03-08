@@ -49,8 +49,6 @@ public class TableBean implements Serializable {
         return item.getCupcake().getPrice();
     }
 
-    
-    
 }
 
 
