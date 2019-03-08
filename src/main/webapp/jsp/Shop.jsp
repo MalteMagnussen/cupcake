@@ -51,7 +51,7 @@
                 <td><select name="bottom" id="bottomSelect">
                         <%    for (Bottom bot : bots) {
                                 out.print("<option value=\"" + bot.getName()
-                                        + "\">" + bot.getName() + " " + bot.getPrice() + "</option>\n");
+                                        + "\">" + bot.getName() + " " + bot.getPrice() + "$</option>\n");
                             }
 
                             out.print("<select>\n");
@@ -59,7 +59,7 @@
 
                             for (Top top : tops) {
                                 out.print("<option value=\"" + top.getName()
-                                        + "\">" + top.getName() + " " + top.getPrice() + "</option>\n");
+                                        + "\">" + top.getName() + " " + top.getPrice() + "$</option>\n");
                             }
                         %>
                     </select>

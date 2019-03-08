@@ -1,3 +1,5 @@
+<%@page import="com.cupcake.data.TableEntity"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.cupcake.data.LineItem"%>
 <%@page import="com.cupcake.data.ShoppingCart"%>
 <%@page import="java.util.List"%>
@@ -7,11 +9,20 @@
 
 <%
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-    
+    out.println("<ol>");
     for (LineItem item: cart.getLineItems()){
-        out.println("<p>"+item.toString()+"</p>");
+        out.println("<li><p>"+item.toString()+"</p></li>");
     }
+    out.println("</ol>");
+    
+    
+    
+    
 %>
+
+
+
+
 
 
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>

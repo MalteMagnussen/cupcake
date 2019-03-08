@@ -35,10 +35,7 @@
                     + "            <input type=\"hidden\" name=\"date\" value=\"" + date + "\">\n"
                     + "            <input type=\"submit\" value=\"Invoice of: " + date + "\"/>\n"
                     + "        </form>");
-
         }
     }
 %>
-
-
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
