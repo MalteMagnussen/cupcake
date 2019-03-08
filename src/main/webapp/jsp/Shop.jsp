@@ -105,7 +105,10 @@
     /* Form for ShoppingCart END */
 
  /* Cart Checkout Start */
-    if (cart != null || !cart.isEmpty() || user.getTotalPrice()>user.getBalance()) {
+    
+    
+    
+    if (cart != null && !cart.isEmpty() && user.getTotalPrice()<user.getBalance()) {
 %>
 <p> Checkout Entire Cart and make it an invoice: 
 <form action="Controller?command=Product" method="post">
