@@ -346,6 +346,7 @@ public class UserDataMapper {
             int qty = rs.getInt("qty");
             Cupcake cake = new Cupcake(top, bot);
             LineItem item = new LineItem(cake);
+            item.addQuantity(qty);
             items.add(item);
         }
         
