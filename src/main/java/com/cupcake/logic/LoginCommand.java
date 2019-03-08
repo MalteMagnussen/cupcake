@@ -79,11 +79,11 @@ public class LoginCommand extends Command {
         /* If User is not in Database send him back to LoginPage */
         HttpSession session = request.getSession();
         session.setAttribute("errormessage", "User not registered");
-        RequestDispatcher rd = request.getRequestDispatcher("Controller?command=LoginPage");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
         rd.forward(request, response);
     }
 
-    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* Get Parameters from the URL. (From the HTTP request) */
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
@@ -118,6 +118,8 @@ public class LoginCommand extends Command {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+        } else {
+            errorMessage(request, response);
         }
     }
 
