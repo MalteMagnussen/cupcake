@@ -14,10 +14,6 @@
         out.println("<li><p>"+item.toString()+"</p></li>");
     }
     out.println("</ol>");
-    
-    
-    
-    
 %>
 
 
