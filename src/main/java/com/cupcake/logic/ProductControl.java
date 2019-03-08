@@ -75,9 +75,11 @@ public class ProductControl extends Command {
 
         /* Put finished User back on Session */
         session.setAttribute("user", user);
-        // Send user back to shop
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
-        rd.forward(request, response);
+        if (!"admininvoice".equals(origin) && !"cart".equals(origin)){
+            // Send user back to shop
+            RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
+            rd.forward(request, response);
+        }
     }
 
     private void admininvoice(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
@@ -139,17 +141,17 @@ public class ProductControl extends Command {
     }
 
     private void checkout(User user, HttpServletRequest request) {
-        int userbalance = user.getBalance();
+//        int userbalance = user.getBalance();
         int cartPrice = user.getTotalPrice();
-        /* If user does NOT have enough money for the purchase */
-        if (userbalance < cartPrice) {
-            // Send errormessage to User
-            String errormessage = "Not enough money on your balance "
-                    + "for this purchase";
-            HttpSession session = request.getSession();
-            session.setAttribute("errormessage", errormessage);
-        } else {
-            /* If user DOES have enough money. */
+//        /* If user does NOT have enough money for the purchase */
+//        if (userbalance < cartPrice) {
+//            // Send errormessage to User
+//            String errormessage = "Not enough money on your balance "
+//                    + "for this purchase";
+//            HttpSession session = request.getSession();
+//            session.setAttribute("errormessage", errormessage);
+//        } else {
+//            /* If user DOES have enough money. */
             UserDataMapper db = new UserDataMapper();
             /* Removes the money from the Balance of the User */
             user.addBalance(-cartPrice);
@@ -157,7 +159,7 @@ public class ProductControl extends Command {
             db.addInvoice(user);
             // Set message to send to the user
             String errormessage = "We have received your order. "
-                    + "Here is the total: " + user.getTotalPrice();
+                    + "Here is the total: " + user.getTotalPrice() + "$";
             /* Makes a new empty shoppingcart and adds that to user
             effectively resetting the cart. */
             ShoppingCart emptyCart = new ShoppingCart();
@@ -165,7 +167,7 @@ public class ProductControl extends Command {
             // Send message to the user
             HttpSession session = request.getSession();
             session.setAttribute("errormessage", errormessage);
-        }
+//        }
     }
 
     private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
