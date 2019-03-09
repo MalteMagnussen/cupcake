@@ -23,7 +23,7 @@
             <label for="inputPassword">Email</label>
         </div>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrer</button>
         <p class="mt-5 mb-3 text-muted text-center"> Malte - Benjamin - Mikkel - Nikolaj</p>
     </form>
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
