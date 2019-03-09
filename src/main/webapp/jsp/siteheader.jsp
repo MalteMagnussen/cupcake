@@ -54,14 +54,16 @@
                  alt="Cupcake Banner" style="float: top; margin: auto; display: table;" >
 
             <div id="sitemenus" >
-                <%
+                <%  /*  If there is any error-message, then output it  */
                     String errormessage = (String) session.getAttribute("errormessage");
                     if (errormessage != null && !errormessage.isEmpty()) {
                         out.println("MESSAGE: " + errormessage);
                     }
 
                     session.removeAttribute("errormessage");
-
+                    
+                    /* Get the User, and check which navbars to show
+                        Depending on Role etc. */ 
                     User user = (User) session.getAttribute("user");
                     UserController uc = new UserController();
                     if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
