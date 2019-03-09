@@ -5,7 +5,7 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
 <%
-
+    /* List of All invoices in the system. */ 
     out.println("<h1> All invoices </h1>");
     UserDataMapper db = new UserDataMapper();
     List<User> users = db.getUsers();
