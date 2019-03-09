@@ -6,6 +6,8 @@
 
 <%
     /* List of All invoices in the system. */ 
+    /* TO DO - SORT THIS IN TABLE
+        hint - See invoice.jsp */ 
     out.println("<h1> All invoices </h1>");
     UserDataMapper db = new UserDataMapper();
     List<User> users = db.getUsers();
