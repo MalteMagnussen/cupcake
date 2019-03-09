@@ -86,7 +86,9 @@
     if (cart == null) {
 
     } else {
-        /* Prints every LineItem in the cart in a list. */
+        /* Prints every LineItem in the cart in a list. 
+            Could be improved with sorting functions and zebra stripes.
+        */
         List<LineItem> items = cart.getLineItems();
         for (LineItem item : items) {
             String tname = item.getCupcake().getTop().getName();
