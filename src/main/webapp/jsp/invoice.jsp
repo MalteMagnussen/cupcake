@@ -8,7 +8,7 @@
 
 <%
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
-    
+
 %>
 
 <table border="3" width="2" cellspacing="2" cellpadding="2" id="invoice" class="display">
@@ -36,7 +36,10 @@
         %>
     </tbody>
 </table>
-$(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+    
+<script>
+    $(document).ready(function () {
+        $('#table_id').DataTable();
+    });
+</script>
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
