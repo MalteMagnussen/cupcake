@@ -10,11 +10,14 @@
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
 %>
+<!--  Below is the Script for Sorting.   -->
 <script>
 $(document).ready( function () {
     $('#invoice').DataTable();
 } );
 </script>
+
+<!--  Below is the Table for an Invoice  -->
 <table border="3" width="2" cellspacing="2" cellpadding="2" id="invoice" class="display">
     <thead>
         <tr>
