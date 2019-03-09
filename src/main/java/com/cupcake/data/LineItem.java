@@ -95,4 +95,21 @@ public class LineItem {
         return true;
     }
 
+    public int getTotalPrice() {
+        return getCupcake().getPrice() * getQuantity();
+    }
+
+    
+
+    public String getBottom() {
+        return getCupcake().getBottom().getName();
+    }
+
+    public String getTop() {
+        return getCupcake().getTop().getName();
+    }
+
+    public int getPriceForOne() {
+        return getCupcake().getPrice();
+    }
 }
