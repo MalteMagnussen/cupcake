@@ -75,7 +75,7 @@ public class ProductControl extends Command {
 
         /* Put finished User back on Session */
         session.setAttribute("user", user);
-        if (!"admininvoice".equals(origin) && !"cart".equals(origin)){
+        if (!"admininvoice".equals(origin) && !"cart".equals(origin)) {
             // Send user back to shop
             RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
             rd.forward(request, response);
@@ -119,6 +119,12 @@ public class ProductControl extends Command {
         rd.forward(request, response);
     }
 
+    /**
+     * Removes an item from the cart. Does it on Session.
+     *
+     * @param user Owner of the cart.
+     * @param request
+     */
     private void removeitem(User user, HttpServletRequest request) {
         /* Get the cart */
         ShoppingCart cart = user.getCart();
@@ -140,9 +146,21 @@ public class ProductControl extends Command {
         user.setCart(cart);
     }
 
+    /**
+     *
+     * @param user
+     * @param request
+     */
     private void checkout(User user, HttpServletRequest request) {
 //        int userbalance = user.getBalance();
         int cartPrice = user.getTotalPrice();
+
+        /* 
+        
+           Code and comments below are removed because that function was moved
+           to somewhere else in the code, where it made more sense.
+        
+         */
 //        /* If user does NOT have enough money for the purchase */
 //        if (userbalance < cartPrice) {
 //            // Send errormessage to User
@@ -151,29 +169,38 @@ public class ProductControl extends Command {
 //            HttpSession session = request.getSession();
 //            session.setAttribute("errormessage", errormessage);
 //        } else {
-//            /* If user DOES have enough money. */
-            UserDataMapper db = new UserDataMapper();
-            /* Removes the money from the Balance of the User */
-            user.addBalance(-cartPrice);
-            /* Adds cart as an invoice in the SQL */
-            db.addInvoice(user);
-            // Set message to send to the user
-            String errormessage = "We have received your order. "
-                    + "Here is the total: " + user.getTotalPrice() + "$";
-            /* Makes a new empty shoppingcart and adds that to user
+//          /* If user DOES have enough money. */
+        UserDataMapper db = new UserDataMapper();
+        /* Removes the money from the Balance of the User */
+        user.addBalance(-cartPrice);
+        /* Adds cart as an invoice in the SQL */
+        db.addInvoice(user);
+        // Set message to send to the user
+        String errormessage = "We have received your order. "
+                + "Here is the total: " + user.getTotalPrice() + "$";
+        /* Makes a new empty shoppingcart and adds that to user
             effectively resetting the cart. */
-            ShoppingCart emptyCart = new ShoppingCart();
-            user.setCart(emptyCart);
-            // Send message to the user
-            HttpSession session = request.getSession();
-            session.setAttribute("errormessage", errormessage);
+        ShoppingCart emptyCart = new ShoppingCart();
+        user.setCart(emptyCart);
+        // Send message to the user
+        HttpSession session = request.getSession();
+        session.setAttribute("errormessage", errormessage);
 //        }
     }
 
+    /**
+     * Put some money on the users account.
+     * @param request 
+     * @param user User who receives the money.
+     * @throws NumberFormatException 
+     */
     private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
+        /* Pull the amount of money out of the URL */ 
         String amount = (String) request.getParameter("amount");
         int money = Integer.parseInt(amount);
+        /* Add it to the user on session */
         user.addBalance(money);
+        /* Add it to the SQL database aswell */
         UserDataMapper DB = new UserDataMapper();
         DB.setBalance(user, user.getBalance());
     }
