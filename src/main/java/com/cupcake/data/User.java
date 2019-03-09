@@ -26,6 +26,10 @@ public class User {
     public User() {
     }
 
+    /** 
+     * Total price of the users cart.
+     * @return price of the cart.
+     */
     public int getTotalPrice() {
         int totalprice = 0;
         cart = getCart();
