@@ -7,7 +7,7 @@
          width: 639px;
          height: 426px; float: right; ">
 
-
+<!--  Below is the form for Registering a user in the SQL database.  -->
     <div id="CreateUser">
         <p> Create User: </p>
         <form method="post" action="/Cupcake/Controller?command=Login">
