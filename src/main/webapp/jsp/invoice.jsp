@@ -37,9 +37,5 @@
     </tbody>
 </table>
     
-<script>
-    $(document).ready(function () {
-        $('#table_id').DataTable();
-    });
-</script>
+
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
