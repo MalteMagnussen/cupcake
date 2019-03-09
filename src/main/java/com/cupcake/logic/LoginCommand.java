@@ -59,6 +59,18 @@ public class LoginCommand extends Command {
         }
     }
 
+    /**
+     * Logout.
+     * Pulls user out of session.
+     * Pulls his balance out of session.
+     * Puts balance into SQL.
+     * Resets the Session.
+     * Forwards User to the Main Page.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Pull user out of session */
         HttpSession session = request.getSession();
@@ -75,6 +87,14 @@ public class LoginCommand extends Command {
         rd.forward(request, response);
     }
 
+    /**
+     * If user types wrong info into Login form.
+     * Sends user back to login page.
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* If User is not in Database send him back to LoginPage */
         HttpSession session = request.getSession();
@@ -83,6 +103,18 @@ public class LoginCommand extends Command {
         rd.forward(request, response);
     }
 
+    /**
+     * Login method.
+     * Validates the user info with the database.
+     * Then pulls the user out of database if he's valid.
+     * Then places him on the session if he's valid.
+     * Then forwards him to shop if he's valid.
+     * 
+     * @param request
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* Get Parameters from the URL. (From the HTTP request) */
         String username = (String) request.getParameter("username");
@@ -123,6 +155,14 @@ public class LoginCommand extends Command {
         }
     }
 
+    /**
+     * Makes a new User in the SQL database.
+     * Forwards to the LoginPage.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     private void registration(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Get the username, email and password from the URL Parameters.*/
         String username = (String) request.getParameter("username");
