@@ -41,6 +41,15 @@ public class ProductControl extends Command {
         Forwards back to Shop afterwards with new shit in session.
         
      */
+    
+    /**
+     * Main method. 
+     * Contains a switch that delegates to other methods in the class.
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException 
+     */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -82,6 +91,15 @@ public class ProductControl extends Command {
         }
     }
 
+    /**
+     * Get a single cart from a single user.
+     * For Admin.
+     * @param request
+     * @param session
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void admininvoice(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
         UserDataMapper db = new UserDataMapper();
         String date = (String) request.getParameter("date");
@@ -104,6 +122,14 @@ public class ProductControl extends Command {
         rd.forward(request, response);
     }
 
+    /**
+     * Get a single cart from a list of carts.
+     * @param request
+     * @param session
+     * @param response
+     * @throws IOException
+     * @throws ServletException 
+     */
     private void cart(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
         String date = (String) request.getParameter("date");
         List<ShoppingCart> carts = (List<ShoppingCart>) session.getAttribute("carts");
@@ -120,7 +146,8 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Removes an item from the cart. Does it on Session.
+     * Removes an item from the cart. 
+     * Does it on Session.
      *
      * @param user Owner of the cart.
      * @param request
@@ -147,9 +174,13 @@ public class ProductControl extends Command {
     }
 
     /**
-     *
-     * @param user
-     * @param request
+     * Does a checkout of the cart.
+     * Puts cart into SQL database as an invoice.
+     * Then empties the cart on the session.
+     * Also sends a message to user:
+     * "We have received your order. Here is the total: "amount"$
+     * @param user User who you wish to checkout.
+     * @param request 
      */
     private void checkout(User user, HttpServletRequest request) {
 //        int userbalance = user.getBalance();
@@ -205,13 +236,16 @@ public class ProductControl extends Command {
         DB.setBalance(user, user.getBalance());
     }
 
+    /**
+     * Put the cupcake into the cart. 
+     * Call this method to pull cupcake from URL and add it to the cart on session.
+     * @param request
+     * @param user User who owns the cart.
+     * @throws NumberFormatException 
+     */
     private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {
 
-        /*  TO DO
-               - Check if Cupcake already is in cart.
-               - If it is, just increase its LineItems Quantity with given amount.
-        
-            Get info about the cupcake */
+        /* Get info about the cupcake */
         String topName = (String) request.getParameter("top");
         String botName = (String) request.getParameter("bottom");
 
