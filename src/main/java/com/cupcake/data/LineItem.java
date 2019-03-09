@@ -99,8 +99,6 @@ public class LineItem {
         return getCupcake().getPrice() * getQuantity();
     }
 
-    
-
     public String getBottom() {
         return getCupcake().getBottom().getName();
     }
