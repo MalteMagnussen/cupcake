@@ -21,10 +21,10 @@ public class UserController {
 
     /**
      * Checks whether or not User exists in Database.
-     *
-     * @param username
-     * @param password
-     * @return boolean
+     * 
+     * @param username Name of the User we're validating.
+     * @param password Password of the User we're validating.
+     * @return boolean Returns True if User exists in the Database.
      * @throws SQLException
      */
     public boolean isValid(String username, String password) throws SQLException {
@@ -39,11 +39,10 @@ public class UserController {
     }
 
     /**
-     * Pull User out of Database. Hopefully with right name. King of
-     * NULLPOINTEREXCEPTIONS
+     * Pull User out of Database. 
      *
-     * @param username
-     * @return
+     * @param username Name of the User we want to get from the SQL database.
+     * @return User object.
      * @throws SQLException
      */
     public User getUser(String username) throws SQLException {
