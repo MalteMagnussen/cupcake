@@ -4,11 +4,12 @@
 <%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+<h1> All invoices </h1>
     <div class="row">
         <div class="col-sm-6">
+            
         <%
             // List of All invoices in the system.
-            out.println("<h1> All invoices </h1>");
             UserDataMapper db = new UserDataMapper();
             List<User> users = db.getUsers();
             for (User user : users) {
