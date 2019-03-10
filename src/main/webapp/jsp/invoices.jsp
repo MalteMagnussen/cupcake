@@ -68,7 +68,8 @@
                 </tr>
             </thead>
             <tbody>
-                <%            for (LineItem item : cart.getLineItems()) {
+                <%            
+                    for (LineItem item : cart.getLineItems()) {
                         out.println("<tr>");
 
                         out.println("<td>" + item.getBottom() + "</td>");
