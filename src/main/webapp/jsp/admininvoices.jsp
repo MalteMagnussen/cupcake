@@ -4,10 +4,10 @@
 <%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
-<h1> All invoices </h1>
+    <h1> All invoices </h1>
     <div class="row">
         <div class="col-sm-6">
-            
+
         <%
             // List of All invoices in the system.
             UserDataMapper db = new UserDataMapper();
@@ -55,7 +55,8 @@
                 </tr>
             </thead>
             <tbody>
-                <%            for (LineItem item : cart.getLineItems()) {
+                <%
+                    for (LineItem item : cart.getLineItems()) {
                         out.println("<tr>");
 
                         out.println("<td>" + item.getBottom() + "</td>");
