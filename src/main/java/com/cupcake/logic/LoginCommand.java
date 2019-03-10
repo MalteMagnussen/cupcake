@@ -107,7 +107,8 @@ public class LoginCommand extends Command {
                     /* Put user on session */
                     session.setAttribute("user", user);
                     /* Forward to Shop */
-                    response.sendRedirect("jsp/Shop.jsp");
+                    RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
+                    rd.forward(request, response);
 
                 }
             } catch (SQLException ex) {
