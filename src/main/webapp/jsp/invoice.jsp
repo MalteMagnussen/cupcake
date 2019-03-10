@@ -5,7 +5,6 @@
 <%@page import="com.cupcake.data.User"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
 
-
 <%
     ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
 
@@ -43,6 +42,7 @@ $(document).ready( function () {
         %>
     </tbody>
 </table>
+    
     
 
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>

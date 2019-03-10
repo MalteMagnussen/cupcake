@@ -118,7 +118,7 @@ public class ProductControl extends Command {
         }
 
         // Send admin on to the invoice
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/admininvoices.jsp");
         rd.forward(request, response);
     }
 
@@ -141,7 +141,7 @@ public class ProductControl extends Command {
         }
 
         // Send user on to the invoice
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/invoice.jsp");
+        RequestDispatcher rd = request.getRequestDispatcher("jsp/invoices.jsp");
         rd.forward(request, response);
     }
 
