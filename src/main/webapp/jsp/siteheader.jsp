@@ -61,9 +61,9 @@
                     }
 
                     session.removeAttribute("errormessage");
-                    
+
                     /* Get the User, and check which navbars to show
-                        Depending on Role etc. */ 
+                        Depending on Role etc. */
                     User user = (User) session.getAttribute("user");
                     UserController uc = new UserController();
                     if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
@@ -87,7 +87,7 @@
                     </div>
                 </nav>
 
-                <%        } else if ("admin".equals(user.getRole())) {
+                <%                } else if ("admin".equals(user.getRole())) {
                 %>
 
                 <form method="post" action="/Cupcake/Controller?command=Login">
