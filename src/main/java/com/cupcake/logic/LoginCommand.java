@@ -7,7 +7,6 @@ package com.cupcake.logic;
 
 import com.cupcake.data.User;
 import com.cupcake.data.UserDataMapper;
-import com.cupcake.logic.UserController;
 import com.mysql.cj.util.StringUtils;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -53,23 +52,17 @@ public class LoginCommand extends Command {
                 logout(request, response);
                 break;
             }
-            default:
-                errorMessage(request, response);
-                break;
         }
     }
 
     /**
-     * Logout.
-     * Pulls user out of session.
-     * Pulls his balance out of session.
-     * Puts balance into SQL.
-     * Resets the Session.
-     * Forwards User to the Main Page.
+     * Logout. Pulls user out of session. Pulls his balance out of session. Puts
+     * balance into SQL. Resets the Session. Forwards User to the Main Page.
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Pull user out of session */
@@ -88,80 +81,56 @@ public class LoginCommand extends Command {
     }
 
     /**
-     * If user types wrong info into Login form.
-     * Sends user back to login page.
+     * Login method. Validates the user info with the database. Then pulls the
+     * user out of database if he's valid. Then places him on the session if
+     * he's valid. Then forwards him to shop if he's valid.
+     *
      * @param request
      * @param response
      * @throws IOException
-     * @throws ServletException 
-     */
-    private void errorMessage(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        /* If User is not in Database send him back to LoginPage */
-        HttpSession session = request.getSession();
-        session.setAttribute("errormessage", "User not registered");
-        RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
-        rd.forward(request, response);
-    }
-
-    /**
-     * Login method.
-     * Validates the user info with the database.
-     * Then pulls the user out of database if he's valid.
-     * Then places him on the session if he's valid.
-     * Then forwards him to shop if he's valid.
-     * 
-     * @param request
-     * @param response
-     * @throws IOException
-     * @throws ServletException 
+     * @throws ServletException
      */
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* Get Parameters from the URL. (From the HTTP request) */
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
-        /* new instance of usercontroller */ 
-        UserController c = new UserController();
-        boolean valid = false;
-
         /* Check if User exists in the SQL database */
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
+
             try {
                 /* check if user is valid */
-                valid = c.isValid(username, password);
+                User user = new UserDataMapper().getUser(username);
+                if (password.equals(user.getPassword())) {
+                    HttpSession session = request.getSession();
+                    /* Put user on session */
+                    session.setAttribute("user", user);
+                    /* Forward to Shop */
+                    response.sendRedirect("jsp/Shop.jsp");
+
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
-
-        if (valid) {
-
-            try {
-                HttpSession session = request.getSession();
-                /* Pull user out of SQL */
-                User user = (User) c.getUser(username);
-
-                /* Put user on session */
-                session.setAttribute("user", user);
-                /* Forward to Shop */
-                response.sendRedirect("jsp/Shop.jsp");
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
         } else {
-            errorMessage(request, response);
+            /* If User is not in Database send him back to LoginPage */
+            HttpSession session = request.getSession();
+            session.setAttribute("errormessage", "User not registered");
+            RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
+            rd.forward(request, response);
+
         }
+
     }
 
     /**
-     * Makes a new User in the SQL database.
-     * Forwards to the LoginPage.
+     * Makes a new User in the SQL database. Forwards to the LoginPage.
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     private void registration(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         /* Get the username, email and password from the URL Parameters.*/
