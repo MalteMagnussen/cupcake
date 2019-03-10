@@ -41,11 +41,9 @@ public class CupcakeDataMapper {
      * @return
      */
     public Cupcake makeCupcake(String topName, String bottomName) {
-
         Top top = getTop(topName);
         Bottom bottom = getBottom(bottomName);
         return new Cupcake(top, bottom);
-
     }
 
     /**
