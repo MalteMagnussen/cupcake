@@ -7,9 +7,7 @@
     <div class="row">
         <div class="col-sm-6">
         <%
-            /* List of All invoices in the system. */
- /* TO DO - SORT THIS IN TABLE
-                hint - See invoice.jsp */
+            // List of All invoices in the system.
             out.println("<h1> All invoices </h1>");
             UserDataMapper db = new UserDataMapper();
             List<User> users = db.getUsers();
@@ -29,6 +27,7 @@
                 }
             }
         %>
+
     </div>
     <div class="col-sm-6">
 
