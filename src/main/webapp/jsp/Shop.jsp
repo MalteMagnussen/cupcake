@@ -15,7 +15,6 @@
 
     /* Instance of relevant DataMapper */
     CupcakeDataMapper db = new CupcakeDataMapper();
-    UserDataMapper userdb = new UserDataMapper();
 
     /* Shows which user is logged in */
     out.println("<h2> " + user.getUsername() + " is logged in.</h2>");

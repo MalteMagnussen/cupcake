@@ -41,14 +41,14 @@ public class ProductControl extends Command {
         Forwards back to Shop afterwards with new shit in session.
         
      */
-    
     /**
-     * Main method. 
-     * Contains a switch that delegates to other methods in the class.
+     * Main method. Contains a switch that delegates to other methods in the
+     * class.
+     *
      * @param request
      * @param response
      * @throws ServletException
-     * @throws IOException 
+     * @throws IOException
      */
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -92,13 +92,13 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Get a single cart from a single user.
-     * For Admin.
+     * Get a single cart from a single user. For Admin.
+     *
      * @param request
      * @param session
      * @param response
      * @throws IOException
-     * @throws ServletException 
+     * @throws ServletException
      */
     private void admininvoice(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
         UserDataMapper db = new UserDataMapper();
@@ -124,11 +124,12 @@ public class ProductControl extends Command {
 
     /**
      * Get a single cart from a list of carts.
+     *
      * @param request
      * @param session
      * @param response
      * @throws IOException
-     * @throws ServletException 
+     * @throws ServletException
      */
     private void cart(HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException, ServletException {
         String date = (String) request.getParameter("date");
@@ -146,8 +147,7 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Removes an item from the cart. 
-     * Does it on Session.
+     * Removes an item from the cart. Does it on Session.
      *
      * @param user Owner of the cart.
      * @param request
@@ -174,33 +174,16 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Does a checkout of the cart.
-     * Puts cart into SQL database as an invoice.
-     * Then empties the cart on the session.
-     * Also sends a message to user:
-     * "We have received your order. Here is the total: "amount"$
+     * Does a checkout of the cart. Puts cart into SQL database as an invoice.
+     * Then empties the cart on the session. Also sends a message to user: "We
+     * have received your order. Here is the total: "amount"$
+     *
      * @param user User who you wish to checkout.
-     * @param request 
+     * @param request
      */
     private void checkout(User user, HttpServletRequest request) {
-//        int userbalance = user.getBalance();
         int cartPrice = user.getTotalPrice();
 
-        /* 
-        
-           Code and comments below are removed because that function was moved
-           to somewhere else in the code, where it made more sense.
-        
-         */
-//        /* If user does NOT have enough money for the purchase */
-//        if (userbalance < cartPrice) {
-//            // Send errormessage to User
-//            String errormessage = "Not enough money on your balance "
-//                    + "for this purchase";
-//            HttpSession session = request.getSession();
-//            session.setAttribute("errormessage", errormessage);
-//        } else {
-//          /* If user DOES have enough money. */
         UserDataMapper db = new UserDataMapper();
         /* Removes the money from the Balance of the User */
         user.addBalance(-cartPrice);
@@ -221,12 +204,13 @@ public class ProductControl extends Command {
 
     /**
      * Put some money on the users account.
-     * @param request 
+     *
+     * @param request
      * @param user User who receives the money.
-     * @throws NumberFormatException 
+     * @throws NumberFormatException
      */
     private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
-        /* Pull the amount of money out of the URL */ 
+        /* Pull the amount of money out of the URL */
         String amount = (String) request.getParameter("amount");
         int money = Integer.parseInt(amount);
         /* Add it to the user on session */
@@ -237,11 +221,12 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Put the cupcake into the cart. 
-     * Call this method to pull cupcake from URL and add it to the cart on session.
+     * Put the cupcake into the cart. Call this method to pull cupcake from URL
+     * and add it to the cart on session.
+     *
      * @param request
      * @param user User who owns the cart.
-     * @throws NumberFormatException 
+     * @throws NumberFormatException
      */
     private void cupcakeToCart(HttpServletRequest request, User user) throws NumberFormatException {
 
@@ -250,18 +235,19 @@ public class ProductControl extends Command {
         String botName = (String) request.getParameter("bottom");
 
         /* Create cupcake */
-        // TO DO - Protect this from nullpointers
         CupcakeDataMapper db = new CupcakeDataMapper();
         Cupcake cupcake = db.makeCupcake(topName, botName);
 
         /* Make LineItem */
-        // TO DO - Protect: If quantity field is empty you get a 
-        // java.lang.NumberFormatException: For input string: ""
         LineItem lineitem = new LineItem(cupcake);
-        int qty = (int) Integer.parseInt(
-                (String) request.getParameter("qty")
-        );
-        lineitem.addQuantity(qty);
+        try {
+            int qty = (int) Integer.parseInt(
+                    (String) request.getParameter("qty")
+            );
+            lineitem.addQuantity(qty);
+        } catch (NumberFormatException e) {
+            return;
+        }
 
         /* Get cart so we can add the cupcake to it */
         ShoppingCart cart = new ShoppingCart();
