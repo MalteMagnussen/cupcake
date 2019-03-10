@@ -1,5 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.cupcake.logic.UserController"%>
 <%@page import="com.cupcake.data.User"%>
 <!DOCTYPE html>
 <html lang = "en">
@@ -65,8 +64,7 @@
                     /* Get the User, and check which navbars to show
                         Depending on Role etc. */
                     User user = (User) session.getAttribute("user");
-                    UserController uc = new UserController();
-                    if (user != null && uc.isValid(user.getUsername(), user.getPassword())) {
+                    if (user != null) {
                         if ("user".equals(user.getRole())) {
 
                 %>
