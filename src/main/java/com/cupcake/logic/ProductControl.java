@@ -111,9 +111,11 @@ public class ProductControl extends Command {
             Logger.getLogger(ProductControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        for (ShoppingCart cart : carts) {
-            if (date.equals(cart.getDate())) {
-                session.setAttribute("cart", cart);
+        if (carts != null) {
+            for (ShoppingCart cart : carts) {
+                if (date.equals(cart.getDate())) {
+                    session.setAttribute("cart", cart);
+                }
             }
         }
 
@@ -251,26 +253,18 @@ public class ProductControl extends Command {
 
         /* Get cart so we can add the cupcake to it */
         ShoppingCart cart = new ShoppingCart();
-        ShoppingCart usercart = null;
 
         boolean cupcakeincart = false;
 
         if (user.getCart() != null) {
-            usercart = user.getCart();
-            // If cupcake exists in Cart.
-            for (LineItem item : usercart.getLineItems()) {
-                if (item.equals(lineitem)) {
-                    item.addQuantity(lineitem.getQuantity());
-                    cupcakeincart = true;
-                }
-            }
-            // If cupcake exists in Cart end.
+            cart = user.getCart();
         }
 
-        if (usercart != null && usercart.getLineItems() != null) {
-            List<LineItem> items = usercart.getLineItems();
-            for (LineItem item : items) {
-                cart.addLineItem(item);
+        // If cupcake exists in Cart that means we just have to add the quantity.
+        for (LineItem item : cart.getLineItems()) {
+            if (item.equals(lineitem)) {
+                item.addQuantity(lineitem.getQuantity());
+                cupcakeincart = true;
             }
         }
 
