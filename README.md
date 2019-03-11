@@ -3,6 +3,8 @@
 Cupcake mini project:
 https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#
 
+aflevering: https://docs.google.com/document/d/1xHon1NY3U7S44n9uMo2jrVcFjf8mGCv5KjV_bUHo_qc/edit#
+
 2nd Semester Datamatiker CPHbusiness 2019.
 
 Authors:
