@@ -41,6 +41,7 @@ Authors:
 
  * Der skal være en rapport der beskriver cup-cake systemet.
  * Vi kan lægge tingene på GitHub.
+ * Deploy programmet på Digital Ocean dropletten.
 
 **Kode:** 
  
