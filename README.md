@@ -15,7 +15,7 @@ Authors:
 
 **Diagrammer:**
 (https://datsoftlyngby.github.io/dat2sem2019Spring/Modul2/Week5-Report/Diagrams.pptx) slides about it.
-
+Use PlantUML: https://github.com/plantuml/plantuml
  * Tilstandsdiagram
 	- Navigationen mellem web-siderne
  * Aktivitetsdiagram (Arbejds Flow) - https://i.imgur.com/iHYdANp.png
