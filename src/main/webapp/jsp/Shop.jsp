@@ -77,15 +77,13 @@
 
     out.println("<h2> Shopping Cart: </h2>");
 
-    // prints total price of the cart
+    
     if (cart != null) {
+        // prints total price of the cart
         out.print("<h3> Total Price of Cart: " + user.getTotalPrice() + "$</h3>");
-    }
-
-    if (cart == null) {
-
-    } else {
-        /* Prints every LineItem in the cart in a list. 
+    
+        /* 
+            Prints every LineItem in the cart in a list. 
             Could be improved with sorting functions and zebra stripes.
         */
         List<LineItem> items = cart.getLineItems();
