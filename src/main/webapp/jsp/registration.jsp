@@ -26,4 +26,5 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
         <p class="mt-5 mb-3 text-muted text-center"> Malte - Benjamin - Mikkel - Nikolaj</p>
     </form>
+    
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
