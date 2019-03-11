@@ -7,7 +7,7 @@ https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/
 
 Authors:
  - Nikolaj Tost Søgaard
- - Kornval Christoffersen
+ - Mikkel Kornval Christoffersen
  - Benjamin Aizen Kongshaug
  - Malte Hviid-Magnussen
 
