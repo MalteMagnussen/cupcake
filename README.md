@@ -13,7 +13,7 @@ Authors:
 
 # TO DO:
 
-Diagrammer:
+**Diagrammer:**
 
  * Tilstandsdiagram
 	- Navigationen mellem web-siderne
@@ -28,7 +28,7 @@ Diagrammer:
 	- Hvordan man kommer fra den ene side til den anden.
 
 
-Redegøre skriftligt i rapporten:
+**Redegøre skriftligt i rapporten:**
 
  * Hvad er implementeret, og hvad er planlagt?
  * Hvordan skal det planlagte laves?
@@ -37,12 +37,12 @@ Redegøre skriftligt i rapporten:
  * Måske use-cases
 
 
-Konkret:
+**Konkret:**
 
  * Der skal være en rapport der beskriver cup-cake systemet.
  * Vi kan lægge tingene på GitHub.
 
-Kode: 
+**Kode:** 
  Det er frivilligt og hygge hvis man keder sig:
 
  1: Further Styling.
@@ -53,4 +53,4 @@ Kode:
 
  4: Optimize the code.
 
-DEADLINE: d. 15/03.
+**DEADLINE: d. 15/03.**
