@@ -28,7 +28,7 @@ Diagrammer:
 	- Hvordan man kommer fra den ene side til den anden.
 
 
-Redegøre:
+Redegøre skriftligt i rapporten:
 
  * Hvad er implementeret, og hvad er planlagt?
  * Hvordan skal det planlagte laves?
