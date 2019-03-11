@@ -68,7 +68,7 @@
         </tbody>
     </table>
 </form>
-                        
+
 <%
     /* Form for dropdows END */
     // ShoppingCart:
@@ -77,15 +77,14 @@
 
     out.println("<h2> Shopping Cart: </h2>");
 
-    
     if (cart != null) {
         // prints total price of the cart
         out.print("<h3> Total Price of Cart: " + user.getTotalPrice() + "$</h3>");
-    
+
         /* 
             Prints every LineItem in the cart in a list. 
             Could be improved with sorting functions and zebra stripes.
-        */
+         */
         List<LineItem> items = cart.getLineItems();
         for (LineItem item : items) {
             String tname = item.getCupcake().getTop().getName();
@@ -103,8 +102,8 @@
     }
     /* Form for ShoppingCart END */
 
-    /* Cart Checkout Start */
-    if (cart != null && !cart.isEmpty() && user.getTotalPrice()<user.getBalance()) {
+ /* Cart Checkout Start */
+    if (cart != null && !cart.isEmpty() && user.getTotalPrice() < user.getBalance()) {
 %>
 <p> Checkout Entire Cart and make it an invoice: 
 <form action="Controller?command=Product" method="post">

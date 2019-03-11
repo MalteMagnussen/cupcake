@@ -126,7 +126,7 @@ public class ProductControl extends Command {
 
     /**
      * Get a single cart from a list of carts.
-     *
+     * We just match on the date. No way someone makes two invoices within 1 sec.
      * @param request
      * @param session
      * @param response
