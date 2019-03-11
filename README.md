@@ -55,4 +55,7 @@ Authors:
 
  4: Optimize the code.
 
-**DEADLINE: d. 15/03.**
+**DEADLINE: d. 15/03 for ovenstående**
+
+**Forberede 10 minutters oplæg**
+ * Til den 29/03
