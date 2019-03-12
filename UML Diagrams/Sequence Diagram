@@ -1,0 +1,27 @@
+Sekvensdiagram
+
+Use case:
+
+En tilbagevendende Kunde står på loginsiden af vores hjemmeside indtaster sine korrekte oplysninger og trykker på ”login” linket.
+
+plantuml:
+
+@startuml
+actor ReturningCustomer
+
+ReturningCustomer-> FC: Request
+FC--> Command: GetCommand
+Command-> FC: ReturnComand
+FC--> LoginCommand: executeCommand
+LoginCommand --> Login:
+database SQLDatabase
+Login--> SQLDatabase: GetUserFromDatabase
+SQLDatabase--> Login: ReturnUserFromDatabase
+Login-> Login: VerifyingAccountSuccess
+Login--> Shop.jsp: redirectToPage
+Shop.jsp -> ReturningCustomer: ReturnPageToUser
+@enduml
+
+Use case:
+
+En kunde Kunde står på loginsiden af vores hjemmeside indtaster sine korrekte oplysninger og trykker på ”login” linket.
