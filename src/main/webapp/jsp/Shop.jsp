@@ -128,7 +128,7 @@
     /* Cart Checkout End */
 %>
 
-<%! 
+<%!
     public String displayDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm");
         Date date = Calendar.getInstance().getTime();
