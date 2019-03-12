@@ -16,16 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author
+ * DataMapper class for User.
+ * @author 
  */
 public class UserDataMapper {
 
     /**
-     * Contains classes that handle SQL directly. Try to keep them as simple as
-     * possible. Remember to refactor into a new method if something becomes too
-     * big.
-     *
+     * Contains classes that handle SQL directly. 
      */
     private DBConnector conn;
 
@@ -33,7 +30,7 @@ public class UserDataMapper {
     }
 
     /**
-     * remove balance from user
+     * Remove balance from user.
      *
      * @param name
      * @param balance
@@ -81,7 +78,7 @@ public class UserDataMapper {
     }
 
     /**
-     *
+     * Remove Balance from User.
      * @param user
      * @param balance
      */

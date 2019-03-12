@@ -5,9 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+
 /**
- *
- * @author Tobias
+ * Our SQL Connector
+ * @author 
  */
 public class DBConnector {
 

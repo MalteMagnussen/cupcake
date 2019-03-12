@@ -6,16 +6,14 @@
 package com.cupcake.data;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
- *
- * @author
+ * User Object Class
+ * @author Malte
  */
 public class User {
 
-    /**
-     * Basic User Object Class
-     */
     private String username;
     private int balance;
     private String password;
@@ -23,6 +21,9 @@ public class User {
     private ShoppingCart cart;
     private String role;
 
+    /**
+     * User Constructor.
+     */
     public User() {
     }
 
@@ -57,7 +58,6 @@ public class User {
         this.username = username;
         this.password = password;
         this.email = email;
-        setRole();
     }
     
     public void setRole(){
@@ -112,7 +112,41 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.username);
+        hash = 97 * hash + Objects.hashCode(this.password);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        if (!Objects.equals(this.password, other.password)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        return true;
+    }
     
 
+    
 }
 
