@@ -90,14 +90,15 @@ public class LoginCommand extends Command {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
+        boolean valid = false;
         /* Check if User exists in the SQL database */
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
-
             try {
                 /* check if user is valid */
                 User user = new UserDataMapper().getUser(username);
                 if (password.equals(user.getPassword())) {
+                    valid = true;
                     HttpSession session = request.getSession();
                     /* Put user on session */
                     session.setAttribute("user", user);
@@ -108,13 +109,14 @@ public class LoginCommand extends Command {
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
+        }
+
+        if (valid == false) {
             /* If User is not in Database send him back to LoginPage */
             HttpSession session = request.getSession();
             session.setAttribute("errormessage", "User not registered");
             RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
             rd.forward(request, response);
-
         }
 
     }
