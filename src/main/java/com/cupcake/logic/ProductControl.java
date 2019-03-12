@@ -248,6 +248,9 @@ public class ProductControl extends Command {
             );
             lineitem.addQuantity(qty);
         } catch (NumberFormatException e) {
+            String errormessage = "Wrong input in Quantity field. Try again.";
+            HttpSession session = request.getSession();
+            session.setAttribute("errormessage", errormessage);
             return;
         }
 
