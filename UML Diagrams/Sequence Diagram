@@ -2,7 +2,7 @@ Sekvensdiagram
 
 Use case:
 
-En tilbagevendende Kunde står på loginsiden af vores hjemmeside indtaster sine korrekte oplysninger og trykker på ”login” linket.
+En tilbagevendende kunde står på loginsiden på vores hjemmeside indtaster sine korrekte oplysninger og trykker på ”login” linket.
 
 plantuml:
 
@@ -24,4 +24,36 @@ Shop.jsp -> ReturningCustomer: ReturnPageToUser
 
 Use case:
 
-En kunde Kunde står på loginsiden af vores hjemmeside indtaster sine korrekte oplysninger og trykker på ”login” linket.
+En kunde står på loginsiden på vores hjemmeside indtaster sine forkerte oplysninger og trykker på ”login” linket.
+
+@startuml
+actor ReturningCustomer
+ReturningCustomer-> FC: Request
+FC--> Command: GetCommand
+Command-> FC: ReturnComand
+FC--> LoginCommand: executeCommand
+LoginCommand --> Login:
+database SQLDatabase
+Login--> SQLDatabase: GetUserFromDatabase
+SQLDatabase--> Login: ReturnUserFromDatabase
+Login-> Login: Verifying account Failed
+Login-> Login: Failed login added to session
+Login--> Login.jsp: redirectToPage
+Login.jsp -> ReturningCustomer: ReturnPageToUser
+@enduml
+
+Use Case:
+en kunde er logget ind og stå på shop siden. Kunden har lagt en eller flere cupcakes i kurven, han har penge nok på sin konto og trykker på checkout knappen.
+
+@startuml
+actor ReturningCustomer
+ReturningCustomer-> FC: Request
+FC -> Command: GetCommand
+Command-> FC: ReturnComand
+FC-> ProductControle: executeCommand
+database SQLDatabase
+ProductControle--> SQLDatabase: Remove money from account:
+ProductControle--> SQLDatabase: Add Invoice
+ProductControle -> shop.jsp: shopPage
+Shop.jsp-> ReturningCustomer: Verifying account Failed
+@enduml
