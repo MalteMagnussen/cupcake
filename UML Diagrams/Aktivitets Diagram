@@ -1,0 +1,40 @@
+@startuml
+|User|
+Start
+:Enter Cupcake;
+|#AntiqueWhite|Browser|
+:Index.jsp;
+|User|
+if (Select Login or Create User) then (Create)
+|Browser|
+:registration.jsp;
+|User|
+:Input info;
+|Browser|
+:RegisterUser Method;
+|SQL|
+:Input;
+|User|
+:Select Login or Create User;
+else (Login)
+|Browser|
+:LoginPage.jsp;
+|User|
+:Input Info;
+|Browser|
+:Login Method;
+|SQL|
+:Get User;
+|Browser|
+if (validate) then (yes)
+|Browser|
+:Shop.jsp;
+else (no)
+|User|
+:Select Login or Create User;
+
+
+
+
+
+@enduml
