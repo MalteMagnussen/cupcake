@@ -1,3 +1,6 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <%@page import="com.cupcake.data.ShoppingCart"%>
@@ -17,7 +20,7 @@
     CupcakeDataMapper db = new CupcakeDataMapper();
 
     /* Shows which user is logged in */
-    out.println("<h2> " + user.getUsername() + " is logged in.</h2>");
+    out.println("<h3><center> " + user.getUsername() + " is logged in at " + displayDate() + "</center></h3>");
 
     /* Shows the users balance */
     out.println("<p style=\"font-size:18px\"> "
@@ -123,6 +126,14 @@
 <%
     }
     /* Cart Checkout End */
+%>
+
+<%! 
+    public String displayDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd HH:mm");
+        Date date = Calendar.getInstance().getTime();
+        return dateFormat.format(date);
+    }
 %>
 
 <jsp:include page='/jsp/sitefooter.jsp'></jsp:include>
