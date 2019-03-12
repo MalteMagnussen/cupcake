@@ -104,7 +104,6 @@ public class LoginCommand extends Command {
                     /* Forward to Shop */
                     RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
                     rd.forward(request, response);
-
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
