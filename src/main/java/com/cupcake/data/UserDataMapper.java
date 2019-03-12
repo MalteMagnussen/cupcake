@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  * DataMapper class for User.
- * @author 
+ * @author Nikolaj + Malte
  */
 public class UserDataMapper {
 

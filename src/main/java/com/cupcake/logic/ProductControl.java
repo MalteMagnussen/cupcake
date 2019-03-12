@@ -23,24 +23,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- *
- * @author
+ * Product Control.
+ * Takes Requests from Shop Command. 
+ * Handles:
+ *      - adding cupcake to the cart
+ *      - adding balance to account
+ *      - checking out cart
+ *      - removing item from cart
+ *      - getting invoices
+ * @author Malte
  */
 public class ProductControl extends Command {
 
-    /* 
-        Takes Requests from Shop Command. 
-        
-            - Takes query of add balance and adds that to SQL.
-                Not done in ShopCommand yet.
-    
-            - Takes query of invoice and adds that to SQL and clears shoppingcart.
-                Not done in ShopCommand yet.
-    
-        Forwards back to Shop afterwards with new shit in session.
-        
-     */
     /**
      * Main method. Contains a switch that delegates to other methods in the
      * class.

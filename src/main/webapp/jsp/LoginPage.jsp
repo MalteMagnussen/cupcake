@@ -1,7 +1,7 @@
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
+<!-- Author: Malte -->
 
-
-<!--  Below is the form for logging in.  -->
+<!--  Below is the form for logging in. -->
 
 <form class="form-signin" action="Controller?command=Login" method="post" id="sitemenus" style="margin: auto; display: table; width: 20%" >
     <input type="hidden" name="origin" value="login">

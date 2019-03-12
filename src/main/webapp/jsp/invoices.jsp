@@ -4,7 +4,7 @@
 <%@page import="com.cupcake.data.UserDataMapper"%>
 <%@page import="com.cupcake.data.User"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
-
+<!-- Author: Malte -->
     <div class="row">
         <div class="col-sm-6">
 

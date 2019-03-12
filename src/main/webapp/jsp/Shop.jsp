@@ -10,7 +10,7 @@
 <%@page import="com.cupcake.data.Top"%>
 <%@page import="com.cupcake.data.Bottom"%>
 <jsp:include page='/jsp/siteheader.jsp'></jsp:include>
-
+<!-- Author: Malte -->
     <h1> SHOP </h1>
 
 <%  /* Pulling the User out from the SQL */

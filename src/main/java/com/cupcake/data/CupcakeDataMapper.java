@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 
 /**
  * DataMapper Class for Cupcakes.
- * @author 
+ * @author Nikolaj
  */
 public class CupcakeDataMapper {
 

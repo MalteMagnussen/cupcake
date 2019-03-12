@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * User Object Class
- * @author Malte
+ * @author 
  */
 public class User {
 

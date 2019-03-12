@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Ronnie
+ * Error Command. 
+ * If this is called, something went seriously wrong.
+ * @author
  */
 public class UnknownCommand extends Command {
 

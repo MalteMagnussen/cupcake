@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author
+ * LoginCommand.
+ * Class handles Logins, Registrations and Logouts.
+ * @author Malte
  */
 public class LoginCommand extends Command {
 
@@ -65,9 +66,7 @@ public class LoginCommand extends Command {
      * @throws IOException
      */
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /* Pull user out of session */
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
         /* Reset Session */
         session.invalidate();
         /* Send back to main page */
