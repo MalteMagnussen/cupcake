@@ -2,7 +2,9 @@ package com.cupcake.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 
 /**
@@ -41,5 +43,38 @@ public class DBConnector {
 
     public Connection getConnection() {
         return this.connection;
+    }
+
+    void setAutoCommit(boolean b) {
+        Connection connection = getConnection();
+        try{
+        String autoC = "SET autocommit = "+ b + ";";
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(autoC);
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+
+    void commit() {
+        Connection connection = getConnection();
+        try{
+        String comm = "COMMIT;";
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(comm);
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
+    }
+
+    void rollback() {
+        Connection connection = getConnection();
+        try{
+        String rollB = "ROLLBACK;";
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery(rollB);
+        } catch(SQLException ex){
+            System.out.println(ex);
+        }
     }
 }

@@ -59,24 +59,17 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String insertNewBalance = "SET autocommit = 0;"
-                    + "START TRANSACTION;"
-                    + "INSERT INTO cupcake.`users` (name, balance)"
-                    + " VALUES (" + name + ", ?);"
-                    + "COMMIT;"
-                    + "SET autocommit = 1;";
+            conn.setAutoCommit(false);
+            String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
+                    + " VALUES (" + name + ", ?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
         } catch (SQLException ex) {
             System.out.println(ex);
-            try {
-                String rollBack = "ROLLBACK;";
-                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
-                ps.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
+                conn.rollback();
         }
     }
 
@@ -107,32 +100,17 @@ public class UserDataMapper {
             System.out.println(e);
         }
         try {
-            String auto = "SET autocommit = 0;";
-            String trans = "START TRANSACTION;";
+            conn.setAutoCommit(false);
             String insertNewBalance = "INSERT INTO cupcake.`users` (name, balance)"
                     + " VALUES (" + name + ", ?);";
-            String commit = "COMMIT;";
-            String reAuto = "SET autocommit = 1;";
-            PreparedStatement ps = conn.getConnection().prepareStatement(auto);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(trans);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(insertNewBalance);
+            PreparedStatement ps = conn.getConnection().prepareStatement(insertNewBalance);
             ps.setInt(1, end);
             ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(commit);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(reAuto);
-            ps.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
         } catch (SQLException ex) {
             System.out.println(ex);
-            try {
-                String rollBack = "ROLLBACK;";
-                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
-                ps.executeUpdate();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
+            conn.rollback();
         }
     }
 
@@ -234,8 +212,7 @@ public class UserDataMapper {
         if (name != null || password != null || email != null) {
             try {
                 conn = new DBConnector();
-                String auto = "SET autocommit = 0;";
-                String trans = "START TRANSACTION;";
+                conn.setAutoCommit(false);
                 String insertUser = "INSERT INTO `cupcake`.`users`\n"
                         + "(`name`,\n"
                         + "`password`,\n"
@@ -246,30 +223,16 @@ public class UserDataMapper {
                         + "?,\n"
                         + "0,\n"
                         + "?);";
-                String commit = "COMMIT;";
-                String reAuto = "SET autocommit = 1;";
-                PreparedStatement ps = conn.getConnection().prepareStatement(auto);
-                ps.executeUpdate();
-                ps = conn.getConnection().prepareStatement(trans);
-                ps.executeUpdate();
-                ps = conn.getConnection().prepareStatement(insertUser);
+                PreparedStatement ps = conn.getConnection().prepareStatement(insertUser);
                 ps.setString(1, name);
                 ps.setString(2, password);
                 ps.setString(3, email);
                 ps.executeUpdate();
-                ps = conn.getConnection().prepareStatement(commit);
-                ps.executeUpdate();
-                ps = conn.getConnection().prepareStatement(reAuto);
-                ps.executeUpdate();
+                conn.commit();
+                conn.setAutoCommit(true);
             } catch (SQLException ex) {
                 Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
-                try {
-                    String rollBack = "ROLLBACK;";
-                    PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
-                    ps.executeUpdate();
-                } catch (SQLException e) {
-                    System.out.println(e);
-                }
+                conn.rollback();
             }
         }
     }
