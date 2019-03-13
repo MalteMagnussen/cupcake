@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.cupcake.data.User"%>
 <!DOCTYPE html>
+<!-- Author: Malte -->
 <html lang = "en">
     <head>
 

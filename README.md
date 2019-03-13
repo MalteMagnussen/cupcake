@@ -3,6 +3,8 @@
 Cupcake mini project:
 https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#
 
+aflevering: https://docs.google.com/document/d/1xHon1NY3U7S44n9uMo2jrVcFjf8mGCv5KjV_bUHo_qc/edit#
+
 2nd Semester Datamatiker CPHbusiness 2019.
 
 Authors:
@@ -15,7 +17,7 @@ Authors:
 
 **Diagrammer:**
 (https://datsoftlyngby.github.io/dat2sem2019Spring/Modul2/Week5-Report/Diagrams.pptx) slides about it.
-Use PlantUML: https://github.com/plantuml/plantuml - http://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
+Use PlantUML: https://github.com/plantuml/plantuml - https://liveuml.com/ - Example: https://i.imgur.com/dMg4aKA.png
  * Tilstandsdiagram
 	- Navigationen mellem web-siderne
  * Aktivitetsdiagram (Arbejds Flow) - https://i.imgur.com/iHYdANp.png

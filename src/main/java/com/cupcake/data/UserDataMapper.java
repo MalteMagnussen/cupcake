@@ -16,16 +16,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author
+ * DataMapper class for User.
+ * @author Nikolaj + Malte
  */
 public class UserDataMapper {
 
     /**
-     * Contains classes that handle SQL directly. Try to keep them as simple as
-     * possible. Remember to refactor into a new method if something becomes too
-     * big.
-     *
+     * Contains classes that handle SQL directly. 
      */
     private DBConnector conn;
 
@@ -33,8 +30,8 @@ public class UserDataMapper {
     }
 
     /**
-     * remove balance from user
-     *
+     * Remove balance from user.
+     * Currently no usages of this method according to NetBeans.
      * @param name
      * @param balance
      */
@@ -74,7 +71,8 @@ public class UserDataMapper {
     }
 
     /**
-     *
+     * Remove Balance from User.
+     * Currently no usages of this method according to NetBeans.
      * @param user
      * @param balance
      */
@@ -115,10 +113,10 @@ public class UserDataMapper {
     }
 
     /**
-     * Returns a User
-     *
+     * Returns a User.
+     * 
      * @param userName
-     * @return
+     * @return User
      * @throws java.sql.SQLException
      */
     public User getUser(String userName) throws SQLException {
@@ -153,9 +151,9 @@ public class UserDataMapper {
 
     /**
      * Add money to the users account.
-     *
+     * Currently no usages of this method according to NetBeans.
      * @param name
-     * @param balance
+     * @param money
      */
     public void addBalance(String name, int money) {
         try {
@@ -169,14 +167,14 @@ public class UserDataMapper {
             ps.setString(2, name);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     /**
-     * Get invite ID.
-     *
+     * Get a new invoice ID.
+     * Used to get a new invoice ID, so we don't end up with duplicates.
+     * 
      * @return ID.
      */
     public int getInvID() {
@@ -203,7 +201,7 @@ public class UserDataMapper {
 
     /**
      * Adds User to Database.
-     *
+     * 
      * @param name - Name of the user
      * @param password - Users password
      * @param email - Users email
@@ -238,8 +236,8 @@ public class UserDataMapper {
     }
 
     /**
-     * Add e-mail
-     *
+     * Give a user a new email address.
+     * Currently no usages of this method.
      * @param name
      * @param email
      */
@@ -259,10 +257,11 @@ public class UserDataMapper {
     }
 
     /**
+     * Get Invoice IDs.
      * Used by getInvoices.
-     *
+     * Returns all invoice IDs associated with a single User.
      * @param user
-     * @return
+     * @return List of Integers. List of IDs.
      * @throws SQLException
      */
     public List<Integer> getInvoiceIDs(User user) throws SQLException {
@@ -283,10 +282,11 @@ public class UserDataMapper {
     }
 
     /**
-     * Used by getInvoices.
+     * Returns a ShoppingCart.
+     * Used by getInvoices in this class.
      *
      * @param number
-     * @return
+     * @return ShoppingCart
      * @throws SQLException
      */
     public ShoppingCart getOrders(int number) throws SQLException {
@@ -321,9 +321,10 @@ public class UserDataMapper {
     }
     
     /**
-     * Used by getInvoices
+     * Get invoice date.
+     * Used by getOrders in this class.
      * @param id
-     * @return
+     * @return String
      * @throws SQLException 
      */
     public String getInvoiceDate (int id) throws SQLException {
@@ -342,8 +343,9 @@ public class UserDataMapper {
     
     /**
      * Used to show all Invoices of a User.
-     * @param user
-     * @return
+     * Used by admininvoice method in ProductControl.java
+     * @param user 
+     * @return List of ShoppingCarts
      * @throws SQLException 
      */
     public List<ShoppingCart> getInvoices(User user) throws SQLException{
@@ -355,14 +357,9 @@ public class UserDataMapper {
     }
 
     /**
-     * Adds an invoice to the database TO DO - Doesn't really work. Look at
-     * notes.
-     *
-     * @param name
-     * @param id
-     * @param quantity
-     * @param tname
-     * @param bname
+     * Adds an invoice to the database.
+     * Used by checkout method in ProductControl.java
+     * @param user
      */
     public void addInvoice(User user) {
         try {
@@ -387,7 +384,7 @@ public class UserDataMapper {
 
     /**
      * Get all Users.
-     *
+     * Used by admininvoices.jsp
      * @return List of Users.
      * @throws SQLException
      */
@@ -415,6 +412,13 @@ public class UserDataMapper {
         return users;
     }
 
+    /**
+     * Adds an order to the SQL.
+     * Used by addInvoice method in UserDataMapper.
+     * @param item
+     * @param id
+     * @throws SQLException 
+     */
     public void addOrder(LineItem item, int id) throws SQLException {
         conn = new DBConnector();
 
@@ -437,6 +441,12 @@ public class UserDataMapper {
         ps.executeUpdate();
     }
 
+    /**
+     * Sets Balance of the User.
+     * Used by addBalance in ProductControl.java.
+     * @param user
+     * @param userbalance 
+     */
     public void setBalance(User user, int userbalance) {
         try {
             String username = user.getUsername();
@@ -460,14 +470,12 @@ public class UserDataMapper {
             ps = conn.getConnection().prepareStatement(reAuto);
             ps.executeUpdate();
         } catch (SQLException ex) {
-            ex.printStackTrace();
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
             try {
                 String rollBack = "ROLLBACK;";
                 PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
                 ps.executeUpdate();
             } catch (SQLException e) {
-                e.printStackTrace();
             }
         }
     }

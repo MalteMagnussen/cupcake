@@ -23,24 +23,18 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- *
- * @author
+ * Product Control.
+ * Takes Requests from Shop Command. 
+ * Handles:
+ *      - adding cupcake to the cart
+ *      - adding balance to account
+ *      - checking out cart
+ *      - removing item from cart
+ *      - getting invoices
+ * @author Malte
  */
 public class ProductControl extends Command {
 
-    /* 
-        Takes Requests from Shop Command. 
-        
-            - Takes query of add balance and adds that to SQL.
-                Not done in ShopCommand yet.
-    
-            - Takes query of invoice and adds that to SQL and clears shoppingcart.
-                Not done in ShopCommand yet.
-    
-        Forwards back to Shop afterwards with new shit in session.
-        
-     */
     /**
      * Main method. Contains a switch that delegates to other methods in the
      * class.
@@ -111,9 +105,11 @@ public class ProductControl extends Command {
             Logger.getLogger(ProductControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        for (ShoppingCart cart : carts) {
-            if (date.equals(cart.getDate())) {
-                session.setAttribute("cart", cart);
+        if (carts != null) {
+            for (ShoppingCart cart : carts) {
+                if (date.equals(cart.getDate())) {
+                    session.setAttribute("cart", cart);
+                }
             }
         }
 
@@ -123,7 +119,8 @@ public class ProductControl extends Command {
     }
 
     /**
-     * Get a single cart from a list of carts.
+     * Get a single cart from a list of carts. We just match on the date. No way
+     * someone makes two invoices within 1 sec.
      *
      * @param request
      * @param session
@@ -212,12 +209,18 @@ public class ProductControl extends Command {
     private void addBalance(HttpServletRequest request, User user) throws NumberFormatException {
         /* Pull the amount of money out of the URL */
         String amount = (String) request.getParameter("amount");
-        int money = Integer.parseInt(amount);
-        /* Add it to the user on session */
-        user.addBalance(money);
-        /* Add it to the SQL database aswell */
-        UserDataMapper DB = new UserDataMapper();
-        DB.setBalance(user, user.getBalance());
+        if (amount != null && !amount.isEmpty()) {
+            int money = Integer.parseInt(amount);
+            /* Add it to the user on session */
+            user.addBalance(money);
+            /* Add it to the SQL database aswell */
+            UserDataMapper DB = new UserDataMapper();
+            DB.setBalance(user, user.getBalance());
+        } else {
+            String errormessage = "Wrong input in Add Balance field. Try again.";
+            HttpSession session = request.getSession();
+            session.setAttribute("errormessage", errormessage);
+        }
     }
 
     /**
@@ -246,31 +249,26 @@ public class ProductControl extends Command {
             );
             lineitem.addQuantity(qty);
         } catch (NumberFormatException e) {
+            String errormessage = "Wrong input in Quantity field. Try again.";
+            HttpSession session = request.getSession();
+            session.setAttribute("errormessage", errormessage);
             return;
         }
 
         /* Get cart so we can add the cupcake to it */
         ShoppingCart cart = new ShoppingCart();
-        ShoppingCart usercart = null;
 
         boolean cupcakeincart = false;
 
         if (user.getCart() != null) {
-            usercart = user.getCart();
-            // If cupcake exists in Cart.
-            for (LineItem item : usercart.getLineItems()) {
-                if (item.equals(lineitem)) {
-                    item.addQuantity(lineitem.getQuantity());
-                    cupcakeincart = true;
-                }
-            }
-            // If cupcake exists in Cart end.
+            cart = user.getCart();
         }
 
-        if (usercart != null && usercart.getLineItems() != null) {
-            List<LineItem> items = usercart.getLineItems();
-            for (LineItem item : items) {
-                cart.addLineItem(item);
+        // If cupcake exists in Cart that means we just have to add the quantity.
+        for (LineItem item : cart.getLineItems()) {
+            if (item.equals(lineitem)) {
+                item.addQuantity(lineitem.getQuantity());
+                cupcakeincart = true;
             }
         }
 

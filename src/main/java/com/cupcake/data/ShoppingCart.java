@@ -9,17 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author
+ * ShoppingCart Object Class
+ * @author 
  */
 public class ShoppingCart {
 
     /**
      * The shopping cart holds Line Items which has information of which cupcake
-     * (bottom and topping) and the quantity of cupcakes. The Line Item also has
-     * an invoice_id to prepare it for assignment 6. Create a ShoppingCart class
-     * that has a list of LineItems (create this class too) The shopping cart
-     * should be stored in the session (Why do you think?).
+     * (bottom and topping) and the quantity of cupcakes. 
      */
     private List<LineItem> lineItems;
     private int invoiceid;
@@ -33,6 +30,9 @@ public class ShoppingCart {
         return date;
     }
 
+    /**
+     * Constructor.
+     */
     public ShoppingCart() {
         this.lineItems = new ArrayList<>();
     }
@@ -77,8 +77,8 @@ public class ShoppingCart {
     }
 
     /**
-     * To String
-     *
+     * Customized toString.
+     * 
      * @return String
      */
     @Override

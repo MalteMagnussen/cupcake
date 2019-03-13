@@ -8,8 +8,8 @@ package com.cupcake.data;
 import java.util.Objects;
 
 /**
- *
- * @author
+ * LineItem Object Class
+ * @author 
  */
 public class LineItem {
 
@@ -95,18 +95,35 @@ public class LineItem {
         return true;
     }
 
+    /**
+     * Get total price.
+     * Price * Quantity.
+     * @return 
+     */
     public int getTotalPrice() {
         return getCupcake().getPrice() * getQuantity();
     }
 
+    /**
+     * Get the Bottoms name.
+     * @return 
+     */
     public String getBottom() {
         return getCupcake().getBottom().getName();
     }
 
+    /** 
+     * Get the Toppings name.
+     * @return 
+     */
     public String getTop() {
         return getCupcake().getTop().getName();
     }
 
+    /**
+     * Get the price for one Cupcake.
+     * @return 
+     */
     public int getPriceForOne() {
         return getCupcake().getPrice();
     }

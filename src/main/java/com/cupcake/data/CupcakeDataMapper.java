@@ -16,8 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author
+ * DataMapper Class for Cupcakes.
+ * @author Nikolaj
  */
 public class CupcakeDataMapper {
 

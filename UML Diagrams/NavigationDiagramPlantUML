@@ -1,0 +1,40 @@
+@startuml
+scale 1200 width
+[*] -> LoginOrCreate
+LoginOrCreate: Index.jsp
+CreateUser: Registration.jsp
+LoginOrCreate -> CreateUser
+CreateUser ->Login
+Login -> Login
+Login : LoginPage.jsp
+Login -> LoggedIn: loggedin
+LoginOrCreate--> Login
+Login -> Admin
+
+state LoggedIn {
+    state Admin {
+        AdminPanel : Admininvoices.jsp
+    }
+    [*] -> ShopPage: Default ShopPage
+    
+    ShopPage: Shop.jsp
+    invoices: Invoices.jsp
+    CheckOut : CheckOut.jsp
+   
+    ShopPage--> ShopPage: Add money to account
+ShopPage --> LoginOrCreate: LoggingOut
+    ShopPage--> invoices: Order details
+    invoices--> ShopPage: Back to ShopPage
+    ShopPage -->CheckOut: Check out order
+    ShopPage --> ShopPage : Add Cake(s) to Cart
+    ShopPage --> ShoppingCart : Order Cakes
+    ShoppingCart --> CheckOut : Buy Cakes
+    CheckOut --> ShopPage: Return to ShopPage
+    AdminPanel --> invoices: See order details
+AdminPanel --> ShopPage
+
+invoices --> SpecificInvoice: see order details for one invoice
+SpecificInvoice--> invoices
+   
+}
+@enduml

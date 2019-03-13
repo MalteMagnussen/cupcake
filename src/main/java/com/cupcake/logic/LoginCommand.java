@@ -19,8 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author
+ * LoginCommand.
+ * Class handles Logins, Registrations and Logouts.
+ * @author Malte
  */
 public class LoginCommand extends Command {
 
@@ -65,14 +66,7 @@ public class LoginCommand extends Command {
      * @throws IOException
      */
     private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /* Pull user out of session */
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        /* Pull his balance out of session */
-        int userbalance = user.getBalance();
-        /* Put it into SQL */
-        UserDataMapper db = new UserDataMapper();
-        db.setBalance(user, userbalance);
         /* Reset Session */
         session.invalidate();
         /* Send back to main page */
@@ -95,32 +89,33 @@ public class LoginCommand extends Command {
         String username = (String) request.getParameter("username");
         String password = (String) request.getParameter("password");
 
+        boolean valid = false;
         /* Check if User exists in the SQL database */
         if (!StringUtils.isNullOrEmpty(password)
                 && !StringUtils.isNullOrEmpty(username)) {
-
             try {
                 /* check if user is valid */
                 User user = new UserDataMapper().getUser(username);
                 if (password.equals(user.getPassword())) {
+                    valid = true;
                     HttpSession session = request.getSession();
                     /* Put user on session */
                     session.setAttribute("user", user);
                     /* Forward to Shop */
                     RequestDispatcher rd = request.getRequestDispatcher("jsp/Shop.jsp");
                     rd.forward(request, response);
-
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(LoginCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
+        }
+
+        if (valid == false) {
             /* If User is not in Database send him back to LoginPage */
             HttpSession session = request.getSession();
             session.setAttribute("errormessage", "User not registered");
             RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
             rd.forward(request, response);
-
         }
 
     }

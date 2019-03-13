@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+
 /**
- *
- * @author Tobias
+ * Our SQL Connector
+ * @author 
  */
 public class DBConnector {
 

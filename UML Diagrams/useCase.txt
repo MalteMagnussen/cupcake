@@ -1,0 +1,58 @@
+@startuml
+@startuml
+'Makes it possible to write the class names with comma'
+set namespaceSeparator none
+'Create the index.jsp page that can send you to different pages'
+class index.jsp {
+'Login button'
+Login 
+'Create new User Account'
+Registrer
+}
+'Redirects you to Registrer.jsp were you can create a new user'
+index.jsp --> Registrer.jsp
+'Redirects you to LoginPage.jsp that allows already created User Account to Login'
+index.jsp --> LoginPage.jsp
+'Creates new User Accounts and sends them as a query to the sql database'
+class Registrer.jsp{
+"Registrer User"
+}
+'After the account is created it redirects you to LoginPage.jsp'
+Registrer.jsp --> LoginPage.jsp
+'Login page with fields to fill with account details'
+class LoginPage.jsp{
+'As the log in button is pressed it checkes to see if the details match what is in the system'
+Log In
+}
+'Redirects you back in case you entered wrong details'
+LoginPage.jsp <-- LoginPage.jsp : invalid
+'if valid then redirects you to the shop page'
+LoginPage.jsp --> Shop.jsp : valid
+'shop that show what cupcakes you can make, prices, balance and a choice to add to balance'
+class Shop.jsp{
+'Logs you out of the page and back to index.jsp'
+"Log out"
+'Individual account users can see their own invoices while only admins can see all invoices'
+"invoices Shop"
+}
+'Redirects you back to index.jsp'
+Shop.jsp --> index.jsp : Logout
+'checks balance of the account. Add's balance to account. adds to cart. Or it can remove items from cart'
+Shop.jsp <-- Shop.jsp : Checkout, AddBalance, AddToCart, RemoveFromCart, Shop
+'Sends invoices that have been created to invoices while creating an id for them'
+Shop.jsp --> invoices : invoices
+
+Shop.jsp <-- invoices : shop
+'contain id and date'
+class invoices{
+--Select Order--
+}
+invoices <-- invoices : SelectOrder invoices
+'id for invoices carries over to orderDetails'
+invoices <--> orderDetails
+'contains id, names of the cupcake and quantity'
+class orderDetails{
+"Sorting is JavaScript"
+}
+@enduml
+@enduml
