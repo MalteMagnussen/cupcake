@@ -8,8 +8,8 @@ package com.cupcake.data;
 import java.util.Objects;
 
 /**
- *
- * @author
+ * LineItem Object Class
+ * @author 
  */
 public class LineItem {
 

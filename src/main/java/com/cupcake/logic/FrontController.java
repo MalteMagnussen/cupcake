@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * FrontController.
+ * Takes all requests that have /Cupcake/Controller path.
  * @author
  */
 @WebServlet(name = "FrontLoader", urlPatterns = {"/Controller/*"})

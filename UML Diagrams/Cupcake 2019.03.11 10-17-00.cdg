@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Cupcake">
+  <ClassDiagramComponents>
+    <Class name="Bottom" package="com.cupcake.data" visibility="public" xPosition="99.0" yPosition="1065.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+        <Field name="price" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="price"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getPrice" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Cupcake" package="com.cupcake.data" visibility="public" xPosition="210.0" yPosition="716.0">
+      <Fields>
+        <Field name="top" type="Top" visibility="private" isFinal="true"/>
+        <Field name="bottom" type="Bottom" visibility="private" isFinal="true"/>
+        <Field name="totalPrice" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Top" name="top"/>
+          <Argument type="Bottom" name="bottom"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTop" returnType="Top" visibility="public"/>
+        <Method name="getBottom" returnType="Bottom" visibility="public"/>
+        <Method name="getPrice" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CupcakeDataMapper" package="com.cupcake.data" visibility="public" xPosition="22.0" yPosition="1415.0">
+      <Fields>
+        <Field name="conn" type="DBConnector" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="makeCupcake" returnType="Cupcake" visibility="public">
+          <Argument type="String" name="topName"/>
+          <Argument type="String" name="bottomName"/>
+        </Method>
+        <Method name="makeCupcake" returnType="Cupcake" visibility="public">
+          <Argument type="Top" name="top"/>
+          <Argument type="Bottom" name="bot"/>
+        </Method>
+        <Method name="getTop" returnType="Top" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="addTopping" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="price"/>
+        </Method>
+        <Method name="addBottom" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="price"/>
+        </Method>
+        <Method name="getBottom" returnType="Bottom" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getTops" returnType="List&lt;Top&gt;" visibility="public"/>
+        <Method name="getBottoms" returnType="List&lt;Bottom&gt;" visibility="public"/>
+        <Method name="getTopPrice" returnType="int" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getBottomPrice" returnType="int" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="DBConnector" package="com.cupcake.data" visibility="public" xPosition="6.0" yPosition="716.0">
+      <Fields>
+        <Field name="connection" type="Connection" visibility="private"/>
+        <Field name="IP" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PORT" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="DATABASE" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="USERNAME" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="PASSWORD" type="String" visibility="private" isStatic="true" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConnection" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LineItem" package="com.cupcake.data" visibility="public" xPosition="710.0" yPosition="716.0">
+      <Fields>
+        <Field name="quantity" type="int" visibility="private"/>
+        <Field name="cupcake" type="Cupcake" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Cupcake" name="cupcake"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getQuantity" returnType="int" visibility="public"/>
+        <Method name="getCupcake" returnType="Cupcake" visibility="public"/>
+        <Method name="addQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="setQuantity" returnType="void" visibility="public">
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="getTotalPrice" returnType="int" visibility="public"/>
+        <Method name="getBottom" returnType="String" visibility="public"/>
+        <Method name="getTop" returnType="String" visibility="public"/>
+        <Method name="getPriceForOne" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ShoppingCart" package="com.cupcake.data" visibility="public" xPosition="1144.0" yPosition="81.0">
+      <Fields>
+        <Field name="lineItems" type="List&lt;LineItem&gt;" visibility="private"/>
+        <Field name="invoiceid" type="int" visibility="private"/>
+        <Field name="date" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setDate" returnType="void" visibility="public">
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="getDate" returnType="String" visibility="public"/>
+        <Method name="isEmpty" returnType="boolean" visibility="public"/>
+        <Method name="addLineItem" returnType="void" visibility="public">
+          <Argument type="LineItem" name="lineItem"/>
+        </Method>
+        <Method name="getLineItems" returnType="List&lt;LineItem&gt;" visibility="public"/>
+        <Method name="getInvoiceid" returnType="int" visibility="public"/>
+        <Method name="setInvoiceid" returnType="void" visibility="public">
+          <Argument type="int" name="invoiceid"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="setLineItems" returnType="void" visibility="public">
+          <Argument type="List&lt;LineItem&gt;" name="items"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Top" package="com.cupcake.data" visibility="public" xPosition="343.0" yPosition="1065.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+        <Field name="price" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="price"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getPrice" returnType="int" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="User" package="com.cupcake.data" visibility="public" xPosition="630.0" yPosition="79.0">
+      <Fields>
+        <Field name="username" type="String" visibility="private"/>
+        <Field name="balance" type="int" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="email" type="String" visibility="private"/>
+        <Field name="cart" type="ShoppingCart" visibility="private"/>
+        <Field name="role" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="email"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTotalPrice" returnType="int" visibility="public"/>
+        <Method name="setCart" returnType="void" visibility="public">
+          <Argument type="ShoppingCart" name="cart"/>
+        </Method>
+        <Method name="getCart" returnType="ShoppingCart" visibility="public"/>
+        <Method name="setRole" returnType="void" visibility="public"/>
+        <Method name="getRole" returnType="String" visibility="public"/>
+        <Method name="getUsername" returnType="String" visibility="public"/>
+        <Method name="getBalance" returnType="int" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="addBalance" returnType="void" visibility="public">
+          <Argument type="int" name="amount"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setUsername" returnType="void" visibility="public">
+          <Argument type="String" name="username"/>
+        </Method>
+        <Method name="setPassword" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="setBalance" returnType="void" visibility="public">
+          <Argument type="int" name="balance"/>
+        </Method>
+        <Method name="setEmail" returnType="void" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserDataMapper" package="com.cupcake.data" visibility="public" xPosition="109.0" yPosition="43.0">
+      <Fields>
+        <Field name="conn" type="DBConnector" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="removeBalance" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="balance"/>
+        </Method>
+        <Method name="removeBalance" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+          <Argument type="int" name="balance"/>
+        </Method>
+        <Method name="getUser" returnType="User" visibility="public">
+          <Argument type="String" name="userName"/>
+        </Method>
+        <Method name="addBalance" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="money"/>
+        </Method>
+        <Method name="getInvID" returnType="int" visibility="public"/>
+        <Method name="addUser" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="addEmail" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getInvoiceIDs" returnType="List&lt;Integer&gt;" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="getOrders" returnType="ShoppingCart" visibility="public">
+          <Argument type="int" name="number"/>
+        </Method>
+        <Method name="getInvoiceDate" returnType="String" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getInvoices" returnType="List&lt;ShoppingCart&gt;" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="addInvoice" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="getUsers" returnType="List&lt;User&gt;" visibility="public"/>
+        <Method name="addOrder" returnType="void" visibility="public">
+          <Argument type="LineItem" name="item"/>
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="setBalance" returnType="void" visibility="public">
+          <Argument type="User" name="user"/>
+          <Argument type="int" name="userbalance"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Command" package="com.cupcake.logic" visibility="public" isAbstract="true" xPosition="1505.0" yPosition="927.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public" isAbstract="true">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="from" returnType="Command" visibility="public" isStatic="true">
+          <Argument type="HttpServletRequest" name="request"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FrontController" package="com.cupcake.logic" visibility="public" xPosition="1455.0" yPosition="405.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="void" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LoginCommand" package="com.cupcake.logic" visibility="public" xPosition="1485.0" yPosition="599.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="logout" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="login" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="registration" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ProductControl" package="com.cupcake.logic" visibility="public" xPosition="1352.0" yPosition="1126.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="admininvoice" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpSession" name="session"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="cart" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpSession" name="session"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="removeitem" returnType="void" visibility="private">
+          <Argument type="User" name="user"/>
+          <Argument type="HttpServletRequest" name="request"/>
+        </Method>
+        <Method name="checkout" returnType="void" visibility="private">
+          <Argument type="User" name="user"/>
+          <Argument type="HttpServletRequest" name="request"/>
+        </Method>
+        <Method name="addBalance" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="User" name="user"/>
+        </Method>
+        <Method name="cupcakeToCart" returnType="void" visibility="private">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="User" name="user"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UnknownCommand" package="com.cupcake.logic" visibility="public" xPosition="1505.0" yPosition="792.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="execute" returnType="void" visibility="public">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.cupcake.logic.LoginCommand" target="com.cupcake.logic.Command"/>
+    <UseRelation source="com.cupcake.data.CupcakeDataMapper" target="com.cupcake.data.Bottom" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.User" target="com.cupcake.data.ShoppingCart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.LineItem" target="com.cupcake.data.Cupcake" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.UserDataMapper" target="com.cupcake.data.ShoppingCart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.Cupcake" target="com.cupcake.data.Bottom" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.Cupcake" target="com.cupcake.data.Top" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.cupcake.logic.UnknownCommand" target="com.cupcake.logic.Command"/>
+    <UseRelation source="com.cupcake.logic.ProductControl" target="com.cupcake.data.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.UserDataMapper" target="com.cupcake.data.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="bottom" source="com.cupcake.data.Cupcake" target="com.cupcake.data.Bottom" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.UserDataMapper" target="com.cupcake.data.LineItem" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="conn" source="com.cupcake.data.UserDataMapper" target="com.cupcake.data.DBConnector" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cupcake" source="com.cupcake.data.LineItem" target="com.cupcake.data.Cupcake" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.logic.Command" target="com.cupcake.logic.Command" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.CupcakeDataMapper" target="com.cupcake.data.Top" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.ShoppingCart" target="com.cupcake.data.LineItem" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="lineItems" source="com.cupcake.data.ShoppingCart" target="com.cupcake.data.LineItem" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;LineItem&gt;"/>
+    <HasRelation name="cart" source="com.cupcake.data.User" target="com.cupcake.data.ShoppingCart" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.cupcake.data.CupcakeDataMapper" target="com.cupcake.data.Cupcake" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="com.cupcake.logic.ProductControl" target="com.cupcake.logic.Command"/>
+    <HasRelation name="top" source="com.cupcake.data.Cupcake" target="com.cupcake.data.Top" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="conn" source="com.cupcake.data.CupcakeDataMapper" target="com.cupcake.data.DBConnector" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

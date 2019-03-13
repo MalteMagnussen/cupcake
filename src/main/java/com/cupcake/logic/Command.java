@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  *
- * @author Malte
+ * @author 
  */
 public abstract class Command {
 

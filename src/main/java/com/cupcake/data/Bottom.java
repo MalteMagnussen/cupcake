@@ -8,19 +8,19 @@ package com.cupcake.data;
 import java.util.Objects;
 
 /**
- *
- * @author
+ * Bottom Object Class
+ * @author 
  */
 public class Bottom {
 
-    /*
-    
-        Basic Bottom Object Class
-    
-     */
     private final String name;
     private final int price;
 
+    /**
+     * Bottom constructor.
+     * @param name
+     * @param price 
+     */
     public Bottom(String name, int price) {
         this.name = name;
         this.price = price;

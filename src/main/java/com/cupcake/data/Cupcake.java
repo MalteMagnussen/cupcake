@@ -8,20 +8,21 @@ package com.cupcake.data;
 import java.util.Objects;
 
 /**
- *
- * @author
+ * Cupcake Object Class
+ * @author Malte
  */
 public class Cupcake {
 
-    /*
-     
-        Basic object class.
-      
-     */
+    
     private final Top top;
     private final Bottom bottom;
     private final int totalPrice;
 
+    /**
+     * Cupcake Constructor
+     * @param top
+     * @param bottom 
+     */
     public Cupcake(Top top, Bottom bottom) {
         this.top = top;
         this.bottom = bottom;
@@ -36,10 +37,19 @@ public class Cupcake {
         return bottom;
     }
 
+    /**
+     * Get total price of cupcake.
+     * Total price = Price of bottom + Price of topping.
+     * @return 
+     */
     public int getPrice() {
         return totalPrice;
     }
 
+    /**
+     * Customized toString
+     * @return 
+     */
     @Override
     public String toString() {
         return bottom.getName() + " bottom with " + top.getName()
