@@ -31,7 +31,7 @@ PRIMARY KEY (`tname`)
 
 CREATE TABLE `invoices`(
 	`name` VARCHAR(45),
-    `id` int,
+    `id` int auto_increment,
     `date` DATETIME NOT NULL DEFAULT current_timestamp,
     PRIMARY KEY (`id`),
      INDEX `cname_idx` (`name` ASC) VISIBLE,
