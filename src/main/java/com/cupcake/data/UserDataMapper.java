@@ -332,7 +332,7 @@ public class UserDataMapper {
      */
     public String getInvoiceDate(int id) throws SQLException {
         conn = new DBConnector();
-        String query = "SELECT cupcake.`date` FROM invoices WHERE id = " + id + ";";
+        String query = "SELECT `date` FROM invoices WHERE id = " + id + ";";
 
         Connection connection = conn.getConnection();
         Statement stmt = connection.createStatement();
