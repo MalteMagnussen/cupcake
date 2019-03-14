@@ -92,7 +92,7 @@ public class LoginCommand extends Command {
         boolean valid = false;
         /* Check if User exists in the SQL database */
         if (!StringUtils.isNullOrEmpty(password)
-                && !StringUtils.isNullOrEmpty(username)) {
+                && !StringUtils.isNullOrEmpty(username)) { 
             try {
                 /* check if user is valid */
                 User user = new UserDataMapper().getUser(username);
@@ -113,7 +113,7 @@ public class LoginCommand extends Command {
         if (valid == false) {
             /* If User is not in Database send him back to LoginPage */
             HttpSession session = request.getSession();
-            session.setAttribute("errormessage", "User not registered");
+            session.setAttribute("errormessage", "You have entered an invalid username or password");
             RequestDispatcher rd = request.getRequestDispatcher("jsp/LoginPage.jsp");
             rd.forward(request, response);
         }
