@@ -31,7 +31,7 @@ PRIMARY KEY (`tname`)
 
 CREATE TABLE `invoices`(
 	`name` VARCHAR(45),
-    `id` int auto_increment,
+    `id` int,
     `date` DATETIME NOT NULL DEFAULT current_timestamp,
     PRIMARY KEY (`id`),
      INDEX `cname_idx` (`name` ASC) VISIBLE,
@@ -55,4 +55,3 @@ CREATE TABLE `ordertails`(
 			ON UPDATE NO ACTION
 );
 
-SET autocommit = 0;

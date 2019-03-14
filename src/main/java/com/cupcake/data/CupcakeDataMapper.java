@@ -136,7 +136,7 @@ public class CupcakeDataMapper {
         try {
             conn = new DBConnector();
 
-            String query = "SELECT * FROM `Cupcake`.`topping`;";
+            String query = "SELECT * FROM `cupcake`.`topping`;";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
@@ -168,7 +168,7 @@ public class CupcakeDataMapper {
         try {
             conn = new DBConnector();
 
-            String query = "SELECT * FROM `Cupcake`.`bottom`;";
+            String query = "SELECT * FROM `cupcake`.`bottom`;";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
