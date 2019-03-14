@@ -4,9 +4,7 @@
 
 [Cupcake mini project opgave beskrivelse](https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#)
 
-TO DO - Lav om til PDF og lav en relativ path link https://stackoverflow.com/a/15068833
-
-[Google Docs for vores Rapport](https://docs.google.com/document/d/1xHon1NY3U7S44n9uMo2jrVcFjf8mGCv5KjV_bUHo_qc/edit#)
+[Vores Rapport](Cupcake%20aflevering.pdf)
 
 JavaDoc ligger i mappen apidocs når du puller projektet. Hvis du kører index.html kan du se JavaDoc.
 
