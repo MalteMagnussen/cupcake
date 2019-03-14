@@ -1,4 +1,4 @@
-DROP SCHEMA IF EXISTS Cupcake;
+DROP SCHEMA IF EXISTS `cupcake`;
 
 CREATE SCHEMA IF NOT EXISTS`cupcake`;
 USE `cupcake`;
@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS `cupcake`.`topping`;
 DROP TABLE IF EXISTS `cupcake`.`bottom`;
 DROP TABLE IF EXISTS `cupcake`.`users`;
 
-CREATE TABLE `cupcake`.`users`(
+CREATE TABLE `users`(
 `name` VARCHAR(55),
 `password` VARCHAR(60),
 `balance` BIGINT,
@@ -17,31 +17,24 @@ CREATE TABLE `cupcake`.`users`(
 PRIMARY KEY (`name`)
 );
 
-CREATE TABLE `cupcake`.`bottom`(
+CREATE TABLE `bottom`(
 `bname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`bname`)
 );
 
-CREATE TABLE `cupcake`.`topping`(
+CREATE TABLE `topping`(
 `tname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`tname`)
 );
 
-CREATE TABLE `cupcake`.`invoices`(
+CREATE TABLE `invoices`(
 	`name` VARCHAR(45),
-<<<<<<< HEAD
     `id` int,
     `date` DATETIME NOT NULL DEFAULT current_timestamp,
     PRIMARY KEY (`id`),
      INDEX `cname_idx` (`name` ASC) VISIBLE,
-=======
-    	`id` int auto_increment,
-	`date` DATETIME NOT NULL DEFAULT current_timestamp,
-    	PRIMARY KEY (`id`),
-     	INDEX `cname_idx` (`name` ASC) VISIBLE,
->>>>>>> origin/master
 		CONSTRAINT `name`
 			FOREIGN KEY (`name`)
 			REFERENCES `cupcake`.`users` (`name`)
@@ -49,7 +42,7 @@ CREATE TABLE `cupcake`.`invoices`(
 			ON UPDATE NO ACTION
 );
 
-CREATE TABLE `cupcake`.`ordertails`(
+CREATE TABLE `ordertails`(
 	`id` int,
     `bname` VARCHAR(45),
     `tname` VARCHAR(45),
@@ -62,7 +55,3 @@ CREATE TABLE `cupcake`.`ordertails`(
 			ON UPDATE NO ACTION
 );
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
