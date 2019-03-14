@@ -1,9 +1,10 @@
 # Cupcake
 
-Cupcake mini project:
-https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#
+[Website for project](http://46.101.213.70/Cupcake/)
 
-aflevering: https://docs.google.com/document/d/1xHon1NY3U7S44n9uMo2jrVcFjf8mGCv5KjV_bUHo_qc/edit#
+[Vores Rapport](Cupcake%20aflevering.pdf)
+
+[JavaDoc](apidocs/index.html) ligger i mappen apidocs når du puller projektet. Hvis du kører index.html kan du se JavaDoc.
 
 2nd Semester Datamatiker CPHbusiness 2019.
 
@@ -14,20 +15,10 @@ Authors:
  - Malte Hviid-Magnussen
 
 # TO DO - Overdragelses Dokumentation:
- 
-**Redegøre skriftligt i rapporten:**
-https://datsoftlyngby.github.io/dat2sem2019Spring/Modul2/Week5-Report/RapportSkabelon.html (skabelon)
-(6-10 sider. 1 side = 2400 tegn. Med mellemrum. Uden inholdsfortegnelse, bilag, noter osv.)
- * Javadoc - Skal lægges på Github når vi er færdige https://imgur.com/a/en8pWcv
-
-**Konkret:**
-
- * Der skal være en rapport der beskriver cup-cake systemet.
- * Vi kan lægge tingene på GitHub.
- * Deploy programmet på Digital Ocean dropletten.
 
 **DEADLINE: d. 15/03 for ovenstående**
 
-**Forberede 10 minutters oplæg**
- * Til den 29/03
+**Forberede 10 minutters oplæg til den 29/03**
  * Vis den allerbedste bid kode vi har lavet, fx.
+
+[Cupcake mini project opgave beskrivelse](https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#)
