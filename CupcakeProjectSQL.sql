@@ -1,15 +1,15 @@
-DROP SCHEMA IF EXISTS `Cupcake`;
+DROP SCHEMA IF EXISTS Cupcake;
 
-CREATE SCHEMA IF NOT EXISTS`Cupcake`;
-USE `Cupcake`;
+CREATE SCHEMA IF NOT EXISTS`cupcake`;
+USE `cupcake`;
 
-DROP TABLE IF EXISTS `Cupcake`.`ordertails`;
-DROP TABLE IF EXISTS `Cupcake`.`invoices`;
-DROP TABLE IF EXISTS `Cupcake`.`topping`;
-DROP TABLE IF EXISTS `Cupcake`.`bottom`;
-DROP TABLE IF EXISTS `Cupcake`.`users`;
+DROP TABLE IF EXISTS `cupcake`.`ordertails`;
+DROP TABLE IF EXISTS `cupcake`.`invoices`;
+DROP TABLE IF EXISTS `cupcake`.`topping`;
+DROP TABLE IF EXISTS `cupcake`.`bottom`;
+DROP TABLE IF EXISTS `cupcake`.`users`;
 
-CREATE TABLE `users`(
+CREATE TABLE `cupcake`.`users`(
 `name` VARCHAR(55),
 `password` VARCHAR(60),
 `balance` BIGINT,
@@ -17,24 +17,24 @@ CREATE TABLE `users`(
 PRIMARY KEY (`name`)
 );
 
-CREATE TABLE `bottom`(
+CREATE TABLE `cupcake`.`bottom`(
 `bname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`bname`)
 );
 
-CREATE TABLE `topping`(
+CREATE TABLE `cupcake`.`topping`(
 `tname` VARCHAR(25),
 `Price` INT(25),
 PRIMARY KEY (`tname`)
 );
 
-CREATE TABLE `invoices`(
+CREATE TABLE `cupcake`.`invoices`(
 	`name` VARCHAR(45),
-    `id` int auto_increment,
-    `date` DATETIME NOT NULL DEFAULT current_timestamp,
-    PRIMARY KEY (`id`),
-     INDEX `cname_idx` (`name` ASC) VISIBLE,
+    	`id` int auto_increment,
+	`date` DATETIME NOT NULL DEFAULT current_timestamp,
+    	PRIMARY KEY (`id`),
+     	INDEX `cname_idx` (`name` ASC) VISIBLE,
 		CONSTRAINT `name`
 			FOREIGN KEY (`name`)
 			REFERENCES `cupcake`.`users` (`name`)
@@ -42,7 +42,7 @@ CREATE TABLE `invoices`(
 			ON UPDATE NO ACTION
 );
 
-CREATE TABLE `ordertails`(
+CREATE TABLE `cupcake`.`ordertails`(
 	`id` int,
     `bname` VARCHAR(45),
     `tname` VARCHAR(45),
@@ -55,4 +55,4 @@ CREATE TABLE `ordertails`(
 			ON UPDATE NO ACTION
 );
 
-SET autocommit = 0;
+
