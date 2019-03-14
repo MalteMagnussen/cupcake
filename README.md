@@ -20,10 +20,6 @@ https://datsoftlyngby.github.io/dat2sem2019Spring/Modul2/Week5-Report/RapportSka
 (6-10 sider. 1 side = 2400 tegn. Med mellemrum. Uden inholdsfortegnelse, bilag, noter osv.)
  * Javadoc - Skal lægges på Github når vi er færdige https://imgur.com/a/en8pWcv
 
-Ledetråde. Næste team skal kunne forstå:
- - Hvem er kunden, og hvad handler systemet om?
- - Typiske flow i programmet
-
 **Konkret:**
 
  * Der skal være en rapport der beskriver cup-cake systemet.
