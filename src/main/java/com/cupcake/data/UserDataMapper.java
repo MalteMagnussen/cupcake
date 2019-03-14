@@ -17,12 +17,13 @@ import java.util.logging.Logger;
 
 /**
  * DataMapper class for User.
+ *
  * @author Nikolaj + Malte
  */
 public class UserDataMapper {
 
     /**
-     * Contains classes that handle SQL directly. 
+     * Contains classes that handle SQL directly.
      */
     private DBConnector conn;
 
@@ -30,8 +31,9 @@ public class UserDataMapper {
     }
 
     /**
-     * Remove balance from user.
-     * Currently no usages of this method according to NetBeans.
+     * Remove balance from user. Currently no usages of this method according to
+     * NetBeans.
+     *
      * @param name
      * @param balance
      */
@@ -66,13 +68,14 @@ public class UserDataMapper {
             conn.setAutoCommit(true);
         } catch (SQLException ex) {
             System.out.println(ex);
-                conn.rollback();
+            conn.rollback();
         }
     }
 
     /**
-     * Remove Balance from User.
-     * Currently no usages of this method according to NetBeans.
+     * Remove Balance from User. Currently no usages of this method according to
+     * NetBeans.
+     *
      * @param user
      * @param balance
      */
@@ -114,7 +117,7 @@ public class UserDataMapper {
 
     /**
      * Returns a User.
-     * 
+     *
      * @param userName
      * @return User
      * @throws java.sql.SQLException
@@ -141,7 +144,7 @@ public class UserDataMapper {
             /*  E-mail */
             String e = rs.getString("email");
             user.setEmail(e);
-            
+
         }
         /* Username */
         user.setUsername(userName);
@@ -150,8 +153,9 @@ public class UserDataMapper {
     }
 
     /**
-     * Add money to the users account.
-     * Currently no usages of this method according to NetBeans.
+     * Add money to the users account. Currently no usages of this method
+     * according to NetBeans.
+     *
      * @param name
      * @param money
      */
@@ -172,9 +176,9 @@ public class UserDataMapper {
     }
 
     /**
-     * Get a new invoice ID.
-     * Used to get a new invoice ID, so we don't end up with duplicates.
-     * 
+     * Get a new invoice ID. Used to get a new invoice ID, so we don't end up
+     * with duplicates.
+     *
      * @return ID.
      */
     public int getInvID() {
@@ -201,7 +205,7 @@ public class UserDataMapper {
 
     /**
      * Adds User to Database.
-     * 
+     *
      * @param name - Name of the user
      * @param password - Users password
      * @param email - Users email
@@ -236,8 +240,8 @@ public class UserDataMapper {
     }
 
     /**
-     * Give a user a new email address.
-     * Currently no usages of this method.
+     * Give a user a new email address. Currently no usages of this method.
+     *
      * @param name
      * @param email
      */
@@ -257,9 +261,9 @@ public class UserDataMapper {
     }
 
     /**
-     * Get Invoice IDs.
-     * Used by getInvoices.
-     * Returns all invoice IDs associated with a single User.
+     * Get Invoice IDs. Used by getInvoices. Returns all invoice IDs associated
+     * with a single User.
+     *
      * @param user
      * @return List of Integers. List of IDs.
      * @throws SQLException
@@ -282,8 +286,7 @@ public class UserDataMapper {
     }
 
     /**
-     * Returns a ShoppingCart.
-     * Used by getInvoices in this class.
+     * Returns a ShoppingCart. Used by getInvoices in this class.
      *
      * @param number
      * @return ShoppingCart
@@ -312,53 +315,55 @@ public class UserDataMapper {
             item.addQuantity(qty);
             items.add(item);
         }
-        
+
         ShoppingCart cart = new ShoppingCart();
         cart.setLineItems(items);
         cart.setDate(getInvoiceDate(number));
         return cart;
-        
+
     }
-    
+
     /**
-     * Get invoice date.
-     * Used by getOrders in this class.
+     * Get invoice date. Used by getOrders in this class.
+     *
      * @param id
      * @return String
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public String getInvoiceDate (int id) throws SQLException {
+    public String getInvoiceDate(int id) throws SQLException {
         conn = new DBConnector();
-        String query = "SELECT `date` FROM invoices WHERE id = "+id+";";
-        
+        String query = "SELECT `date` FROM invoices WHERE id = " + id + ";";
+
         Connection connection = conn.getConnection();
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(query);
         String date = "";
-        while(rs.next()){
+        while (rs.next()) {
             date = rs.getString("date");
         }
         return date;
     }
-    
+
     /**
-     * Used to show all Invoices of a User.
-     * Used by admininvoice method in ProductControl.java
-     * @param user 
+     * Used to show all Invoices of a User. Used by admininvoice method in
+     * ProductControl.java
+     *
+     * @param user
      * @return List of ShoppingCarts
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public List<ShoppingCart> getInvoices(User user) throws SQLException{
+    public List<ShoppingCart> getInvoices(User user) throws SQLException {
         List<ShoppingCart> invoices = new ArrayList<>();
-        for(Integer id: getInvoiceIDs(user)){
+        for (Integer id : getInvoiceIDs(user)) {
             invoices.add(getOrders(id));
         }
         return invoices;
     }
 
     /**
-     * Adds an invoice to the database.
-     * Used by checkout method in ProductControl.java
+     * Adds an invoice to the database. Used by checkout method in
+     * ProductControl.java
+     *
      * @param user
      */
     public void addInvoice(User user) {
@@ -383,8 +388,8 @@ public class UserDataMapper {
     }
 
     /**
-     * Get all Users.
-     * Used by admininvoices.jsp
+     * Get all Users. Used by admininvoices.jsp
+     *
      * @return List of Users.
      * @throws SQLException
      */
@@ -413,11 +418,11 @@ public class UserDataMapper {
     }
 
     /**
-     * Adds an order to the SQL.
-     * Used by addInvoice method in UserDataMapper.
+     * Adds an order to the SQL. Used by addInvoice method in UserDataMapper.
+     *
      * @param item
      * @param id
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void addOrder(LineItem item, int id) throws SQLException {
         conn = new DBConnector();
@@ -442,42 +447,29 @@ public class UserDataMapper {
     }
 
     /**
-     * Sets Balance of the User.
-     * Used by addBalance in ProductControl.java.
+     * Sets Balance of the User. Used by addBalance in ProductControl.java.
+     *
      * @param user
-     * @param userbalance 
+     * @param userbalance
      */
     public void setBalance(User user, int userbalance) {
         try {
             String username = user.getUsername();
             String balance = String.valueOf(userbalance);
             conn = new DBConnector();
-            String auto = "SET autocommit = 0;";
-            String trans = "START TRANSACTION;";
+            conn.setAutoCommit(false);
             String query = "UPDATE users SET balance = ? WHERE name = ?;";
-            String commit = "COMMIT;";
-            String reAuto = "SET autocommit = 1;";
-            PreparedStatement ps = conn.getConnection().prepareStatement(auto);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(trans);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(query);
+            PreparedStatement ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, balance);
             ps.setString(2, username);
             ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(commit);
-            ps.executeUpdate();
-            ps = conn.getConnection().prepareStatement(reAuto);
-            ps.executeUpdate();
+            conn.commit();
+            conn.setAutoCommit(true);
         } catch (SQLException ex) {
             Logger.getLogger(UserDataMapper.class.getName()).log(Level.SEVERE, null, ex);
-            try {
-                String rollBack = "ROLLBACK;";
-                PreparedStatement ps = conn.getConnection().prepareStatement(rollBack);
-                ps.executeUpdate();
-            } catch (SQLException e) {
-            }
+            conn.rollback();
         }
     }
-
 }
+
+
