@@ -1,10 +1,10 @@
-INSERT INTO `Cupcake`.`bottom`
+INSERT INTO `cupcake`.`bottom`
 (`bname`,
 `Price`)
 VALUES
 ('Chocolate', 5.00), ('Vanilla', 5.00), ('Nutmeg', 5.00), ('Pistacio', 6.00), ('Almond', 7.00);
 
-INSERT INTO `Cupcake`.`topping`
+INSERT INTO `cupcake`.`topping`
 (`tname`,
 `Price`)
 VALUES
@@ -19,6 +19,7 @@ VALUES
 ('test',
 'test',
 0,
+<<<<<<< HEAD
 'test@gmail.com');
 
 INSERT INTO `Cupcake`.`users`
@@ -27,6 +28,9 @@ INSERT INTO `Cupcake`.`users`
 `balance`,
 `email`)
 VALUES
+=======
+'test@gmail.com'),
+>>>>>>> origin/master
 ('admin',
 '1234',
 0,
