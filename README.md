@@ -14,7 +14,7 @@ Authors:
  - Benjamin Aizen Kongshaug
  - Malte Hviid-Magnussen
 
-# TO DO - Overdragelses Dokumentation:
+# TO DO
 
 **DEADLINE: d. 15/03 for ovenstående**
 
