@@ -16,7 +16,7 @@ Authors:
 
 # TO DO
 
-**DEADLINE: d. 15/03 for ovenstående**
+**DEADLINE: d. 15/03**
 
 **Forberede 10 minutters oplæg til den 29/03**
  * Vis den allerbedste bid kode vi har lavet, fx.
