@@ -40,7 +40,7 @@ public class UserDataMapper {
     public void removeBalance(String name, int balance) {
         int end = balance;
         try {
-            String query = "SELECT balance FROM cupcake.users WHERE username=" + name + ";";
+            String query = "SELECT balance FROM cupcake.`users` WHERE username=" + name + ";";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
@@ -83,7 +83,7 @@ public class UserDataMapper {
         String name = user.getUsername();
         int end = balance;
         try {
-            String query = "SELECT balance FROM cupcake.users WHERE username=" + name + ";";
+            String query = "SELECT balance FROM cupcake.`users` WHERE username=" + name + ";";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
@@ -127,7 +127,7 @@ public class UserDataMapper {
 
         conn = new DBConnector();
 
-        String query = "SELECT * FROM cupcake.users "
+        String query = "SELECT * FROM cupcake.`users` "
                 + "WHERE `name`='" + userName + "';";
 
         Connection connection = conn.getConnection();
@@ -185,7 +185,7 @@ public class UserDataMapper {
         try {
             conn = new DBConnector();
 
-            String query = "SELECT COUNT(ID) FROM `Cupcake`.`invoices`;";
+            String query = "SELECT COUNT(ID) FROM `cupcake`.`invoices`;";
 
             Connection connection = conn.getConnection();
             Statement stmt = connection.createStatement();
@@ -273,7 +273,7 @@ public class UserDataMapper {
         String username = user.getUsername();
         conn = new DBConnector();
 
-        String query = "SELECT id FROM invoices WHERE `name`='" + username + "';";
+        String query = "SELECT id FROM cupcake.`invoices` WHERE `name`='" + username + "';";
 
         Connection connection = conn.getConnection();
         Statement stmt = connection.createStatement();
@@ -297,7 +297,7 @@ public class UserDataMapper {
         conn = new DBConnector();
         CupcakeDataMapper db = new CupcakeDataMapper();
 
-        String query = "SELECT * FROM cupcake.ordertails "
+        String query = "SELECT * FROM cupcake.`ordertails` "
                 + "WHERE id = " + number + ";";
 
         Connection connection = conn.getConnection();
@@ -332,7 +332,7 @@ public class UserDataMapper {
      */
     public String getInvoiceDate(int id) throws SQLException {
         conn = new DBConnector();
-        String query = "SELECT `date` FROM invoices WHERE id = " + id + ";";
+        String query = "SELECT cupcake.`date` FROM invoices WHERE id = " + id + ";";
 
         Connection connection = conn.getConnection();
         Statement stmt = connection.createStatement();
@@ -372,7 +372,7 @@ public class UserDataMapper {
 
             int id = getInvID();
             String name = user.getUsername();
-            String insertBalance = "INSERT INTO `cupcake`.`invoices` (`name`, id) VALUES (?, ?);";
+            String insertBalance = "INSERT INTO cupcake.`invoices` (`name`, id) VALUES (?, ?);";
             PreparedStatement ps = conn.getConnection().prepareStatement(insertBalance);
             ps.setString(1, name);
             ps.setInt(2, id);
@@ -399,7 +399,7 @@ public class UserDataMapper {
 
         conn = new DBConnector();
 
-        String query = "SELECT * FROM cupcake.users";
+        String query = "SELECT * FROM cupcake.`users`";
 
         Connection connection = conn.getConnection();
         Statement stmt = connection.createStatement();
@@ -458,7 +458,7 @@ public class UserDataMapper {
             String balance = String.valueOf(userbalance);
             conn = new DBConnector();
             conn.setAutoCommit(false);
-            String query = "UPDATE users SET balance = ? WHERE name = ?;";
+            String query = "UPDATE `cupcake`.`users` SET balance = ? WHERE name = ?;";
             PreparedStatement ps = conn.getConnection().prepareStatement(query);
             ps.setString(1, balance);
             ps.setString(2, username);
