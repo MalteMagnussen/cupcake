@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * LoginCommand.
- * Class handles Logins, Registrations and Logouts.
+ * Class handles Logins, Registrations and Logouts. 
  * @author Malte
  */
 public class LoginCommand extends Command {
@@ -78,11 +78,11 @@ public class LoginCommand extends Command {
      * Login method. Validates the user info with the database. Then pulls the
      * user out of database if he's valid. Then places him on the session if
      * he's valid. Then forwards him to shop if he's valid.
-     *
+     * 
      * @param request
      * @param response
      * @throws IOException
-     * @throws ServletException
+     * @throws ServletException 
      */
     private void login(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         /* Get Parameters from the URL. (From the HTTP request) */
