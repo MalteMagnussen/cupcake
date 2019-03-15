@@ -2,9 +2,11 @@
 
 [Website for project](http://46.101.213.70/Cupcake/)
 
-[Vores Rapport](Cupcake%20aflevering.pdf)
+[Our Report](Cupcake%20aflevering.pdf)
 
-[JavaDoc](apidocs/index.html) ligger i mappen apidocs når du puller projektet. Hvis du kører index.html kan du se JavaDoc.
+[JavaDoc](https://maltemagnussen.github.io/cupcake/) 
+
+[UML Diagrams](https://github.com/MalteMagnussen/cupcake/tree/master/UML%20Diagrams)
 
 2nd Semester Datamatiker CPHbusiness 2019.
 
