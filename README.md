@@ -14,11 +14,4 @@ Authors:
  - Benjamin Aizen Kongshaug
  - Malte Hviid-Magnussen
 
-# TO DO
-
-**DEADLINE: d. 15/03**
-
-**Forberede 10 minutters oplæg til den 29/03**
- * Vis den allerbedste bid kode vi har lavet, fx.
-
 [Cupcake mini project opgave beskrivelse](https://docs.google.com/document/d/1XKK1GkVE-GtCPGEoVJ2SN4qHpfJnU9j7arugQv2-JfY/edit#)
