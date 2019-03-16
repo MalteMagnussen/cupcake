@@ -25,7 +25,7 @@
         
         <!-- EMAIL -->
         <div class="form-label-group">
-            <input type="text" id="inputEmail" class="form-control" placeholder="Email" name="email" required>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email" name="email" required>
             <label for="inputPassword">Email</label>
         </div>
 
